@@ -16,8 +16,7 @@ import {
   Tr,
   IconButton,
   Button,
-  ModalFooter,
-  Link
+  ModalFooter
 } from '@chakra-ui/react';
 import MyModal from '@fastgpt/web/components/common/MyModal';
 import { useTranslation, Trans } from 'next-i18next';
@@ -35,7 +34,6 @@ import {
   checkCustomDomainDNSResolve,
   createCustomDomain
 } from '@/web/support/customDomain/api';
-import { getDocPath } from '@/web/common/system/doc';
 
 const ProviderItem = ({
   icon,
@@ -291,21 +289,6 @@ function CreateCustomDomainModal<T extends 'create' | 'refresh'>({
             </Tbody>
           </Table>
 
-          <Flex>
-            <Link
-              href={feConfigs.openAPIDocUrl || getDocPath('/guide/workspace/customDomain')}
-              target={'_blank'}
-              mt="2"
-              ml="2"
-              color={'primary.500'}
-              fontSize={'sm'}
-              display={'inline-flex'}
-              alignItems={'center'}
-            >
-              <Icon w={'17px'} h={'17px'} name="book" mr="1" />
-              {t('common:read_doc')}
-            </Link>
-          </Flex>
         </Flex>
       </ModalBody>
       <ModalFooter>

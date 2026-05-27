@@ -1,5 +1,4 @@
 import { create, devtools, persist, immer } from '@fastgpt/web/common/zustand';
-import axios from 'axios';
 import type { OAuthEnum } from '@fastgpt/global/support/user/constant';
 import type {
   TTSModelType,
@@ -125,16 +124,9 @@ export const useSystemStore = create<State>()(
           return null;
         },
 
-        gitStar: 26500,
+        gitStar: 0,
         async loadGitStar() {
-          if (!get().feConfigs?.show_git) return;
-          try {
-            const { data: git } = await axios.get('https://api.github.com/repos/labring/FastGPT');
-
-            set((state) => {
-              state.gitStar = git.stargazers_count;
-            });
-          } catch (error) {}
+          return;
         },
 
         notSufficientModalType: undefined,

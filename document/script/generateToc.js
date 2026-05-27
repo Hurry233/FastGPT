@@ -69,7 +69,7 @@ async function generateToc() {
   const makeMdxContent = (urls, title, isChinese = true) =>
     `---
 title: ${title}
-description: ${isChinese ? 'FastGPT 文档目录' : 'FastGPT Toc'}
+description: ${isChinese ? 'GPTW Agent 文档目录' : 'GPTW Agent Toc'}
 ---
 
 ${urls.map((url) => `- [${url}](${url})`).join('\n')}
@@ -81,8 +81,8 @@ ${urls.map((url) => `- [${url}](${url})`).join('\n')}
 
   // 写入文件
   await fs.mkdir(baseDir, { recursive: true });
-  await fs.writeFile(zhOutputPath, makeMdxContent(zhUrls, 'FastGPT 文档目录', true), 'utf8');
-  await fs.writeFile(enOutputPath, makeMdxContent(enUrls, 'FastGPT Toc', false), 'utf8');
+  await fs.writeFile(zhOutputPath, makeMdxContent(zhUrls, 'GPTW Agent 文档目录', true), 'utf8');
+  await fs.writeFile(enOutputPath, makeMdxContent(enUrls, 'GPTW Agent Toc', false), 'utf8');
 
   console.log(`✅ 写入中文目录 ${zhOutputPath}`);
   console.log(`✅ 写入英文目录 ${enOutputPath}`);

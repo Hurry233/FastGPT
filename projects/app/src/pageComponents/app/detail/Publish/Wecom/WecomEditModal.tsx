@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Flex, Box, Button, ModalBody, Input, Link, ModalFooter, Grid } from '@chakra-ui/react';
+import { Flex, Box, Button, ModalBody, Input, ModalFooter, Grid } from '@chakra-ui/react';
 import MyModal from '@fastgpt/web/components/common/MyModal';
 import { PublishChannelEnum } from '@fastgpt/global/support/outLink/constant';
 import type { WecomAppType, OutLinkEditType } from '@fastgpt/global/support/outLink/type';
@@ -7,9 +7,7 @@ import { useTranslation } from 'next-i18next';
 import { useForm } from 'react-hook-form';
 import { createShareChat, updateShareChat } from '@/web/support/outLink/api';
 import { useRequest } from '@fastgpt/web/hooks/useRequest';
-import { getDocPath } from '@/web/common/system/doc';
 import { useSystemStore } from '@/web/common/system/useSystemStore';
-import MyIcon from '@fastgpt/web/components/common/Icon';
 import FormLabel from '@fastgpt/web/components/common/MyBox/FormLabel';
 import { useMyStep } from '@fastgpt/web/hooks/useStep';
 import QuestionTip from '@fastgpt/web/components/common/MyTooltip/QuestionTip';
@@ -186,22 +184,6 @@ const WecomEditModal = ({
                 <Box color="myGray.900" fontWeight="500">
                   {t('publish:wecom.api')}
                 </Box>
-                <Flex>
-                  {feConfigs?.docUrl && (
-                    <Link
-                      href={getDocPath('/guide/build/publish/wecom')}
-                      target={'_blank'}
-                      ml={2}
-                      color={'primary.500'}
-                      fontSize={'sm'}
-                    >
-                      <Flex alignItems={'center'}>
-                        <MyIcon name="book" w={'17px'} h={'17px'} mr="1" />
-                        {t('common:read_doc')}
-                      </Flex>
-                    </Link>
-                  )}
-                </Flex>
               </Flex>
 
               <Grid gridTemplateColumns={'1fr 1fr'} columnGap="4">

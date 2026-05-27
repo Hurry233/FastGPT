@@ -1,6 +1,6 @@
 ---
 title: Laf Function Call
-description: FastGPT Laf Function Call node overview
+description: GPTW Agent Laf Function Call node overview
 ---
 
 
@@ -19,7 +19,7 @@ To call Laf cloud functions, you first need to bind your Laf account and applica
 
 Laf provides a PAT (Personal Access Token) for authentication outside the Laf platform. See the [Laf documentation](https://doc.Laf.run/zh/cli/#%E7%99%BB%E5%BD%95) for details on obtaining a PAT.
 
-After obtaining a PAT, go to FastGPT's `Account page` or the `Laf module` in the workflow editor to bind your Laf account. The Laf account is shared across the team and can only be configured by team admins.
+After obtaining a PAT, go to GPTW Agent's `Account page` or the `Laf module` in the workflow editor to bind your Laf account. The Laf account is shared across the team and can only be configured by team admins.
 
 Enter the PAT for verification, then select the application to bind (the application must be in Running status). You can then call cloud functions under that application.
 
@@ -29,18 +29,18 @@ Enter the PAT for verification, then select the application to bind (the applica
 
 Laf cloud functions can auto-generate OpenAPI specs from TypeScript interfaces. Follow the code below to enable automatic OpenAPI documentation generation.
 
-The `Laf module` can automatically detect input/output parameters from the OpenAPI spec, so you don't need to add data types manually. If you're not familiar with TypeScript, you can skip this and add parameters manually in FastGPT.
+The `Laf module` can automatically detect input/output parameters from the OpenAPI spec, so you don't need to add data types manually. If you're not familiar with TypeScript, you can skip this and add parameters manually in GPTW Agent.
 
 ```ts
 import cloud from '@lafjs/cloud'
 
-interface IRequestBody { // Custom input params. FastGPT always sends POST requests.
+interface IRequestBody { // Custom input params. GPTW Agent always sends POST requests.
   data1: string    // Required parameter
   data2?: string    // Optional parameter
 }
 
 interface RequestProps extends IRequestBody { // Full input params. No changes needed here.
-  systemParams: { // Default parameters passed by FastGPT
+  systemParams: { // Default parameters passed by GPTW Agent
     appId: string,
     variables: string,
     histories: string,
@@ -77,13 +77,13 @@ export default async function (ctx: FunctionContext): Promise<IResponse> {
 
 You can also select the `fastgpt_template` on the Laf platform to quickly generate this function template.
 
-To do this, go to the Laf functions page and create a new function (note: FastGPT only calls POST functions). Then either paste the code above or click "More Templates" and search for "fastgpt" to use the template shown below.
+To do this, go to the Laf functions page and create a new function (note: GPTW Agent only calls POST functions). Then either paste the code above or click "More Templates" and search for "fastgpt" to use the template shown below.
 
 ![](/imgs/laf3.webp)
 
-## Using in FastGPT
+## Using in GPTW Agent
 
-After selecting a function, click "Sync Parameters" to automatically sync the cloud function's parameters into FastGPT. You can also add parameters manually -- manually modified parameters will not be overwritten by "Sync Parameters".
+After selecting a function, click "Sync Parameters" to automatically sync the cloud function's parameters into GPTW Agent. You can also add parameters manually -- manually modified parameters will not be overwritten by "Sync Parameters".
 
 ![](/imgs/laf4.png)
 

@@ -93,7 +93,7 @@
   "generate_index": "更新索引",
   "image_auto_parse": "圖片自動索引",
   "image_auto_parse_tips": "呼叫 VLM 自動標註文件裡的圖片，並生成額外的檢索索引",
-  "image_auto_parse_tip_commercial": "請升級商業版後使用該功能",
+  "image_auto_parse_tip_commercial": "",
   "image_auto_parse_tip_multimodal_with_vlm": "為文件中的圖片生成圖片向量索引和文字描述索引，支援以圖搜圖",
   "image_auto_parse_tip_multimodal_without_vlm": "使用多模態模型為圖片生成向量索引，支援以圖搜圖",
   "image_auto_parse_tip_vlm_only": "呼叫 VLM 自動標註文件裡的圖片，並生成文字描述索引",

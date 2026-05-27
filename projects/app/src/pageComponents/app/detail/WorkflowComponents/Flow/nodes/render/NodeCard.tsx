@@ -33,7 +33,6 @@ import { useWorkflowUtils } from '../../hooks/useUtils';
 import { WorkflowBufferDataContext } from '../../../context/workflowInitContext';
 import MyImage from '@fastgpt/web/components/common/Image/MyImage';
 import MyIconButton from '@fastgpt/web/components/common/Icon/button';
-import UseGuideModal from '@/components/common/Modal/UseGuideModal';
 import NodeDebugResponse from './RenderDebug/NodeDebugResponse';
 import { useScrollPagination } from '@fastgpt/web/hooks/useScrollPagination';
 import MyTag from '@fastgpt/web/components/common/Tag/index';
@@ -879,7 +878,7 @@ const NodeActionButtons = React.memo<{
   };
   courseUrl?: string;
   rtDoms?: React.ReactNode[];
-}>(({ nodeTemplate, courseUrl, rtDoms }) => {
+}>(({ nodeTemplate, rtDoms }) => {
   const { t } = useTranslation();
 
   const buttons = useMemo(() => {
@@ -900,30 +899,12 @@ const NodeActionButtons = React.memo<{
       );
     }
 
-    if (courseUrl || nodeTemplate?.userGuide) {
-      result.push(
-        <UseGuideModal
-          key="userGuide"
-          title={nodeTemplate?.name}
-          iconSrc={nodeTemplate?.avatar}
-          text={nodeTemplate?.userGuide}
-          link={nodeTemplate?.courseUrl || courseUrl}
-        >
-          {({ onClick }) => (
-            <MyTooltip label={t('workflow:Node.Open_Node_Course')}>
-              <MyIconButton ml={1} icon="book" color={'primary.600'} onClick={onClick} />
-            </MyTooltip>
-          )}
-        </UseGuideModal>
-      );
-    }
-
     if (rtDoms) {
       result.push(...rtDoms);
     }
 
     return result;
-  }, [nodeTemplate, courseUrl, rtDoms, t]);
+  }, [nodeTemplate, rtDoms, t]);
 
   if (buttons.length === 0) {
     return null;

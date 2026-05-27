@@ -1,41 +1,41 @@
 ---
 title: System Plugin Design
-description: FastGPT system plugin design
+description: GPTW Agent system plugin design
 ---
 
 ## Background
 
-Previously, all FastGPT features lived within the Next.js framework, organized as a Monorepo. System plugins existed as a sub-repo under FastGPT/packages/plugin.
+Previously, all GPTW Agent features lived within the Next.js framework, organized as a Monorepo. System plugins existed as a sub-repo under GPTW Agent/packages/plugin.
 
 As the user base grew, this approach revealed several limitations:
 
-1. Although FastGPT releases weekly, system plugins had to ship alongside FastGPT, severely limiting plugin iteration speed.
-2. Community contributors who wanted to add plugins had to run the entire FastGPT application and submit PRs directly to the main repo.
-3. Users who wanted custom plugins had to maintain a FastGPT fork and manually handle updates and merges, increasing development complexity.
+1. Although GPTW Agent releases weekly, system plugins had to ship alongside GPTW Agent, severely limiting plugin iteration speed.
+2. Community contributors who wanted to add plugins had to run the entire GPTW Agent application and submit PRs directly to the main repo.
+3. Users who wanted custom plugins had to maintain a GPTW Agent fork and manually handle updates and merges, increasing development complexity.
 4. Due to Next.js/webpack limitations, plugins couldn't be mounted at runtime -- no hot-swapping.
 
 ## Design
 
 We decided to extract system plugins into a separate repository:
 
-[FastGPT-plugin](https://github.com/labring/fastgpt-plugin)
+[GPTW Agent-plugin](https://gptw.top)
 
 Key goals of the split:
 1. Decoupling and modularization: not just system tools, but also other plugin types like Knowledge Base plugins, RAG, etc. can be hot-loaded modules.
-2. Independent versioning: FastGPT-plugin can release more frequently than FastGPT, and hot-swapping enables plugin updates without a full release.
-3. Lower development complexity: contributors only need to run the debug suite provided in FastGPT-plugin, without setting up the full FastGPT environment.
+2. Independent versioning: GPTW Agent-plugin can release more frequently than GPTW Agent, and hot-swapping enables plugin updates without a full release.
+3. Lower development complexity: contributors only need to run the debug suite provided in GPTW Agent-plugin, without setting up the full GPTW Agent environment.
 4. Plugin marketplace: enables a future marketplace where users can publish and discover plugins.
 
 ## Technology Stack
 
-1. ts-rest as the RPC framework, with an SDK for the FastGPT main project to consume.
+1. ts-rest as the RPC framework, with an SDK for the GPTW Agent main project to consume.
 2. zod for runtime type validation.
 3. bun for bundling -- each tool compiles into a single `.pkg` file for hot-swapping.
 
 ## Project Structure
 
 - **modules**
-	- **tool** FastGPT system tools
+	- **tool** GPTW Agent system tools
 		- **api** API implementation logic
 		- **packages** System tool directory (each is a package)
 			- getTime
@@ -66,7 +66,7 @@ We use zod for type validation. Zod provides runtime type checking along with ad
 
 ### Worker-Based Parallel Execution and Environment Isolation
 
-To prevent plugins from interfering with each other while improving concurrency, FastGPT-plugin uses Worker threads for plugin execution. Each tool runs in an independent Worker when called, providing:
+To prevent plugins from interfering with each other while improving concurrency, GPTW Agent-plugin uses Worker threads for plugin execution. Each tool runs in an independent Worker when called, providing:
 
 1. Environment isolation: each plugin runs in its own Worker process, so plugins don't affect each other.
 2. Parallel processing: plugins can run concurrently, improving overall performance.

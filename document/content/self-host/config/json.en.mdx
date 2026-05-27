@@ -1,9 +1,9 @@
 ---
 title: Configuration File Guide
-description: FastGPT configuration parameters explained
+description: GPTW Agent configuration parameters explained
 ---
 
-Since environment variables aren't ideal for complex configurations, newer versions of FastGPT use ConfigMap-style mounted configuration files. You can find the default config at `projects/app/data/config.json`. See the [Docker Compose deployment guide](../deploy/docker.en.mdx) for how to mount the config file.
+Since environment variables aren't ideal for complex configurations, newer versions of GPTW Agent use ConfigMap-style mounted configuration files. You can find the default config at `projects/app/data/config.json`. See the [Docker Compose deployment guide](../deploy/docker.en.mdx) for how to mount the config file.
 
 **In development**, copy the example config `config.json` to `config.local.json` for it to take effect.
 
@@ -44,7 +44,7 @@ Custom PDF parsing takes priority over Doc2x. If you're using Doc2x, don't confi
 
 [Open Sealos PDF Parser](https://hzh.sealos.run/?uid=fnWRt09fZP&openapp=system-aiproxy) and apply for an API key.
 
-#### 2. Update FastGPT Configuration
+#### 2. Update GPTW Agent Configuration
 
 Set `systemEnv.customPdfParse.url` to `https://aiproxy.hzh.sealos.run/v1/parse/pdf?model=parse-pdf`
 Set `systemEnv.customPdfParse.key` to the API key from Sealos AI Proxy.
@@ -57,7 +57,7 @@ Set `systemEnv.customPdfParse.key` to the API key from Sealos AI Proxy.
 
 [Open Doc2x website](https://doc2x.noedgeai.com?inviteCode=9EACN2) and apply for an API key.
 
-#### 2. Update FastGPT Configuration
+#### 2. Update GPTW Agent Configuration
 
 Community Edition users: add `systemEnv.customPdfParse.doc2xKey` to your `config.json` with the API key, then restart the service.
 

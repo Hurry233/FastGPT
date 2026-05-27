@@ -12,7 +12,6 @@ import {
 } from '@/web/core/plugin/admin/api';
 import { parseI18nString } from '@fastgpt/global/common/i18n/utils';
 import Avatar from '@fastgpt/web/components/common/Avatar';
-import { getDocPath } from '@/web/common/system/doc';
 import { getMarketPlaceToolTags } from '@/web/core/plugin/marketplace/api';
 import { useToast } from '@fastgpt/web/hooks/useToast';
 import type { GetAdminSystemToolsResponseType } from '@fastgpt/global/openapi/core/plugin/admin/tool/api';
@@ -190,23 +189,6 @@ const ImportPluginModal = ({
       mt={'0.5%'}
       px={0}
     >
-      <Flex justify={'flex-end'} px={8} pt={4} pb={3}>
-        <Button
-          variant={'link'}
-          size={'sm'}
-          leftIcon={<MyIcon name={'book'} w={'14px'} />}
-          color={'primary.600'}
-          onClick={() => {
-            window.open(
-              getDocPath('/guide/build/tools/system-plugins/upload_system_tool'),
-              '_blank'
-            );
-          }}
-        >
-          {t('common:Instructions')}
-        </Button>
-      </Flex>
-
       <Box flex={1} px={8} overflow={'auto'}>
         <FileSelectorBox
           maxCount={100}

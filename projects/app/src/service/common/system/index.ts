@@ -113,15 +113,14 @@ export async function getInitConfig() {
 
 const defaultFeConfigs: FastGPTFeConfigsType = {
   show_emptyChat: true,
-  show_git: true,
-  docUrl: 'https://doc.fastgpt.io',
-  openAPIDocUrl: 'https://doc.fastgpt.io/openapi/intro',
-  submitPluginRequestUrl: 'https://github.com/labring/fastgpt-plugin/issues',
+  show_git: false,
+  docUrl: 'https://gptw.top',
+  openAPIDocUrl: 'https://gptw.top/openapi/intro',
+  submitPluginRequestUrl: 'https://gptw.top',
   appTemplateCourse:
-    'https://fael3z0zfze.feishu.cn/wiki/CX9wwMGyEi5TL6koiLYcg7U0nWb?fromScene=spaceOverview',
-  systemTitle: 'FastGPT',
-  concatMd:
-    '项目开源地址: [FastGPT GitHub](https://github.com/labring/FastGPT)\n交流群: ![](https://oss.laf.run/otnvvf-imgs/fastgpt-feishu1.png)',
+    'https://gptw.top',
+  systemTitle: 'GPTW Agent',
+  concatMd: '官网地址: [GPTW Agent](https://gptw.top)',
   limit: {
     exportDatasetLimitMinutes: 0,
     websiteSyncLimitMinuted: 0,
@@ -133,6 +132,16 @@ const defaultFeConfigs: FastGPTFeConfigsType = {
   chineseRedirectUrl: appEnv.CHINESE_IP_REDIRECT_URL,
   uploadFileMaxSize: serviceEnv.UPLOAD_FILE_MAX_SIZE,
   uploadFileMaxAmount: serviceEnv.UPLOAD_FILE_MAX_AMOUNT
+};
+
+const brandFeConfigOverrides = {
+  show_git: false,
+  docUrl: 'https://gptw.top',
+  openAPIDocUrl: 'https://gptw.top/openapi/intro',
+  submitPluginRequestUrl: 'https://gptw.top',
+  appTemplateCourse: 'https://gptw.top',
+  systemTitle: 'GPTW Agent',
+  concatMd: '官网地址: [GPTW Agent](https://gptw.top)'
 };
 
 export async function initSystemConfig() {
@@ -151,6 +160,7 @@ export async function initSystemConfig() {
       ...fileRes?.feConfigs,
       ...defaultFeConfigs,
       ...(fastgptConfig.feConfigs || {}),
+      ...brandFeConfigOverrides,
       limit: {
         ...fileRes?.feConfigs?.limit,
         ...defaultFeConfigs.limit,

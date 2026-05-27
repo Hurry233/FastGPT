@@ -28,7 +28,6 @@ import { useState } from 'react';
 import IconButton from '../OrgManage/IconButton';
 import { type MemberGroupListItemType } from '@fastgpt/global/support/permission/memberGroup/type';
 
-const ChangeOwnerModal = dynamic(() => import('./GroupTransferOwnerModal'));
 const GroupInfoModal = dynamic(() => import('./GroupInfoModal'));
 const GroupManageMember = dynamic(() => import('./GroupManageMember'));
 
@@ -75,16 +74,6 @@ function MemberTable({ Tabs }: { Tabs: React.ReactNode }) {
   const onManageMember = (e: MemberGroupListItemType<true>) => {
     setEditGroup(e);
     onOpenManageGroupMember();
-  };
-
-  const {
-    isOpen: isOpenChangeOwner,
-    onOpen: onOpenChangeOwner,
-    onClose: onCloseChangeOwner
-  } = useDisclosure();
-  const onChangeOwner = (e: MemberGroupListItemType<true>) => {
-    setEditGroup(e);
-    onOpenChangeOwner();
   };
 
   return (
@@ -177,14 +166,6 @@ function MemberTable({ Tabs }: { Tabs: React.ReactNode }) {
                               ...(group.permission?.isOwner
                                 ? [
                                     {
-                                      label: t('account_team:transfer_ownership'),
-                                      icon: 'modal/changePer',
-                                      onClick: () => {
-                                        onChangeOwner(group);
-                                      },
-                                      type: 'primary' as MenuItemType
-                                    },
-                                    {
                                       label: t('common:Delete'),
                                       icon: 'delete',
                                       onClick: () => {
@@ -221,14 +202,6 @@ function MemberTable({ Tabs }: { Tabs: React.ReactNode }) {
           }}
         />
       )}
-      {isOpenChangeOwner && editGroup && (
-        <ChangeOwnerModal
-          group={editGroup}
-          onClose={onCloseChangeOwner}
-          onSuccess={refetchGroups}
-        />
-      )}
-
       {isOpenManageGroupMember && editGroup && (
         <GroupManageMember
           group={editGroup}

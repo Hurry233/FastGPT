@@ -1,18 +1,18 @@
-# FastGPT Open Source License
+# GPTW Agent Open Source License
 
-The FastGPT is licensed under the Apache License 2.0, with the following additional conditions:
+The GPTW Agent is licensed under the Apache License 2.0, with the following additional conditions:
 
-1. FastGPT is permitted to be used for commercialization. You can use FastGPT as a "backend-as-a-service" for your other applications, or delivering it to enterprises as an application development platform. However, when the following conditions are met, you must contact the producer to obtain a commercial license:
+1. GPTW Agent is permitted to be used for commercialization. You can use GPTW Agent as a "backend-as-a-service" for your other applications, or delivering it to enterprises as an application development platform. However, when the following conditions are met, you must contact the producer to obtain a commercial license:
 
-a. Multi-tenant SaaS service: Unless explicitly authorized by FastGPT in writing, you may not use the FastGPT.AI source code to operate a multi-tenant SaaS service that is similar to the FastGPT.
-b. LOGO and copyright information: In the process of using FastGPT, you may not remove or modify the LOGO or copyright information in the FastGPT console.
+a. Multi-tenant SaaS service: Unless explicitly authorized by GPTW Agent in writing, you may not use the GPTW Agent.AI source code to operate a multi-tenant SaaS service that is similar to the GPTW Agent.
+b. LOGO and copyright information: In the process of using GPTW Agent, you may not remove or modify the LOGO or copyright information in the GPTW Agent console.
 
 Please contact dennis@sealos.io by email to inquire about licensing matters.
 
 2. As a contributor, you should agree that your contributed code:
 
 a. The producer can adjust the open-source agreement to be more strict or relaxed.
-b. Can be used for commercial purposes, such as FastGPT's cloud business.
+b. Can be used for commercial purposes, such as GPTW Agent's cloud business.
 
 Apart from this, all other rights and restrictions follow the Apache License 2.0. If you need more detailed information, you can refer to the full version of Apache License 2.0.
 

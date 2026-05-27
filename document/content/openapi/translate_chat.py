@@ -21,7 +21,7 @@ translations = {
     '请求对话 Agent 和工作流': 'Request Chat Agent and Workflow',
     '对话接口兼容': 'chat API is compatible with',
     '的接口！如果你的项目使用的是标准的': "interface! If you're using the standard",
-    '官方接口，可以直接通过修改': 'official API, you can access FastGPT by simply changing the',
+    '官方接口，可以直接通过修改': 'official API, you can access GPTW Agent by simply changing the',
     '来访问 FastGpt 应用，不过需要注意下面几个规则：': 'However, note these rules:',
     '传入的': 'Parameters like',
     '等参数字段均无效，这些字段由编排决定，不会根据 API 参数改变。': 'are ignored. These values are determined by your workflow configuration.',
@@ -40,20 +40,20 @@ translations = {
     '图片链接': 'Image URL',
     '文件名': 'Filename',
     '文档链接，支持': 'Document URL. Supports',
-    '为时（不传入），不使用': 'When empty (not provided), FastGPT context is disabled. Context is built entirely from',
+    '为时（不传入），不使用': 'When empty (not provided), GPTW Agent context is disabled. Context is built entirely from',
     '提供的上下文功能，完全通过传入的': 'provided.',
     '构建上下文。': '',
     '为': 'When set to a',
     '非空字符串': 'non-empty string',
     '时，意味着使用': ', uses',
-    '进行对话，自动从': 'for the conversation. Automatically fetches history from the FastGPT database and uses the last',
+    '进行对话，自动从': 'for the conversation. Automatically fetches history from the GPTW Agent database and uses the last',
     '数据库取历史记录，并使用': 'message as the user question. Other messages are ignored. Ensure',
     '数组最后一个内容作为用户问题，其余': 'is unique and under 250 characters (typically your system',
     '会被忽略。请自行确保': "'s conversation ID).",
     '唯一，长度小于250，通常可以是自己系统的对话框ID。': '',
     '结构与': 'Structure matches',
     '模式一致。': 'chat format.',
-    '如果传入，则会将该值作为本次对话的响应消息的 ID，FastGPT会自动将该 ID 存入数据库。请确保，在当前': 'If provided, this value will be used as the response message ID. FastGPT will store it in the database. Ensure',
+    '如果传入，则会将该值作为本次对话的响应消息的 ID，GPTW Agent会自动将该 ID 存入数据库。请确保，在当前': 'If provided, this value will be used as the response message ID. GPTW Agent will store it in the database. Ensure',
     '下，': 'is unique within the current',
     '是唯一的。': '.',
     '是否返回中间值（模块状态，响应的完整结果等），': 'Whether to return intermediate values (module status, complete response data, etc.).',
@@ -91,7 +91,7 @@ for line in lines:
         output.append('title: Chat API\n')
         continue
     if line.strip().startswith('description:'):
-        output.append('description: FastGPT OpenAPI Chat Interface\n')
+        output.append('description: GPTW Agent OpenAPI Chat Interface\n')
         continue
     
     # Keep MDX components as-is
@@ -198,7 +198,7 @@ for line in lines:
     translated = translated.replace('该接口的 API Key 需使用`应用特定的 key`，否则会报错。', 'This API requires an application-specific API key, or it will return an error.')
     translated = translated.replace('有些包调用时，`BaseUrl`需要添加`v1`路径，有些不需要，如果出现404情况，可补充`v1`重试。', 'Some packages require adding `v1` to the `BaseUrl`. If you get a 404 error, try adding `v1` and retry.')
     translated = translated.replace('可在应用详情的路径里获取 AppId。', 'You can find the AppId in your application details URL.')
-    translated = translated.replace('`v1`对话接口兼容`GPT`的接口！如果你的项目使用的是标准的`GPT`官方接口，可以直接通过修改`BaseUrl`和 `Authorization`来访问 FastGpt 应用，不过需要注意下面几个规则：', 'The `v1` chat API is compatible with the `GPT` interface! If you\'re using the standard `GPT` official API, you can access FastGPT by simply changing the `BaseUrl` and `Authorization`. However, note these rules:')
+    translated = translated.replace('`v1`对话接口兼容`GPT`的接口！如果你的项目使用的是标准的`GPT`官方接口，可以直接通过修改`BaseUrl`和 `Authorization`来访问 FastGpt 应用，不过需要注意下面几个规则：', 'The `v1` chat API is compatible with the `GPT` interface! If you\'re using the standard `GPT` official API, you can access GPTW Agent by simply changing the `BaseUrl` and `Authorization`. However, note these rules:')
     translated = translated.replace('传入的`model`，`temperature`等参数字段均无效，这些字段由编排决定，不会根据 API 参数改变。', 'Parameters like `model` and `temperature` are ignored. These values are determined by your workflow configuration.')
     translated = translated.replace('不会返回实际消耗`Token`值，如果需要，可以设置`detail=true`，并手动计算 `responseData` 里的`tokens`值。', "Won't return actual `Token` consumed. If needed, set `detail=true` and manually calculate `tokens` from `responseData`.")
     translated = translated.replace('仅`messages`有部分区别，其他参数一致。', 'Only `messages` differs slightly; other parameters are the same.')

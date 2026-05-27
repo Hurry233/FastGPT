@@ -20,7 +20,6 @@ import { postCreateApp } from '@/web/core/app/api';
 import { webPushTrack } from '@/web/common/middle/tracks/utils';
 import Avatar from '@fastgpt/web/components/common/Avatar';
 
-import dynamic from 'next/dynamic';
 import SearchInput from '@fastgpt/web/components/common/Input/SearchInput';
 import MySelect from '@fastgpt/web/components/common/MySelect';
 import EmptyTip from '@fastgpt/web/components/common/EmptyTip';
@@ -28,9 +27,6 @@ import { useSystem } from '@fastgpt/web/hooks/useSystem';
 import MyIcon from '@fastgpt/web/components/common/Icon';
 import { appTypeTagMap } from '@/pageComponents/dashboard/constant';
 import MyTooltip from '@fastgpt/web/components/common/MyTooltip';
-const UseGuideModal = dynamic(() => import('@/components/common/Modal/UseGuideModal'), {
-  ssr: false
-});
 
 const TemplateMarket = ({
   templateList,
@@ -192,33 +188,7 @@ const TemplateMarket = ({
           </Box>
 
           <Flex justifyContent={'space-between'} alignItems={'center'}>
-            {(item.userGuide?.type === 'markdown' && item.userGuide?.content) ||
-            (item.userGuide?.type === 'link' && item.userGuide?.link) ? (
-              <UseGuideModal
-                title={item.name}
-                iconSrc={item.avatar}
-                text={item.userGuide?.content}
-                link={item.userGuide?.link}
-              >
-                {({ onClick }) => (
-                  <Flex
-                    cursor={'pointer'}
-                    color={'myGray.500'}
-                    gap={1}
-                    fontSize={'14px'}
-                    onClick={onClick}
-                    _hover={{
-                      color: 'primary.600'
-                    }}
-                  >
-                    <MyIcon name="book" w={4} />
-                    {t('app:templateMarket.template_guide')}
-                  </Flex>
-                )}
-              </UseGuideModal>
-            ) : (
-              <Box></Box>
-            )}
+            <Box />
             <Button
               variant={'transparentBase'}
               px={5}

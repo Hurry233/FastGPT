@@ -1,8 +1,8 @@
 <div align="center">
 
-<a href="https://fastgpt.io/"><img src="/.github/imgs/logo.svg" width="120" height="120" alt="fastgpt logo"></a>
+<a href="https://gptw.top/"><img src="/.github/imgs/logo.svg" width="120" height="120" alt="fastgpt logo"></a>
 
-# FastGPT
+# GPTW Agent
 
 <p align="center">
   <a href="./README_en.md">English</a> |
@@ -13,18 +13,18 @@
   <a href="./README_ja.md">日本語</a>
 </p>
 
-FastGPT は AI Agent 構築プラットフォームであり、すぐに使えるデータ処理やモデル呼び出し機能を提供します。また、Flow の可視化によるワークフローオーケストレーションにより、複雑なアプリケーションシナリオを実現できます！
+GPTW Agent は AI Agent 構築プラットフォームであり、すぐに使えるデータ処理やモデル呼び出し機能を提供します。また、Flow の可視化によるワークフローオーケストレーションにより、複雑なアプリケーションシナリオを実現できます！
 
 </div>
 
 <p align="center">
-  <a href="https://fastgpt.io/">
+  <a href="https://gptw.top/">
     <img height="21" src="https://img.shields.io/badge/オンライン利用-d4eaf7?style=flat-square&logo=spoj&logoColor=7d09f1" alt="cloud">
   </a>
-  <a href="https://doc.fastgpt.io/guide/getting-started">
+  <a href="https://gptw.top/guide/getting-started">
     <img height="21" src="https://img.shields.io/badge/ドキュメント-7d09f1?style=flat-square" alt="document">
   </a>
-  <a href="https://doc.fastgpt.io/self-host/dev">
+  <a href="https://gptw.top/self-host/dev">
     <img height="21" src="https://img.shields.io/badge/ローカル開発-%23d4eaf7?style=flat-square&logo=xcode&logoColor=7d09f1" alt="development">
   </a>
   <a href="#-プロジェクトとリンク">
@@ -32,33 +32,33 @@ FastGPT は AI Agent 構築プラットフォームであり、すぐに使え�
   </a>
 </p>
 
-https://github.com/labring/FastGPT/assets/15308462/7d3a38df-eb0e-4388-9250-2409bd33f6d4
+https://gptw.top
 
 ## クイックスタート
 
-Docker を使って FastGPT をすぐに起動できます。ターミナルで以下のコマンドを実行し、ガイドに従って設定を取得してください。
+Docker を使って GPTW Agent をすぐに起動できます。ターミナルで以下のコマンドを実行し、ガイドに従って設定を取得してください。
 
 ```bash
 # コマンドを実行して設定ファイルを取得
-bash <(curl -fsSL https://doc.fastgpt.cn/deploy/install.sh)
+bash <(curl -fsSL https://gptw.top/deploy/install.sh)
 # サービスを起動
 docker compose up -d
 ```
 
-完全に起動した後、`http://localhost:3000` で FastGPT にアクセスできます。デフォルトのアカウントは `root`、パスワードは `1234` です。
+完全に起動した後、`http://localhost:3000` で GPTW Agent にアクセスできます。デフォルトのアカウントは `root`、パスワードは `1234` です。
 
-問題が発生した場合は、[Docker デプロイの完全チュートリアル](https://doc.fastgpt.io/self-host/deploy/docker)をご覧ください。
+問題が発生した場合は、[Docker デプロイの完全チュートリアル](https://gptw.top/self-host/deploy/docker)をご覧ください。
 
 ## 🛸 利用方法
 
 - **クラウド版**  
-  プライベートデプロイが不要な場合は、クラウドサービスを直接ご利用いただけます：[fastgpt.io](https://fastgpt.io/)
+  プライベートデプロイが不要な場合は、クラウドサービスを直接ご利用いただけます：[gptw.top](https://gptw.top/)
 
 - **コミュニティセルフホスト版**  
-  [Docker](https://doc.fastgpt.io/self-host/deploy/docker) で素早くデプロイするか、[Sealos Cloud](https://doc.fastgpt.io/self-host/deploy/sealos) でワンクリックデプロイが可能です。
+  [Docker](https://gptw.top/self-host/deploy/docker) で素早くデプロイするか、[Sealos Cloud](https://gptw.top/self-host/deploy/sealos) でワンクリックデプロイが可能です。
 
 - **商用版**  
-  より完全な機能や深いサービスサポートが必要な場合は、[商用版](https://doc.fastgpt.io/guide/version/commercial)をお選びいただけます。完全なソフトウェアの提供に加え、シナリオに応じた導入ガイダンスも提供しています。[商用相談](https://fael3z0zfze.feishu.cn/share/base/form/shrcnjJWtKqjOI9NbQTzhNyzljc)からお問い合わせください。
+  より完全な機能や深いサービスサポートが必要な場合は、[商用版](https://gptw.top/guide/version/commercial)をお選びいただけます。完全なソフトウェアの提供に加え、シナリオに応じた導入ガイダンスも提供しています。[商用相談](https://fael3z0zfze.feishu.cn/share/base/form/shrcnjJWtKqjOI9NbQTzhNyzljc)からお問い合わせください。
 
 ## 💡 コア機能
 
@@ -115,9 +115,9 @@ docker compose up -d
 
 ## 💪 プロジェクトとリンク
 
-- [クイックスタート ローカル開発](https://doc.fastgpt.io/self-host/dev/)
-- [OpenAPI ドキュメント](https://doc.fastgpt.io/openapi/intro)
-- [FastGPT-plugin](https://github.com/labring/fastgpt-plugin)
+- [クイックスタート ローカル開発](https://gptw.top/self-host/dev/)
+- [OpenAPI ドキュメント](https://gptw.top/openapi/intro)
+- [GPTW Agent-plugin](https://github.com/labring/fastgpt-plugin)
 - [AI Proxy: モデル集約ロードバランシングサービス](https://github.com/labring/aiproxy)
 - [Laf: 3分でサードパーティアプリケーションに接続](https://github.com/labring/laf)
 - [Sealos: クラスタアプリケーションの迅速なデプロイ](https://github.com/labring/sealos)
@@ -148,13 +148,13 @@ Feishu グループに参加：
 
 ## 🤝 コントリビューター
 
-さまざまな形での貢献を歓迎します。コードの貢献に興味がある方は、GitHub の [Issues](https://github.com/labring/FastGPT/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) をご覧いただき、あなたの素晴らしいアイデアをお聞かせください！
+さまざまな形での貢献を歓迎します。コードの貢献に興味がある方は、GitHub の [Issues](https://gptw.top) をご覧いただき、あなたの素晴らしいアイデアをお聞かせください！
 
-<a href="https://github.com/labring/FastGPT/graphs/contributors" target="_blank">
+<a href="https://gptw.top" target="_blank">
   <table>
     <tr>
       <th colspan="2">
-        <br><img src="https://contrib.rocks/image?repo=labring/FastGPT"><br><br>
+        <br><img src="https://contrib.rocks/image?repo=labring/GPTW Agent"><br><br>
       </th>
     </tr>
     <tr>
@@ -184,11 +184,11 @@ Feishu グループに参加：
 
 ## 🌟 Star History
 
-<a href="https://github.com/labring/FastGPT/stargazers" target="_blank" style="display: block" align="center">
+<a href="https://gptw.top" target="_blank" style="display: block" align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=labring/FastGPT&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=labring/FastGPT&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=labring/FastGPT&type=Date" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=labring/GPTW Agent&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=labring/GPTW Agent&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=labring/GPTW Agent&type=Date" />
   </picture>
 </a>
 
@@ -198,9 +198,9 @@ Feishu グループに参加：
 
 ## ライセンス
 
-本リポジトリは [FastGPT Open Source License](./LICENSE) に準拠しています。
+本リポジトリは [GPTW Agent Open Source License](./LICENSE) に準拠しています。
 
 1. バックエンドサービスとしての商用利用は許可されていますが、SaaS サービスの提供は許可されていません。
 2. 商用ライセンスなしの商用サービスは、関連する著作権情報を保持する必要があります。
-3. 詳細は [FastGPT Open Source License](./LICENSE) をご覧ください。
-4. お問い合わせ：Dennis@sealos.io、[商用版の価格を見る](https://doc.fastgpt.io/guide/version/commercial)
+3. 詳細は [GPTW Agent Open Source License](./LICENSE) をご覧ください。
+4. お問い合わせ：Dennis@sealos.io、[商用版の価格を見る](https://gptw.top/guide/version/commercial)

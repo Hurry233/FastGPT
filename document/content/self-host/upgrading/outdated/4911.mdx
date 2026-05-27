@@ -1,14 +1,14 @@
 ---
 title: V4.9.11(包含升级脚本)
-description: FastGPT V4.9.11 更新说明
+description: GPTW Agent V4.9.11 更新说明
 ---
 
 ## 更新指南
 
 ### 1. 更新镜像：
 
-- 更新 FastGPT 镜像 tag: v4.9.11
-- 更新 FastGPT 商业版镜像 tag: v4.9.11
+- 更新 GPTW Agent 镜像 tag: v4.9.11
+- 更新 GPTW Agent 商业版镜像 tag: v4.9.11
 - mcp_server 无需更新
 - 更新 Sandbox 镜像 tag: v4.9.11
 - AIProxy 无需更新
@@ -17,7 +17,7 @@ description: FastGPT V4.9.11 更新说明
 
 该脚本仅需商业版用户执行。
 
-从任意终端，发起 1 个 HTTP 请求。其中 `{{rootkey}}` 替换成环境变量里的 `rootkey`；`{{host}}` 替换成**FastGPT 域名**。
+从任意终端，发起 1 个 HTTP 请求。其中 `{{rootkey}}` 替换成环境变量里的 `rootkey`；`{{host}}` 替换成**GPTW Agent 域名**。
 
 ```bash
 curl --location --request POST 'https://{{host}}/api/admin/initv4911' \

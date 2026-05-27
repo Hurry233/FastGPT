@@ -16,21 +16,14 @@ import MyIcon from '@fastgpt/web/components/common/Icon';
 import { FolderIcon } from '@fastgpt/global/common/file/image/constants';
 import { type EditFolderFormType } from '@fastgpt/web/components/common/MyModal/EditFolderModal';
 import dynamic from 'next/dynamic';
-import { postCreateDatasetFolder, resumeInheritPer } from '@/web/core/dataset/api';
+import { postCreateDatasetFolder } from '@/web/core/dataset/api';
 import FolderSlideCard from '@/components/common/folder/SlideCard';
-import { DatasetRoleList } from '@fastgpt/global/support/permission/dataset/constant';
-import {
-  postUpdateDatasetCollaborators,
-  deleteDatasetCollaborators,
-  getCollaboratorList
-} from '@/web/core/dataset/api/collaborator';
 import { useSystem } from '@fastgpt/web/hooks/useSystem';
 import { type CreateDatasetType } from '@/pageComponents/dataset/list/CreateModal';
 import { DatasetTypeEnum } from '@fastgpt/global/core/dataset/constants';
 import { useToast } from '@fastgpt/web/hooks/useToast';
 import MyBox from '@fastgpt/web/components/common/MyBox';
 import { useSystemStore } from '@/web/common/system/useSystemStore';
-import { ReadRoleVal } from '@fastgpt/global/support/permission/constant';
 
 const EditFolderModal = dynamic(
   () => import('@fastgpt/web/components/common/MyModal/EditFolderModal')
@@ -238,9 +231,6 @@ const Dataset = () => {
         {!!folderDetail && isPc && (
           <Box ml="6" h={'100%'} pb={4} overflow={'auto'}>
             <FolderSlideCard
-              resumeInheritPermission={() => resumeInheritPer(folderDetail._id)}
-              isInheritPermission={folderDetail.inheritPermission}
-              hasParent={!!folderDetail.parentId}
               refetchResource={() => Promise.all([refetchFolderDetail(), loadMyDatasets()])}
               refreshDeps={[folderDetail._id, folderDetail.inheritPermission]}
               name={folderDetail.name}
@@ -265,21 +255,7 @@ const Dataset = () => {
                 })
               }
               managePer={{
-                defaultRole: ReadRoleVal,
-                permission: folderDetail.permission,
-                onGetCollaboratorList: () => getCollaboratorList(folderDetail._id),
-                roleList: DatasetRoleList,
-                onUpdateCollaborators: (params) =>
-                  postUpdateDatasetCollaborators({
-                    ...params,
-                    datasetId: folderDetail._id
-                  }),
-                onDelOneCollaborator: async (params) =>
-                  deleteDatasetCollaborators({
-                    ...params,
-                    datasetId: folderDetail._id
-                  }),
-                refreshDeps: [folderDetail._id, folderDetail.inheritPermission]
+                permission: folderDetail.permission
               }}
             />
           </Box>

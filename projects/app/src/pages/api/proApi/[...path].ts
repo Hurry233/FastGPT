@@ -13,10 +13,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       throw new Error('url is empty');
     }
     if (!FastGPTProUrl) {
-      throw new Error(`未配置商业版链接: ${path}`);
+      throw new Error('Service unavailable');
     }
 
-    // 防御 protocol-relative URL 覆盖主机(如 path 含空段 → `//169.254...`)
     const targetUrl = buildSameOriginUrl(requestPath, FastGPTProUrl);
 
     const headers: Record<string, string> = {};

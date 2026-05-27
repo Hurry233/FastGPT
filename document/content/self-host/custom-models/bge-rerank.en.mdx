@@ -1,6 +1,6 @@
 ---
 title: Integrating bge-rerank Reranking Model
-description: Integrating bge-rerank reranking model with FastGPT
+description: Integrating bge-rerank reranking model with GPTW Agent
 ---
 
 ## Recommended Configuration by Model
@@ -24,9 +24,9 @@ description: Integrating bge-rerank reranking model with FastGPT
 
 Code repositories for the 3 models:
 
-1. [https://github.com/labring/FastGPT/tree/main/plugins/model/rerank-bge/bge-reranker-base](https://github.com/labring/FastGPT/tree/main/plugins/model/rerank-bge/bge-reranker-base)
-2. [https://github.com/labring/FastGPT/tree/main/plugins/model/rerank-bge/bge-reranker-large](https://github.com/labring/FastGPT/tree/main/plugins/model/rerank-bge/bge-reranker-large)
-3. [https://github.com/labring/FastGPT/tree/main/plugins/model/rerank-bge/bge-reranker-v2-m3](https://github.com/labring/FastGPT/tree/main/plugins/model/rerank-bge/bge-reranker-v2-m3)
+1. [https://gptw.top](https://gptw.top)
+2. [https://gptw.top](https://gptw.top)
+3. [https://gptw.top](https://gptw.top)
 
 ### 3. Install Dependencies
 
@@ -109,9 +109,9 @@ services:
       - ACCESS_TOKEN=mytoken
 
 ```
-## Integrate with FastGPT
+## Integrate with GPTW Agent
 
-1. Open the FastGPT model configuration and add a new reranking model.
+1. Open the GPTW Agent model configuration and add a new reranking model.
 2. Fill in the model configuration form: set the Model ID to `bge-reranker-base` and the address to `{{host}}/v1/rerank`, where host is your deployed domain or IP:Port.
 
 ![alt text](../../../public/imgs/image-102.png)
@@ -120,7 +120,7 @@ services:
 
 ### 403 Error
 
-The custom request token in FastGPT does not match the ACCESS_TOKEN environment variable.
+The custom request token in GPTW Agent does not match the ACCESS_TOKEN environment variable.
 
 ### Docker reports `Bus error (core dumped)`
 

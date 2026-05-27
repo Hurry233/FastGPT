@@ -51,25 +51,26 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  const homeDomain = process.env.FASTGPT_HOME_DOMAIN ?? 'https://fastgpt.io';
-  const domain = homeDomain.replace('https://', 'https://doc.');
+  const homeDomain =
+    process.env.GPTW_HOME_DOMAIN ?? process.env.FASTGPT_HOME_DOMAIN ?? 'https://gptw.top';
+  const domain = homeDomain;
 
-  const title = lang === 'zh-CN' ? 'FastGPT 文档 - 快速开始' : 'FastGPT Documentation - Getting Started';
+  const title = lang === 'zh-CN' ? 'GPTW Agent 文档 - 快速开始' : 'GPTW Agent Documentation - Getting Started';
   const description =
     lang === 'zh-CN'
-      ? '学习如何使用 FastGPT 构建 AI 智能体。完整文档涵盖知识库、可视化工作流、RAG 系统和 API 集成。'
-      : 'Learn how to build AI agents with FastGPT. Complete documentation covering knowledge base, visual workflow, RAG system, and API integration.';
+      ? '学习如何使用 GPTW Agent 构建 AI 智能体。完整文档涵盖知识库、可视化工作流、RAG 系统和 API 集成。'
+      : 'Learn how to build AI agents with GPTW Agent. Complete documentation covering knowledge base, visual workflow, RAG system, and API integration.';
 
   return {
     title: {
       default: title,
-      template: `%s | FastGPT`
+      template: `%s | GPTW Agent`
     },
     description,
-    keywords: ['FastGPT', 'AI', 'Agent', 'LLM', 'RAG', 'Workflow', 'Documentation'],
-    authors: [{ name: 'Labring', url: 'https://github.com/labring' }],
-    creator: 'Labring',
-    publisher: 'Labring',
+    keywords: ['GPTW Agent', 'AI', 'Agent', 'LLM', 'RAG', 'Workflow', 'Documentation'],
+    authors: [{ name: 'GPTW Agent', url: 'https://gptw.top' }],
+    creator: 'GPTW Agent',
+    publisher: 'GPTW Agent',
     metadataBase: new URL(domain),
     alternates: {
       canonical: '/',
@@ -82,26 +83,26 @@ export async function generateMetadata({
       type: 'website',
       locale: lang === 'zh-CN' ? 'zh_CN' : 'en_US',
       url: domain,
-      title: lang === 'zh-CN' ? 'FastGPT 快速开始' : 'Getting Started with FastGPT',
+      title: lang === 'zh-CN' ? 'GPTW Agent 快速开始' : 'Getting Started with GPTW Agent',
       description: lang === 'zh-CN' 
-        ? 'FastGPT 是基于大语言模型的知识库问答系统，结合智能对话与可视化编排，让 AI 应用开发变得简单自然。'
-        : 'FastGPT is a knowledge base Q&A system built on LLMs, combining intelligent conversation with visual orchestration to make AI application development simple and natural.',
-      siteName: 'FastGPT Documentation',
+        ? 'GPTW Agent 是基于大语言模型的知识库问答系统，结合智能对话与可视化编排，让 AI 应用开发变得简单自然。'
+        : 'GPTW Agent is a knowledge base Q&A system built on LLMs, combining intelligent conversation with visual orchestration to make AI application development simple and natural.',
+      siteName: 'GPTW Agent Documentation',
       images: [
         {
           url: '/og-image.png',
           width: 1200,
           height: 630,
-          alt: lang === 'zh-CN' ? 'FastGPT 文档' : 'FastGPT Documentation'
+          alt: lang === 'zh-CN' ? 'GPTW Agent 文档' : 'GPTW Agent Documentation'
         }
       ]
     },
     twitter: {
       card: 'summary_large_image',
-      title: lang === 'zh-CN' ? 'FastGPT 快速开始' : 'Getting Started with FastGPT',
+      title: lang === 'zh-CN' ? 'GPTW Agent 快速开始' : 'Getting Started with GPTW Agent',
       description: lang === 'zh-CN'
-        ? '学习如何使用 FastGPT 构建 AI 智能体。完整文档涵盖知识库、可视化工作流、RAG 系统和 API 集成。'
-        : 'Learn how to build AI agents with FastGPT. Complete documentation covering knowledge base, visual workflow, RAG system, and API integration.',
+        ? '学习如何使用 GPTW Agent 构建 AI 智能体。完整文档涵盖知识库、可视化工作流、RAG 系统和 API 集成。'
+        : 'Learn how to build AI agents with GPTW Agent. Complete documentation covering knowledge base, visual workflow, RAG system, and API integration.',
       images: ['/og-image.png']
     },
     robots: {

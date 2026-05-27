@@ -11,9 +11,9 @@ import { SkillPath } from './core/ai/skill';
 export const openAPIDocument = createDocument({
   openapi: '3.1.0',
   info: {
-    title: 'FastGPT API',
+    title: 'GPTW Agent API',
     version: '0.1.0',
-    description: 'FastGPT API 文档'
+    description: 'GPTW Agent API 文档'
   },
   paths: {
     ...AppPath,

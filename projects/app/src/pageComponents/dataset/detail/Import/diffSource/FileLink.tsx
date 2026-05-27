@@ -2,12 +2,10 @@ import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { useTranslation } from 'next-i18next';
 import { useForm } from 'react-hook-form';
-import { Box, Button, Flex, Input, Link, Textarea } from '@chakra-ui/react';
+import { Box, Button, Flex, Input, Textarea } from '@chakra-ui/react';
 import { getNanoid } from '@fastgpt/global/common/string/tools';
 import MyIcon from '@fastgpt/web/components/common/Icon';
 import { LinkCollectionIcon } from '@fastgpt/global/core/dataset/constants';
-import { useSystemStore } from '@/web/common/system/useSystemStore';
-import { getDocPath } from '@/web/common/system/doc';
 import Loading from '@fastgpt/web/components/common/MyLoading';
 import { useContextSelector } from 'use-context-selector';
 import { DatasetImportContext } from '../Context';
@@ -35,7 +33,6 @@ export default React.memo(LinkCollection);
 
 const CustomLinkImport = () => {
   const { t } = useTranslation();
-  const { feConfigs } = useSystemStore();
   const { goToNext, sources, setSources, processParamsForm } = useContextSelector(
     DatasetImportContext,
     (v) => v
@@ -81,11 +78,9 @@ const CustomLinkImport = () => {
         <Box flex={'0 0 100px'} fontSize={'sm'}>
           {t('common:core.dataset.website.Selector')}
           <Box color={'myGray.500'} fontSize={'sm'}>
-            {feConfigs?.docUrl && (
-              <Link href={getDocPath('/guide/dataset/websync#选择器如何使用')} target="_blank">
+            <Box display={'none'}>
                 {t('common:core.dataset.website.Selector Course')}
-              </Link>
-            )}
+            </Box>
           </Box>
         </Box>
         <Input

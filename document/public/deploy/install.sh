@@ -80,11 +80,11 @@ radio_select "请选择镜像源 (↑↓ 选择, 回车确认):" "阿里云 (中
 case $RADIO_RESULT in
     1)
         REGION="global"
-        BASE_URL="https://doc.fastgpt.io/deploy"
+        BASE_URL="https://gptw.top/deploy"
         ;;
     *)
         REGION="cn"
-        BASE_URL="https://doc.fastgpt.cn/deploy"
+        BASE_URL="https://gptw.top/deploy"
         ;;
 esac
 
@@ -444,4 +444,4 @@ else
     echo "  5. 配置模型:   在 '账号-模型提供商' 页面，进行模型配置"
 fi
 echo ""
-echo "详细文档: https://doc.fastgpt.cn/self-host/deploy/docker"
+echo "详细文档: https://gptw.top/self-host/deploy/docker"

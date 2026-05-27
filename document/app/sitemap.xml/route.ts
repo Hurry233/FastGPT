@@ -5,8 +5,9 @@ import docLastModifiedData from '@/data/doc-last-modified.json';
 export const dynamic = 'force-static';
 
 export function GET() {
-  const homeDomain = process.env.FASTGPT_HOME_DOMAIN ?? 'https://fastgpt.io';
-  const domain = homeDomain.replace('https://', 'https://doc.');
+  const homeDomain =
+    process.env.GPTW_HOME_DOMAIN ?? process.env.FASTGPT_HOME_DOMAIN ?? 'https://gptw.top';
+  const domain = homeDomain.replace(/\/$/, '');
 
   const pages = source.getPages();
 

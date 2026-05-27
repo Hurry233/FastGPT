@@ -13,7 +13,6 @@ import {
   Td,
   TableContainer,
   useTheme,
-  Link,
   Input,
   IconButton
 } from '@chakra-ui/react';
@@ -33,7 +32,6 @@ import MyIcon from '@fastgpt/web/components/common/Icon';
 import MyModal from '@fastgpt/web/components/common/MyModal';
 import { useForm } from 'react-hook-form';
 import { useRequest } from '@fastgpt/web/hooks/useRequest';
-import { getDocPath } from '@/web/common/system/doc';
 import MyMenu from '@fastgpt/web/components/common/MyMenu';
 import { useConfirm } from '@fastgpt/web/hooks/useConfirm';
 import FormLabel from '@fastgpt/web/components/common/MyBox/FormLabel';
@@ -53,7 +51,7 @@ const ApiKeyTable = ({ tips, appId }: { tips: string; appId?: string }) => {
   const theme = useTheme();
   const { copyData } = useCopyData();
   const { feConfigs } = useSystemStore();
-  const [baseUrl, setBaseUrl] = useState('https://fastgpt.io/api');
+  const [baseUrl, setBaseUrl] = useState('https://gptw.top/api');
   const [editData, setEditData] = useState<EditProps>();
   const [apiKey, setApiKey] = useState('');
 
@@ -95,17 +93,6 @@ const ApiKeyTable = ({ tips, appId }: { tips: string; appId?: string }) => {
             <Box color={'myGray.900'} fontSize={'lg'}>
               {t('common:support.openapi.Api manager')}
             </Box>
-            {feConfigs?.docUrl && (
-              <Link
-                href={feConfigs.openAPIDocUrl || getDocPath('/openapi/intro')}
-                target={'_blank'}
-                ml={1}
-                color={'primary.500'}
-                fontSize={'sm'}
-              >
-                {t('common:read_doc')}
-              </Link>
-            )}
           </Flex>
           <Box fontSize={'mini'} color={'myGray.600'}>
             {tips}

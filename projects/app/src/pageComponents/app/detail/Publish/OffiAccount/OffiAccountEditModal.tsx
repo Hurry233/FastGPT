@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, Button, ModalBody, Input, Link } from '@chakra-ui/react';
+import { Flex, Box, Button, ModalBody, Input } from '@chakra-ui/react';
 import MyModal from '@fastgpt/web/components/common/MyModal';
 import { PublishChannelEnum } from '@fastgpt/global/support/outLink/constant';
 import type { OffiAccountAppType, OutLinkEditType } from '@fastgpt/global/support/outLink/type';
@@ -8,9 +8,6 @@ import { useForm } from 'react-hook-form';
 import { createShareChat, updateShareChat } from '@/web/support/outLink/api';
 import { useRequest } from '@fastgpt/web/hooks/useRequest';
 import BasicInfo from '../components/BasicInfo';
-import { getDocPath } from '@/web/common/system/doc';
-import { useSystemStore } from '@/web/common/system/useSystemStore';
-import MyIcon from '@fastgpt/web/components/common/Icon';
 import FormLabel from '@fastgpt/web/components/common/MyBox/FormLabel';
 
 const OffiAccountEditModal = ({
@@ -75,8 +72,6 @@ const OffiAccountEditModal = ({
     }
   );
 
-  const { feConfigs } = useSystemStore();
-
   return (
     <MyModal
       iconSrc="/imgs/modal/shareFill.svg"
@@ -94,20 +89,6 @@ const OffiAccountEditModal = ({
         <Flex p={8} minH={['auto', '400px']} flexDirection="column" gap={6}>
           <Flex alignItems="center">
             <Box color="myGray.600">{t('publish:official_account.params')}</Box>
-            {feConfigs?.docUrl && (
-              <Link
-                href={getDocPath('/guide/build/publish/official_account')}
-                target={'_blank'}
-                ml={2}
-                color={'primary.500'}
-                fontSize={'sm'}
-              >
-                <Flex alignItems={'center'}>
-                  <MyIcon name="book" w={'17px'} h={'17px'} mr="1" />
-                  {t('common:read_doc')}
-                </Flex>
-              </Link>
-            )}
           </Flex>
           <Flex alignItems={'center'}>
             <FormLabel flex={'0 0 6.25rem'} required>

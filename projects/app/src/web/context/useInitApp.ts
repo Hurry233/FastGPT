@@ -63,7 +63,7 @@ export const useInitApp = () => {
     couponCode
   } = router.query as MarketingQueryParams;
 
-  const { loadGitStar, setInitd, feConfigs } = useSystemStore();
+  const { setInitd, feConfigs } = useSystemStore();
   const { userInfo } = useUserStore();
   const [scripts, setScripts] = useState<FastGPTFeConfigsType['scripts']>([]);
   const [title, setTitle] = useState(appClientEnv.systemName);
@@ -93,18 +93,15 @@ export const useInitApp = () => {
       feConfigs: { scripts, isPlus, systemTitle }
     } = await clientInitData();
 
-    setTitle(systemTitle || 'FastGPT');
+    setTitle(systemTitle || 'GPTW Agent');
 
-    // log fastgpt
     if (!isPlus) {
       console.log(
-        '%cWelcome to FastGPT',
+        '%cWelcome to GPTW Agent',
         'font-family:Arial; color:#3370ff ; font-size:18px; font-weight:bold;',
-        `GitHub：https://github.com/labring/FastGPT`
+        'https://gptw.top'
       );
     }
-
-    loadGitStar();
 
     setScripts(scripts || []);
     setInitd();

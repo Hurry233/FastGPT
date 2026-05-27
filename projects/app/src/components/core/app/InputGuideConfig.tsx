@@ -17,7 +17,6 @@ import MyModal from '@fastgpt/web/components/common/MyModal';
 import MyInput from '@/components/MyInput';
 import QuestionTip from '@fastgpt/web/components/common/MyTooltip/QuestionTip';
 import { fileDownload } from '@/web/common/file/utils';
-import { getDocPath } from '@/web/common/system/doc';
 import {
   delAllChatInputGuide,
   delChatInputGuide,
@@ -143,15 +142,6 @@ const InputGuideConfig = ({
               <>
                 <Flex mt={8} alignItems={'center'}>
                   <FormLabel>{t('chat:custom_input_guide_url')}</FormLabel>
-                  <Flex
-                    onClick={() => window.open(getDocPath('/guide/build/general/chat_input_guide'))}
-                    color={'primary.700'}
-                    alignItems={'center'}
-                    cursor={'pointer'}
-                  >
-                    <MyIcon name={'book'} w={'17px'} ml={4} mr={1} color={'myGray.600'} />
-                    {t('common:Documents')}
-                  </Flex>
                   <Box flex={'1 0 0'} />
                 </Flex>
                 <Textarea

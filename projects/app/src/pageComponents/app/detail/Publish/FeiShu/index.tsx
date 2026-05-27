@@ -11,7 +11,6 @@ import {
   Td,
   Tbody,
   useDisclosure,
-  Link,
   HStack
 } from '@chakra-ui/react';
 import MyIcon from '@fastgpt/web/components/common/Icon';
@@ -28,7 +27,6 @@ import dynamic from 'next/dynamic';
 import MyMenu from '@fastgpt/web/components/common/MyMenu';
 import EmptyTip from '@fastgpt/web/components/common/EmptyTip';
 import { useRequest } from '@fastgpt/web/hooks/useRequest';
-import { getDocPath } from '@/web/common/system/doc';
 
 const FeiShuEditModal = dynamic(() => import('./FeiShuEditModal'));
 const ShowShareLinkModal = dynamic(() => import('../components/showShareLinkModal'));
@@ -71,19 +69,6 @@ const FeiShu = ({ appId }: { appId: string }) => {
           <Box fontWeight={'bold'} fontSize={['md', 'lg']}>
             {t('common:core.app.publish.Fei shu bot publish')}
           </Box>
-          {feConfigs?.docUrl && (
-            <Link
-              href={getDocPath('/guide/build/publish/feishu')}
-              target={'_blank'}
-              color={'primary.500'}
-              fontSize={'sm'}
-            >
-              <Flex alignItems={'center'}>
-                <MyIcon name="book" mr="1" w={'1rem'} />
-                {t('common:read_doc')}
-              </Flex>
-            </Link>
-          )}
         </HStack>
         <Button
           variant={'primary'}

@@ -15,7 +15,7 @@ import {
 import { ChatGenerateStatusEnum } from '../../../../core/chat/constants';
 
 const IdSchema = z.string().min(1).meta({ description: '资源 ID' });
-const SandboxInstanceKeySchema = z.string().min(1).describe('FastGPT sandbox instance key');
+const SandboxInstanceKeySchema = z.string().min(1).describe('GPTW Agent sandbox instance key');
 const NullableParentIdSchema = z.string().nullable().optional().meta({
   description: '父级目录 ID'
 });
@@ -158,7 +158,7 @@ export const CreateEditDebugSandboxBodySchema = z.object({
 export type CreateEditDebugSandboxBody = z.infer<typeof CreateEditDebugSandboxBodySchema>;
 
 export const CreateEditDebugSandboxResponseSchema = z.object({
-  sandboxId: z.string().describe('FastGPT sandbox instance key'),
+  sandboxId: z.string().describe('GPTW Agent sandbox instance key'),
   status: SandboxProviderStatusSchema.pick({
     state: true,
     message: true

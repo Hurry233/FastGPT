@@ -1,6 +1,6 @@
 {
-  "title": "FastGPT Cloud",
-  "description": "FastGPT Cloud Service",
+  "title": "GPTW Agent Cloud",
+  "description": "GPTW Agent Cloud Service",
   "icon": "🌐",
   "pages": ["intro", "faq", "terms", "privacy"]
 }

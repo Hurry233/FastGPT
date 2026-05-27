@@ -1,9 +1,9 @@
 ---
 title: File Input
-description: FastGPT file input feature overview
+description: GPTW Agent file input feature overview
 ---
 
-Starting from version 4.8.9, FastGPT supports configuring file and image uploads in both `Basic Mode` and `Workflows`. This guide covers how to use the file input feature and explains how document parsing works under the hood.
+Starting from version 4.8.9, GPTW Agent supports configuring file and image uploads in both `Basic Mode` and `Workflows`. This guide covers how to use the file input feature and explains how document parsing works under the hood.
 
 
 ## Using in Basic Mode
@@ -44,7 +44,7 @@ Unlike image recognition, LLMs currently cannot parse documents directly. All do
 
 ### How are uploaded files stored in the database?
 
-In FastGPT's chat history, messages with role=user store their value in this structure:
+In GPTW Agent's chat history, messages with role=user store their value in this structure:
 
 ```ts
 type UserChatItemValueItemType = {

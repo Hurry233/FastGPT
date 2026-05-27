@@ -21,7 +21,7 @@ const CommunityModal = ({ onClose }: { onClose: () => void }) => {
     >
       <ModalBody textAlign={'center'}>
         {isWecomTeam ? (
-          '邮箱联系: archer@fastgpt.io'
+          '官网地址: https://gptw.top'
         ) : (
           <Markdown source={feConfigs?.concatMd || ''} />
         )}

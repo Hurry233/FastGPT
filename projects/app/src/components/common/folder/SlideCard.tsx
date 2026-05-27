@@ -1,20 +1,13 @@
-import { Box, Button, Flex, HStack } from '@chakra-ui/react';
+import { Box, Button, HStack } from '@chakra-ui/react';
 import React from 'react';
 import MyIcon from '@fastgpt/web/components/common/Icon';
 import { FolderIcon } from '@fastgpt/global/common/file/image/constants';
 import FormLabel from '@fastgpt/web/components/common/MyBox/FormLabel';
 import MyDivider from '@fastgpt/web/components/common/MyDivider';
 import { useTranslation } from 'next-i18next';
-import CollaboratorContextProvider, {
-  type MemberManagerInputPropsType
-} from '../../support/permission/MemberManager/context';
-import MyTooltip from '@fastgpt/web/components/common/MyTooltip';
-import { useSystemStore } from '@/web/common/system/useSystemStore';
-import ResumeInherit from '@/components/support/permission/ResumeInheritText';
 import PopoverConfirm from '@fastgpt/web/components/common/MyPopover/PopoverConfirm';
 
 const FolderSlideCard = ({
-  refreshDeps,
   name,
   intro,
   onEdit,
@@ -22,11 +15,7 @@ const FolderSlideCard = ({
   deleteTip,
   onDelete,
 
-  managePer,
-  isInheritPermission,
-  resumeInheritPermission,
-  hasParent,
-  refetchResource
+  managePer
 }: {
   refreshDeps?: any[];
   name: string;
@@ -36,7 +25,12 @@ const FolderSlideCard = ({
   deleteTip: string;
   onDelete: () => void;
 
-  managePer: MemberManagerInputPropsType;
+  managePer?: {
+    permission: {
+      hasManagePer: boolean;
+      isOwner: boolean;
+    };
+  };
 
   isInheritPermission?: boolean;
   resumeInheritPermission?: () => Promise<void>;
@@ -44,7 +38,6 @@ const FolderSlideCard = ({
   refetchResource?: () => Promise<any>;
 }) => {
   const { t } = useTranslation();
-  const { feConfigs } = useSystemStore();
 
   return (
     <Box w={'13rem'}>
@@ -72,7 +65,7 @@ const FolderSlideCard = ({
         </Box>
       </Box>
 
-      {managePer.permission.hasManagePer && (
+      {managePer?.permission.hasManagePer && (
         <>
           <MyDivider my={6} />
 
@@ -119,58 +112,6 @@ const FolderSlideCard = ({
         </>
       )}
 
-      {feConfigs?.isPlus && (
-        <>
-          <MyDivider my={6} />
-
-          <Box>
-            {!isInheritPermission && (
-              <Box mt={2}>
-                <ResumeInherit onResume={() => resumeInheritPermission?.().then(refetchResource)} />
-              </Box>
-            )}
-            <Box mt={6}>
-              <CollaboratorContextProvider
-                {...managePer}
-                refreshDeps={refreshDeps}
-                refetchResource={refetchResource}
-                isInheritPermission={isInheritPermission}
-                hasParent={hasParent}
-              >
-                {({ MemberListCard, onOpenManageModal }) => {
-                  return (
-                    <>
-                      <Flex alignItems="center" justifyContent="space-between">
-                        <Box fontSize={'sm'} color={'myGray.500'}>
-                          {t('common:permission.Collaborator')}
-                        </Box>
-                        {managePer.permission.hasManagePer && (
-                          <MyTooltip label={t('common:permission.Manage')}>
-                            <MyIcon
-                              w="1rem"
-                              name="common/settingLight"
-                              cursor={'pointer'}
-                              _hover={{ color: 'primary.600' }}
-                              onClick={onOpenManageModal}
-                            />
-                          </MyTooltip>
-                        )}
-                      </Flex>
-                      <MemberListCard
-                        mt={2}
-                        tagStyle={{
-                          type: 'fill',
-                          colorSchema: 'white'
-                        }}
-                      />
-                    </>
-                  );
-                }}
-              </CollaboratorContextProvider>
-            </Box>
-          </Box>
-        </>
-      )}
     </Box>
   );
 };

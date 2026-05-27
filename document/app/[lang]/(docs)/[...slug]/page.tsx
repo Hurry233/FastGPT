@@ -37,13 +37,14 @@ export default async function Page({
   // @ts-ignore
   const lastModified = docLastModifiedData[filePath] || page.data.lastModified;
 
-  const homeDomain = process.env.FASTGPT_HOME_DOMAIN ?? 'https://fastgpt.io';
-  const domain = homeDomain.replace('https://', 'https://doc.');
+  const homeDomain =
+    process.env.GPTW_HOME_DOMAIN ?? process.env.FASTGPT_HOME_DOMAIN ?? 'https://gptw.top';
+  const domain = homeDomain;
   const url = `${domain}${page.url}`;
 
   // 生成面包屑导航
   const breadcrumbItems = [
-    { name: 'FastGPT', url: domain },
+    { name: 'GPTW Agent', url: domain },
     { name: 'Docs', url: `${domain}/${lang}` }
   ];
   if (slug && slug.length > 0) {
@@ -82,12 +83,6 @@ export default async function Page({
       tableOfContent={{
         style: 'clerk'
       }}
-      editOnGithub={{
-        owner: 'labring',
-        repo: 'FastGPT',
-        sha: 'main',
-        path: `document/content/${page.file.path}`
-      }}
       lastUpdate={lastModified ? new Date(lastModified) : undefined}
     >
       <DocsTitle>{page.data.title}</DocsTitle>
@@ -115,8 +110,9 @@ export async function generateMetadata(props: {
   const page = source.getPage(slug, lang);
   if (!page || !page.data) notFound();
 
-  const homeDomain = process.env.FASTGPT_HOME_DOMAIN ?? 'https://fastgpt.io';
-  const domain = homeDomain.replace('https://', 'https://doc.');
+  const homeDomain =
+    process.env.GPTW_HOME_DOMAIN ?? process.env.FASTGPT_HOME_DOMAIN ?? 'https://gptw.top';
+  const domain = homeDomain;
   const url = `${domain}${page.url}`;
 
   // 构建多语言 alternates
@@ -136,10 +132,10 @@ export async function generateMetadata(props: {
       languages
     },
     openGraph: {
-      title: `${page.data.title} | FastGPT`,
+      title: `${page.data.title} | GPTW Agent`,
       description: page.data.description,
       url,
-      siteName: 'FastGPT',
+      siteName: 'GPTW Agent',
       locale: lang,
       type: 'article'
     }

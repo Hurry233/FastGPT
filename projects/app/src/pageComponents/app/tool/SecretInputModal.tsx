@@ -38,7 +38,6 @@ const SecretInputModal = ({
   secretCost = 0,
   isFolder,
   inputConfig,
-  courseUrl,
   onClose,
   onSubmit
 }: {
@@ -176,36 +175,7 @@ const SecretInputModal = ({
                   ]
                 : []),
               {
-                title: courseUrl ? (
-                  <HStack
-                    spacing={2}
-                    color={'myGray.900'}
-                    fontWeight={'500'}
-                    whiteSpace={'nowrap'}
-                    fontSize={'sm'}
-                    lineHeight={1}
-                  >
-                    <Box>{t('app:manual_secret')}</Box>
-                    <HStack
-                      spacing={1}
-                      color={'primary.600'}
-                      justifyContent={'flex-end'}
-                      _hover={{
-                        textDecoration: 'underline',
-                        cursor: 'point'
-                      }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.open(courseUrl, '_blank');
-                      }}
-                    >
-                      <MyIcon name={'book'} w={'14px'} />
-                      <Box fontSize={'sm'}>{t('app:secret_get_course')}</Box>
-                    </HStack>
-                  </HStack>
-                ) : (
-                  t('app:manual_secret')
-                ),
+                title: t('app:manual_secret'),
                 desc: t('app:tool_active_manual_config_desc'),
                 value: SystemToolSecretInputTypeEnum.manual,
                 children:

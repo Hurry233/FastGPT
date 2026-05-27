@@ -14,8 +14,6 @@ import { DatasetTypeEnum, DatasetTypeMap } from '@fastgpt/global/core/dataset/co
 import AIModelSelector from '@/components/Select/AIModelSelector';
 import QuestionTip from '@fastgpt/web/components/common/MyTooltip/QuestionTip';
 import ComplianceTip from '@/components/common/ComplianceTip/index';
-import MyIcon from '@fastgpt/web/components/common/Icon';
-import { getDocPath } from '@/web/common/system/doc';
 import ApiDatasetForm from '../ApiDatasetForm';
 import { getWebDefaultEmbeddingModel, getWebDefaultLLMModel } from '@/web/common/system/utils';
 import { useUploadAvatar } from '@fastgpt/web/common/file/hooks/useUploadAvatar';
@@ -123,19 +121,6 @@ const CreateModal = ({
               <Box color={'myGray.900'} fontWeight={500} fontSize={'sm'}>
                 {t('common:Name')}
               </Box>
-              {DatasetTypeMap[type]?.courseUrl && (
-                <Flex
-                  as={'span'}
-                  alignItems={'center'}
-                  color={'primary.600'}
-                  fontSize={'sm'}
-                  cursor={'pointer'}
-                  onClick={() => window.open(getDocPath(DatasetTypeMap[type].courseUrl!), '_blank')}
-                >
-                  <MyIcon name={'book'} w={4} mr={0.5} />
-                  {t('common:Instructions')}
-                </Flex>
-              )}
             </Flex>
             <Flex mt={'12px'} alignItems={'center'}>
               <MyTooltip label={t('common:click_select_avatar')}>

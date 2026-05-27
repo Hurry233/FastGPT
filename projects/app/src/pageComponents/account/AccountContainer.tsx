@@ -17,7 +17,6 @@ export enum TabEnum {
   'bill' = 'bill',
   'inform' = 'inform',
   'setting' = 'setting',
-  'thirdParty' = 'thirdParty',
   'individuation' = 'individuation',
   'apikey' = 'apikey',
   'loginout' = 'loginout',
@@ -73,11 +72,6 @@ const AccountContainer = ({
           }
         ]
       : []),
-    {
-      icon: 'common/thirdParty',
-      label: t('account:third_party'),
-      value: TabEnum.thirdParty
-    },
     ...(feConfigs.isPlus && feConfigs.customDomain?.enable
       ? [
           {

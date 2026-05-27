@@ -1,6 +1,6 @@
 ---
 title: SSO & 外部成员同步
-description: FastGPT 外部成员系统接入设计与配置
+description: GPTW Agent 外部成员系统接入设计与配置
 ---
 
 import { Alert } from '@/components/docs/Alert';
@@ -9,18 +9,18 @@ import { Alert } from '@/components/docs/Alert';
 
 ## 介绍
 
-为了方便地接入**外部成员系统**，FastGPT 提供一套接入外部系统的**标准接口**，以及一个 FastGPT-SSO-Service 镜像作为**适配器**。
+为了方便地接入**外部成员系统**，GPTW Agent 提供一套接入外部系统的**标准接口**，以及一个 GPTW Agent-SSO-Service 镜像作为**适配器**。
 
 通过这套标准接口，你可以可以实现：
 
-1. SSO 登录。从外部系统回调后，在  FastGPT 中创建一个用户。
+1. SSO 登录。从外部系统回调后，在  GPTW Agent 中创建一个用户。
 2. 成员和组织架构同步（下面都简称成员同步）。
 
 **原理**
 
-FastGPT-pro 中，有一套标准的SSO 和成员同步接口，系统会根据这套接口进行 SSO 和成员同步操作。
+GPTW Agent-pro 中，有一套标准的SSO 和成员同步接口，系统会根据这套接口进行 SSO 和成员同步操作。
 
-FastGPT-SSO-Service 是为了聚合不同来源的 SSO 和成员同步接口，将他们转成 fastgpt-pro 可识别的接口。
+GPTW Agent-SSO-Service 是为了聚合不同来源的 SSO 和成员同步接口，将他们转成 fastgpt-pro 可识别的接口。
 
    ![](/imgs/sso2.png)
 
@@ -173,7 +173,7 @@ env:
 #### 3. 重定向URL
 
    进入开发者后台，点击企业自建应用，在开发配置的安全设置中设置重定向URL，
-   重定向 URL 形如 `https://www.fastgpt.cn/login/provider` 前面的域名修改为部署后公开可访问的 fastgpt 的域名
+   重定向 URL 形如 `https://www.gptw.top/login/provider` 前面的域名修改为部署后公开可访问的 fastgpt 的域名
    ![](/imgs/sso5.png)
 
 #### 4. yml 配置示例
@@ -195,7 +195,7 @@ fastgpt-sso:
       # 获取用户信息接口
       - FEISHU_GET_USER_INFO_URL=https://open.feishu.cn/open-apis/authen/v1/user_info
       # 重定向地址，设置为上面第三部中一模一样的地址
-      - FEISHU_REDIRECT_URI=https://fastgpt.cn/login/provider
+      - FEISHU_REDIRECT_URI=https://gptw.top/login/provider
       # 飞书APP的应用ID，一般以cli开头
       - FEISHU_APP_ID=xxx
       # 飞书APP的应用密钥
@@ -263,7 +263,7 @@ fastgpt-sso:
 
       ![](/imgs/sso7.png)
 
-   2. 创建一个供 FastGPT 使用的内部应用：
+   2. 创建一个供 GPTW Agent 使用的内部应用：
 
       a. 获取应用的 AgentID 和 Secret
 
@@ -357,15 +357,15 @@ fastgpt-sso:
 1. 登陆鉴权地址（用户点击 SSO 按钮后将携带参数直接跳转到该地址）, 例如：`http://example.com/oauth/authorize`
     ```bash
     curl -X GET\
-    "http://example.com/oauth/authorize?response_type=code&client_id=s6BhdRkqt3&state=xyz&redirect_uri=https%3A%2F%2Ffastgpt.cn%2Flogin%2Fprovider"
+    "http://example.com/oauth/authorize?response_type=code&client_id=s6BhdRkqt3&state=xyz&redirect_uri=https%3A%2F%2Fgptw.top%2Flogin%2Fprovider"
     ```
       用户输入账号密码后，会跳转到 redirect_uri 中，并携带 code 参数：
-      `https://fastgpt.cn/login/provider?code=4/P7qD2qAz4&state=xyz`
+      `https://gptw.top/login/provider?code=4/P7qD2qAz4&state=xyz`
 2. 获取 access_token 的地址，获取到 code 后，通过*服务器请求*该地址获取 access_token 例如：`http://example.com/oauth/access_token`
     ```bash
     curl -X POST\
         -H "Content-Type: application/x-www-form-urlencoded"\
-    "http://example.com/oauth/access_token?grant_type=authorization_code&client_id=s6BhdRkqt3&client_secret=xxx&code=4/P7qD2qAz4&redirect_uri=https%3A%2F%2Ffastgpt.cn%2Flogin%2Fprovider"
+    "http://example.com/oauth/access_token?grant_type=authorization_code&client_id=s6BhdRkqt3&client_secret=xxx&code=4/P7qD2qAz4&redirect_uri=https%3A%2F%2Fgptw.top%2Flogin%2Fprovider"
     ```
     注意：Content-Type 必须是 application/x-www-form-urlencoded, 而不是 application/json
 3. 获取用户信息的地址，需要传入 access_token 例如：`http://example.com/oauth/user_info`
@@ -425,11 +425,11 @@ fastgpt-sso:
 
 ## 标准接口文档
 
-以下是 FastGPT-pro 中，SSO 和成员同步的标准接口文档，如果需要对接非标准系统，可以参考该章节进行开发。
+以下是 GPTW Agent-pro 中，SSO 和成员同步的标准接口文档，如果需要对接非标准系统，可以参考该章节进行开发。
 
 ![](/imgs/sso18.png)
 
-FastGPT 提供如下标准接口支持：
+GPTW Agent 提供如下标准接口支持：
 
 1. https://example.com/login/oauth/getAuthURL 获取鉴权重定向地址
 2. https://example.com/login/oauth/getUserInfo?code=xxxxx 消费 code，换取用户信息
@@ -458,7 +458,7 @@ curl -X GET "https://redict.example/login/oauth/getAuthURL?redirect_uri=xxx&stat
 {
   "success": true,
   "message": "",
-  "authURL": "https://example.com/somepath/login/oauth?redirect_uri=https%3A%2F%2Ffastgpt.cn%2Flogin%2Fprovider%0A"
+  "authURL": "https://example.com/somepath/login/oauth?redirect_uri=https%3A%2F%2Fgptw.top%2Flogin%2Fprovider%0A"
 }
 ```
 

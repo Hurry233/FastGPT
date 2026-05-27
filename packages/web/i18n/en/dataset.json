@@ -93,7 +93,7 @@
   "generate_index": "Update index",
   "image_auto_parse": "Automatic image indexing",
   "image_auto_parse_tips": "Call VLM to automatically label the pictures in the document and generate additional search indexes",
-  "image_auto_parse_tip_commercial": "Upgrade to the commercial edition to use this feature",
+  "image_auto_parse_tip_commercial": "",
   "image_auto_parse_tip_multimodal_with_vlm": "Generate image vector indexes and text description indexes for document images to support image search",
   "image_auto_parse_tip_multimodal_without_vlm": "Use a multimodal model to generate image vector indexes and support image search",
   "image_auto_parse_tip_vlm_only": "Use VLM to automatically label document images and generate text description indexes",

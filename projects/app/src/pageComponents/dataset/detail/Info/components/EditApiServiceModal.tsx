@@ -1,5 +1,5 @@
 import React from 'react';
-import { ModalFooter, ModalBody, Button, Flex, Box } from '@chakra-ui/react';
+import { ModalFooter, ModalBody, Button, Box } from '@chakra-ui/react';
 import MyModal from '@fastgpt/web/components/common/MyModal/index';
 import { useTranslation } from 'next-i18next';
 import { useRequest } from '@fastgpt/web/hooks/useRequest';
@@ -8,10 +8,7 @@ import { useToast } from '@fastgpt/web/hooks/useToast';
 import ApiDatasetForm from '@/pageComponents/dataset/ApiDatasetForm';
 import { useContextSelector } from 'use-context-selector';
 import { DatasetPageContext } from '@/web/core/dataset/context/datasetPageContext';
-import { getDocPath } from '@/web/common/system/doc';
-import MyIcon from '@fastgpt/web/components/common/Icon';
 import type { ApiDatasetServerType } from '@fastgpt/global/core/dataset/apiDataset/type';
-import { DatasetTypeMap } from '@fastgpt/global/core/dataset/constants';
 
 export type EditAPIDatasetInfoFormType = {
   id: string;
@@ -54,24 +51,9 @@ const EditAPIDatasetInfoModal = ({
   return (
     <MyModal isOpen onClose={onClose} w={'450px'} iconSrc="modal/edit" title={title}>
       <ModalBody>
-        {DatasetTypeMap[type]?.courseUrl && (
-          <Flex alignItems={'center'} justifyContent={'space-between'}>
-            <Box color={'myGray.900'} fontSize={'sm'} fontWeight={500}>
-              {t('dataset:apidataset_configuration')}
-            </Box>
-            <Flex
-              alignItems={'center'}
-              justifyContent={'flex-end'}
-              color={'primary.600'}
-              fontSize={'sm'}
-              cursor={'pointer'}
-              onClick={() => window.open(getDocPath(DatasetTypeMap[type].courseUrl!), '_blank')}
-            >
-              <MyIcon name={'book'} w={4} mr={0.5} />
-              {t('common:Instructions')}
-            </Flex>
-          </Flex>
-        )}
+        <Box color={'myGray.900'} fontSize={'sm'} fontWeight={500}>
+          {t('dataset:apidataset_configuration')}
+        </Box>
         <ApiDatasetForm datasetId={datasetDetail._id} type={type} form={form} />
       </ModalBody>
       <ModalFooter>

@@ -15,23 +15,13 @@ import {
   deleteSkill,
   postUpdateSkill,
   exportSkill,
-  postSaveDeploySkill,
-  resumeInheritPer,
-  postChangeSkillOwner
+  postSaveDeploySkill
 } from '@/web/core/skill/api';
-import {
-  getSkillCollaboratorList,
-  postUpdateSkillCollaborators,
-  deleteSkillCollaborator
-} from '@/web/core/skill/collaborator';
-import { SkillRoleList } from '@fastgpt/global/support/permission/skill/constant';
-import { ReadRoleVal } from '@fastgpt/global/support/permission/constant';
 import dynamic from 'next/dynamic';
 import type { EditResourceInfoFormType } from '@/components/common/Modal/EditResourceModal';
 import { useConfirm } from '@fastgpt/web/hooks/useConfirm';
 
 const EditResourceModal = dynamic(() => import('@/components/common/Modal/EditResourceModal'));
-const ConfigPerModal = dynamic(() => import('@/components/support/permission/ConfigPerModal'));
 
 const RouteTab = () => {
   const { t } = useTranslation();
@@ -124,7 +114,6 @@ const Header = () => {
   };
 
   const [editedSkill, setEditedSkill] = useState<EditResourceInfoFormType>();
-  const [showPermModal, setShowPermModal] = useState(false);
 
   const { runAsync: onClickDeleteSkill } = useRequest(deleteSkill, {
     onSuccess() {
@@ -200,12 +189,6 @@ const Header = () => {
                 intro: skillDetail.description
               });
             }
-          },
-          {
-            icon: 'key' as const,
-            type: 'grayBg' as const,
-            label: t('skill:permission_settings'),
-            onClick: () => setShowPermModal(true)
           }
         ]
       },
@@ -253,7 +236,6 @@ const Header = () => {
       skillDetail,
       onExportSkill,
       setEditedSkill,
-      setShowPermModal,
       openConfirmDelete,
       onClickDeleteSkill
     ]
@@ -353,44 +335,6 @@ const Header = () => {
           title={t('skill:skill_info_edit')}
           onClose={() => setEditedSkill(undefined)}
           onEdit={({ id, ...data }) => onUpdateSkill(id, data)}
-        />
-      )}
-
-      {/* 权限弹窗 */}
-      {showPermModal && (
-        <ConfigPerModal
-          onChangeOwner={(tmbId: string) =>
-            postChangeSkillOwner({
-              skillId: skillDetail._id,
-              ownerId: tmbId
-            }).then(() => refreshSkillDetail())
-          }
-          hasParent={!!skillDetail.parentId}
-          refetchResource={refreshSkillDetail}
-          isInheritPermission={skillDetail.inheritPermission}
-          resumeInheritPermission={() =>
-            resumeInheritPer(skillDetail._id).then(() => refreshSkillDetail())
-          }
-          avatar={skillDetail.avatar}
-          name={skillDetail.name}
-          managePer={{
-            defaultRole: ReadRoleVal,
-            permission: skillDetail.permission,
-            onGetCollaboratorList: () => getSkillCollaboratorList(skillDetail._id),
-            roleList: SkillRoleList,
-            onUpdateCollaborators: (props) =>
-              postUpdateSkillCollaborators({
-                ...props,
-                skillId: skillDetail._id
-              }),
-            onDelOneCollaborator: (props) =>
-              deleteSkillCollaborator({
-                ...props,
-                skillId: skillDetail._id
-              }),
-            refreshDeps: [skillDetail._id, skillDetail.inheritPermission]
-          }}
-          onClose={() => setShowPermModal(false)}
         />
       )}
     </Flex>

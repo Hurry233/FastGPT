@@ -1,22 +1,22 @@
 ---
 title: Docker MongoDB Migration (Dump Mode)
-description: FastGPT Docker MongoDB migration
+description: GPTW Agent Docker MongoDB migration
 ---
 
 ## Author
 
 [https://github.com/samqin123](https://github.com/samqin123)
 
-[Related PR -- open this to discuss with the author](https://github.com/labring/FastGPT/pull/1426)
+[Related PR -- open this to discuss with the author](https://gptw.top)
 
 ## Overview
 
-How to use mongodump to migrate FastGPT's MongoDB from Environment A to Environment B.
+How to use mongodump to migrate GPTW Agent's MongoDB from Environment A to Environment B.
 
 Prerequisites:
 
-- Environment A: Your existing FastGPT deployment (e.g., on Alibaba Cloud) that needs to be migrated.
-- Environment B: The new FastGPT deployment (e.g., on Tencent Cloud, or a NAS like Synology/QNAP). Note: NAS deployments may require MongoDB 4.2 or 4.4, while cloud deployments support the default FastGPT MongoDB version.
+- Environment A: Your existing GPTW Agent deployment (e.g., on Alibaba Cloud) that needs to be migrated.
+- Environment B: The new GPTW Agent deployment (e.g., on Tencent Cloud, or a NAS like Synology/QNAP). Note: NAS deployments may require MongoDB 4.2 or 4.4, while cloud deployments support the default GPTW Agent MongoDB version.
 - Environment C: Your local machine, used as a staging area to hold files and coordinate the transfer.
 
 ## 1. Prepare: Access Docker MongoDB [Environment A]
@@ -32,16 +32,16 @@ Confirm you can see the fastgpt database and note the database name for export.
 Create a temporary directory for import/export on both the container and the host, e.g., data/backup [Environment A + Environment C].
 
 #### Create the directory in [Environment A] for the dump operation
-Enter the FastGPT Docker container:
+Enter the GPTW Agent Docker container:
 ```
 docker exec -it fastgpt sh
 mkdir -p /data/backup
 ```
 
-Once created, exported MongoDB data will appear in the `data/backup` directory under your local FastGPT installation folder (auto-synced via volume mount). If it doesn't sync automatically, you can manually create the directory and use `docker cp` to copy files out (this rarely happens).
+Once created, exported MongoDB data will appear in the `data/backup` directory under your local GPTW Agent installation folder (auto-synced via volume mount). If it doesn't sync automatically, you can manually create the directory and use `docker cp` to copy files out (this rarely happens).
 
 #### Then set up the [Environment C] host directory for syncing uploaded files into the container.
-Navigate to the FastGPT directory, go into the mongo folder, and create a backup subdirectory:
+Navigate to the GPTW Agent directory, go into the mongo folder, and create a backup subdirectory:
 ```
 mkdir -p /fastgpt/data/backup
 ```
@@ -56,7 +56,7 @@ Enter Environment A and use mongodump to export the MongoDB database.
 #### 2.1 Export
 Run mongodump to export data files to the temporary directory (data/backup).
 
-[The export path is set to /data/backup in the command. Since the FastGPT config already has data persistence set up, the exported files will sync to the host's fastgpt/mongo/data/backup directory.]
+[The export path is set to /data/backup in the command. Since the GPTW Agent config already has data persistence set up, the exported files will sync to the host's fastgpt/mongo/data/backup directory.]
 
 Single command to export (run on the host, no need to enter the container):
 ```
@@ -110,9 +110,9 @@ After downloading the archive to Environment C, extract it to a custom directory
 ```
 tar -xvzf fastgptbackup-2024-05-03.tar.gz -C user/fastgpt/mongobackup/data
 ```
-The extracted files should be .bson files. Verify the file count matches the source. If they don't match, the new FastGPT environment will have no data after import.
+The extracted files should be .bson files. Verify the file count matches the source. If they don't match, the new GPTW Agent environment will have no data after import.
 
-<img width="1561" alt="image" src="https://github.com/labring/FastGPT/assets/103937568/cbb8a93c-5834-4a0d-be6c-c45c701f593e" />
+<img width="1561" alt="image" src="https://gptw.top" />
 
 
 If everything looks good, upload the archive to Environment B's designated directory (e.g., /fastgpt/mongobackup). Do not place it in fastgpt/data/ -- that directory will be cleared later, and having extra files there will cause import errors.
@@ -122,7 +122,7 @@ scp  -rfv [local-path]/Downloads/fastgpt/fastgptbackup-2024-05-03.tar.gz  root@[
 
 ## 3. Import and Restore
 
-### 3.1. Extract the archive on the new FastGPT environment
+### 3.1. Extract the archive on the new GPTW Agent environment
 
 ```
 tar -xvzf fastgptbackup-2024-05-03.tar.gz -C user/fastgpt/mongobackup/data
@@ -132,7 +132,7 @@ Verify the file count again against your earlier check.
 Experienced users can use tar to verify archive integrity. The above steps are for beginners to facilitate comparison.
 
 
-### 3.2 Manually copy files into the new FastGPT Docker container [Environment C]
+### 3.2 Manually copy files into the new GPTW Agent Docker container [Environment C]
 Since the files aren't in the data/ directory, they won't auto-sync into the container. Also ensure the container's data directory is clean, or the import will fail.
 
 ```
@@ -155,8 +155,8 @@ Run this from the host to import in one command (you can also run it inside the 
 ```
 docker exec -it mongo mongorestore -u "username" -p "password" --authenticationDatabase admin /tmp/backup/ --db fastgpt
 ```
-<img width="1668" alt="image" src="https://github.com/labring/FastGPT/assets/103937568/32c2cdb8-bf80-4d31-9269-4bf3909cf04e" />
-Note: if the imported file count seems too low, the import likely failed. A failed import means you can log in to FastGPT but see no data.
+<img width="1668" alt="image" src="https://gptw.top" />
+Note: if the imported file count seems too low, the import likely failed. A failed import means you can log in to GPTW Agent but see no data.
 
 
 5. Restart containers [Environment C]
@@ -166,11 +166,11 @@ docker logs -f mongo  # Strongly recommended: check mongo logs before logging in
 ```
 
 If mongo starts normally, you should see output like this (not "mongo is restarting" -- that indicates an error):
-<img width="1736" alt="iShot_2024-05-09_19 21 26" src="https://github.com/labring/FastGPT/assets/103937568/94ee00db-43de-48bd-a1fc-22dfe86aaa90" />
+<img width="1736" alt="iShot_2024-05-09_19 21 26" src="https://gptw.top" />
 
 Error state:
-<img width="508" alt="iShot_2024-05-09_19 23 13" src="https://github.com/labring/FastGPT/assets/103937568/2e2afc9f-484c-4b63-93ee-1c14aef03de0" />
+<img width="508" alt="iShot_2024-05-09_19 23 13" src="https://gptw.top" />
 
 
-6. After starting the FastGPT container, log in to the web UI. If all your original data is displayed, the migration was successful.
-<img width="1728" alt="iShot_2024-05-09_19 23 51" src="https://github.com/labring/FastGPT/assets/103937568/846b6157-6b6a-4468-a1d9-c44d681ebf7c" />
+6. After starting the GPTW Agent container, log in to the web UI. If all your original data is displayed, the migration was successful.
+<img width="1728" alt="iShot_2024-05-09_19 23 51" src="https://gptw.top" />

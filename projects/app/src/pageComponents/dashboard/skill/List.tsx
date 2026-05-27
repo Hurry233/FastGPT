@@ -25,17 +25,8 @@ import {
   postUpdateSkill,
   postCopySkill,
   getAppsBySkillId,
-  getSkillFolderList,
-  resumeInheritPer,
-  postChangeSkillOwner
+  getSkillFolderList
 } from '@/web/core/skill/api';
-import {
-  getSkillCollaboratorList,
-  postUpdateSkillCollaborators,
-  deleteSkillCollaborator
-} from '@/web/core/skill/collaborator';
-import { SkillRoleList } from '@fastgpt/global/support/permission/skill/constant';
-import { ReadRoleVal } from '@fastgpt/global/support/permission/constant';
 import MyPopover from '@fastgpt/web/components/common/MyPopover';
 import type { ListAppsBySkillIdResponse } from '@fastgpt/global/core/ai/skill/api';
 import dynamic from 'next/dynamic';
@@ -49,7 +40,6 @@ import ListCreateCard from '@/pageComponents/dashboard/ListCreateCard';
 
 const EditResourceModal = dynamic(() => import('@/components/common/Modal/EditResourceModal'));
 const MoveModal = dynamic(() => import('@/components/common/folder/MoveModal'));
-const ConfigPerModal = dynamic(() => import('@/components/support/permission/ConfigPerModal'));
 
 // 5 行 × 48px = 240px
 const RELATED_APPS_MAX_H = '240px';
@@ -201,16 +191,6 @@ const List = ({
 
   const [editedSkill, setEditedSkill] = useState<EditResourceInfoFormType>();
   const [moveSkillId, setMoveSkillId] = useState<string>();
-  const [editPerSkillId, setEditPerSkillId] = useState<string>();
-
-  const selectedSkill = useMemo(
-    () =>
-      editPerSkillId !== undefined
-        ? skills.find((item) => String(item._id) === String(editPerSkillId))
-        : undefined,
-    [editPerSkillId, skills]
-  );
-
   const { openConfirm: openConfirmCopy, ConfirmModal: ConfirmCopyModal } = useConfirm({
     content: t('skill:copy_skill_confirm')
   });
@@ -353,14 +333,6 @@ const List = ({
                         label: t('common:move_to'),
                         onClick: () => setMoveSkillId(skill._id)
                       },
-                      {
-                        icon: 'key',
-                        type: 'grayBg' as const,
-                        label: t('skill:permission_settings'),
-                        onClick: () => {
-                          setEditPerSkillId(skill._id);
-                        }
-                      }
                     ]
                   },
                   ...(!isFolder
@@ -572,42 +544,6 @@ const List = ({
           onClose={() => setMoveSkillId(undefined)}
           onConfirm={onMoveSkill}
           moveHint={t('skill:move_skill_hint')}
-        />
-      )}
-      {!!selectedSkill && (
-        <ConfigPerModal
-          onChangeOwner={(tmbId: string) =>
-            postChangeSkillOwner({
-              skillId: selectedSkill._id,
-              ownerId: tmbId
-            }).then(() => loadSkills())
-          }
-          hasParent={!!selectedSkill.parentId}
-          refetchResource={loadSkills}
-          isInheritPermission={selectedSkill.inheritPermission}
-          resumeInheritPermission={() =>
-            resumeInheritPer(selectedSkill._id).then(() => loadSkills())
-          }
-          avatar={selectedSkill.avatar}
-          name={selectedSkill.name}
-          managePer={{
-            defaultRole: ReadRoleVal,
-            permission: selectedSkill.permission,
-            onGetCollaboratorList: () => getSkillCollaboratorList(selectedSkill._id),
-            roleList: SkillRoleList,
-            onUpdateCollaborators: (props) =>
-              postUpdateSkillCollaborators({
-                ...props,
-                skillId: selectedSkill._id
-              }),
-            onDelOneCollaborator: (props) =>
-              deleteSkillCollaborator({
-                ...props,
-                skillId: selectedSkill._id
-              }),
-            refreshDeps: [selectedSkill._id, selectedSkill.inheritPermission]
-          }}
-          onClose={() => setEditPerSkillId(undefined)}
         />
       )}
     </>

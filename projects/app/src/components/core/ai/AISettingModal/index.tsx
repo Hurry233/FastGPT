@@ -18,10 +18,8 @@ import {
   Input,
   VStack
 } from '@chakra-ui/react';
-import { useSystemStore } from '@/web/common/system/useSystemStore';
 import { NodeInputKeyEnum } from '@fastgpt/global/core/workflow/constants';
 import type { SettingAIDataType } from '@fastgpt/global/core/app/type';
-import { getDocPath } from '@/web/common/system/doc';
 import AIModelSelector from '@/components/Select/AIModelSelector';
 import { type LLMModelItemType } from '@fastgpt/global/core/ai/model.schema';
 import QuestionTip from '@fastgpt/web/components/common/MyTooltip/QuestionTip';
@@ -122,7 +120,6 @@ const AIChatSettingsModal = ({
 }) => {
   const { t } = useTranslation();
   const [refresh, setRefresh] = useState(false);
-  const { feConfigs } = useSystemStore();
 
   const { handleSubmit, getValues, setValue, watch, register } = useForm<SettingAIDataType>({
     defaultValues: defaultData
@@ -243,17 +240,6 @@ const AIChatSettingsModal = ({
       title={
         <HStack>
           <Box>{t('app:ai_settings')}</Box>
-          {feConfigs?.docUrl && (
-            <MyIcon
-              name="book"
-              color={'primary.600'}
-              w={'24px'}
-              cursor={'pointer'}
-              onClick={() => {
-                window.open(getDocPath('/guide/build/general/ai_settings'), '_blank');
-              }}
-            />
-          )}
         </HStack>
       }
       w={'580px'}

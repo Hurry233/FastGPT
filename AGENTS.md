@@ -4,13 +4,13 @@
 
 ## 项目概述
 
-FastGPT 是一个 AI Agent 构建平台,通过 Flow 提供开箱即用的数据处理、模型调用能力和可视化工作流编排。这是一个基于 NextJS 构建的全栈 TypeScript 应用,后端使用 MongoDB/PostgreSQL。
+GPTW Agent 是一个 AI Agent 构建平台,通过 Flow 提供开箱即用的数据处理、模型调用能力和可视化工作流编排。这是一个基于 NextJS 构建的全栈 TypeScript 应用,后端使用 MongoDB/PostgreSQL。
 
 **技术栈**: NextJS + TypeScript + ChakraUI + MongoDB + VectorDB(PG, Milvus, Zilliz, OceanBase, SeekDB, OpenGauss......)
 
 ## 设计文档
 
-你可以参考 [项目设计文档](./.codex/design/) 来了解 FastGPT 已有的设计方案。
+你可以参考 [项目设计文档](./.codex/design/) 来了解 GPTW Agent 已有的设计方案。
 
 ## 架构
 
@@ -34,7 +34,7 @@ FastGPT 是一个 AI Agent 构建平台,通过 Flow 提供开箱即用的数据�
 
 ## 开发命令
 
-常用开发命令见 [FastGPT 开发命令](./.codex/code/commands.md)。
+常用开发命令见 [GPTW Agent 开发命令](./.codex/code/commands.md)。
 
 ## 测试
 
@@ -87,7 +87,7 @@ FastGPT 是一个 AI Agent 构建平台,通过 Flow 提供开箱即用的数据�
 
 ## 代码规范
 
-[FastGPT 代码规范](./.codex/code/syntax.md)
+[GPTW Agent 代码规范](./.codex/code/syntax.md)
 
 ### API 入参校验
 

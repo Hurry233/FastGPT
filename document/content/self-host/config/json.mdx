@@ -1,11 +1,11 @@
 ---
 title: config.json 文件配置
-description: FastGPT config.json 文件配置
+description: GPTW Agent config.json 文件配置
 ---
 
 **该配置仅适用于社区版，商业版用户该配置已集成至后台。**
 
-由于环境变量不利于配置复杂的内容，新版 FastGPT 采用了 ConfigMap 的形式挂载配置文件，你可以在 `projects/app/data/config.json` 看到默认的配置文件。可以参考 [docker-compose 快速部署](../deploy/docker.mdx) 来挂载配置文件。
+由于环境变量不利于配置复杂的内容，新版 GPTW Agent 采用了 ConfigMap 的形式挂载配置文件，你可以在 `projects/app/data/config.json` 看到默认的配置文件。可以参考 [docker-compose 快速部署](../deploy/docker.mdx) 来挂载配置文件。
 
 **开发环境下**，你需要将示例配置文件 `config.json` 复制成 `config.local.json` 文件才会生效。
 
@@ -46,7 +46,7 @@ description: FastGPT config.json 文件配置
 
 [点击打开 Sealos PDF parser 官网](https://hzh.sealos.run/?uid=fnWRt09fZP&openapp=system-aiproxy)，并进行对应 API Key 的申请。
 
-#### 2. 修改 FastGPT 配置文件
+#### 2. 修改 GPTW Agent 配置文件
 
 `systemEnv.customPdfParse.url` 填写成 `https://aiproxy.hzh.sealos.run/v1/parse/pdf?model=parse-pdf`  
 `systemEnv.customPdfParse.key` 填写成在 Sealos AI proxy 中申请的 API Key。
@@ -59,7 +59,7 @@ description: FastGPT config.json 文件配置
 
 [点击打开 Doc2x 官网](https://doc2x.noedgeai.com?inviteCode=9EACN2)，并进行对应 API Key 的申请。
 
-#### 2. 修改 FastGPT 配置文件
+#### 2. 修改 GPTW Agent 配置文件
 
 社区版用户在 `config.json` 文件中添加 `systemEnv.customPdfParse.doc2xKey` 配置，并填写上申请到的 API Key。并重启服务。
 

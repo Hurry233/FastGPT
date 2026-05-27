@@ -1,6 +1,6 @@
 ---
 title: Dataset API
-description: FastGPT OpenAPI Dataset API
+description: GPTW Agent OpenAPI Dataset API
 ---
 
 | How to Get Dataset ID (datasetId) | How to Get Collection ID (collection_id) |
@@ -187,7 +187,7 @@ curl --location --request GET 'http://localhost:3000/api/core/dataset/detail?id=
     "type": "dataset",
     "status": "active",
     "avatar": "/icon/logo.svg",
-    "name": "FastGPT test",
+    "name": "GPTW Agent test",
     "vectorModel": {
       "model": "text-embedding-ada-002",
       "name": "Embedding-2",
@@ -402,7 +402,7 @@ curl --location --request POST 'http://localhost:3000/api/core/dataset/collectio
 --header 'Authorization: Bearer {{authorization}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "link":"https://doc.fastgpt.io/guide/getting-started/quick-start",
+    "link":"https://gptw.top/guide/getting-started/quick-start",
     "datasetId":"6593e137231a2be9c5603ba7",
     "parentId": null,
 
@@ -703,8 +703,8 @@ curl --location --request POST 'http://localhost:3000/api/core/dataset/collectio
         "parentId": null,
         "tmbId": "65422be6aa44b7da77729ec9",
         "type": "link",
-        "name": "快速上手 | FastGPT",
-        "rawLink": "https://doc.fastgpt.io/guide/getting-started/quick-start",
+        "name": "快速上手 | GPTW Agent",
+        "rawLink": "https://gptw.top/guide/getting-started/quick-start",
         "updateTime": "2024-01-20T13:54:53.031Z",
         "dataAmount": 3,
         "trainingAmount": 0,
@@ -769,7 +769,7 @@ curl --location --request GET 'http://localhost:3000/api/core/dataset/collection
       "type": "dataset",
       "status": "active",
       "avatar": "/icon/logo.svg",
-      "name": "FastGPT test",
+      "name": "GPTW Agent test",
       "vectorModel": "text-embedding-ada-002",
       "agentModel": "gpt-3.5-turbo-16k",
       "intro": "",
@@ -950,7 +950,7 @@ curl --location --request POST 'http://localhost:3000/api/core/dataset/data/push
     "data": [
         {
             "q": "Who are you?",
-            "a": "I'm FastGPT Assistant"
+            "a": "I'm GPTW Agent Assistant"
         },
         {
             "q": "What can you do?",
@@ -1289,7 +1289,7 @@ Returns top k results. limit is the maximum tokens, up to 20000 tokens.
     {
         "id": "65599c54a5c814fb803363cb",
         "q": "你是谁",
-        "a": "I'm FastGPT Assistant",
+        "a": "I'm GPTW Agent Assistant",
         "datasetId": "6554684f7f9ed18a39a4d15c",
         "collectionId": "6556cd795e4b663e770bb66d",
         "sourceName": "GBT 15104-2021 装饰单板贴面人造板.pdf",

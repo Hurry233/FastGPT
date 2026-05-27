@@ -53,12 +53,11 @@ import MyIconButton from '@fastgpt/web/components/common/Icon/button';
 
 const InviteModal = dynamic(() => import('./Invite/InviteModal'));
 const TeamTagModal = dynamic(() => import('@/components/support/user/team/TeamTagModal'));
-const TransferOwnershipModal = dynamic(() => import('./TransferOwnershipModal'));
 
 function MemberTable({ Tabs }: { Tabs: React.ReactNode }) {
   const { t } = useTranslation();
   const { toast } = useToast();
-  const { userInfo, initUserInfo } = useUserStore();
+  const { userInfo } = useUserStore();
   const { feConfigs } = useSystemStore();
   const isSyncMode = feConfigs?.register_method?.includes('sync');
 
@@ -98,12 +97,6 @@ function MemberTable({ Tabs }: { Tabs: React.ReactNode }) {
   const isWecomTeam = useMemo(() => {
     return !!userInfo?.team?.isWecomTeam;
   }, [userInfo?.team?.isWecomTeam]);
-
-  const {
-    isOpen: isOpenTransferModal,
-    onOpen: onOpenTransferModal,
-    onClose: onCloseTransferModal
-  } = useDisclosure();
 
   // member action
   const [searchKey, setSearchKey] = useState<string>('');
@@ -234,17 +227,6 @@ function MemberTable({ Tabs }: { Tabs: React.ReactNode }) {
               onClick={onOpenInvite}
             >
               {t('account_team:user_team_invite_member')}
-            </Button>
-          )}
-          {userInfo?.team.permission.isOwner && !isSyncMode && isWecomTeam && (
-            <Button
-              variant={'whitePrimary'}
-              size="md"
-              borderRadius={'md'}
-              ml={3}
-              onClick={onOpenTransferModal}
-            >
-              {t('account_team:transfer_team_ownership')}
             </Button>
           )}
           {userInfo?.team.permission.isOwner && isSyncMode && (
@@ -404,16 +386,6 @@ function MemberTable({ Tabs }: { Tabs: React.ReactNode }) {
 
       {isOpenInvite && userInfo?.team?.teamId && <InviteModal onClose={onCloseInvite} />}
       {isOpenTeamTagsAsync && <TeamTagModal onClose={onCloseTeamTagsAsync} />}
-      {isOpenTransferModal && (
-        <TransferOwnershipModal
-          onClose={onCloseTransferModal}
-          onSuccess={() => {
-            onCloseTransferModal();
-            initUserInfo();
-            refetchMemberList();
-          }}
-        />
-      )}
     </>
   );
 }

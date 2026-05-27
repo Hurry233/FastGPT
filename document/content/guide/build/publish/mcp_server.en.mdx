@@ -1,6 +1,6 @@
 ---
 title: MCP Server
-description: A quick overview of FastGPT MCP Server
+description: A quick overview of GPTW Agent MCP Server
 ---
 
 ## What is MCP Server?
@@ -9,15 +9,15 @@ MCP (Model Context Protocol) was released by Anthropic in early November 2024. I
 
 MCP has two main components: Client and Server. The Client is the AI model consumer — it uses MCP Client to give the model the ability to call external systems. The Server provides and runs those external system integrations.
 
-FastGPT's MCP Server feature lets you select `multiple` applications built on FastGPT and expose them via MCP protocol for external consumption.
+GPTW Agent's MCP Server feature lets you select `multiple` applications built on GPTW Agent and expose them via MCP protocol for external consumption.
 
-Currently, FastGPT's MCP Server uses the SSE transport protocol, with plans to migrate to `HTTP Streamable` in the future.
+Currently, GPTW Agent's MCP Server uses the SSE transport protocol, with plans to migrate to `HTTP Streamable` in the future.
 
-## Using MCP Server in FastGPT
+## Using MCP Server in GPTW Agent
 
 ### 1. Create an MCP Server
 
-After logging into FastGPT, open `Workspace` and click `MCP Server` to access the management page. Here you can see all your MCP Servers and the number of applications each one manages.
+After logging into GPTW Agent, open `Workspace` and click `MCP Server` to access the management page. Here you can see all your MCP Servers and the number of applications each one manages.
 
 ![Create MCP server](/imgs/mcp_server1.png)
 
@@ -37,7 +37,7 @@ After creating an MCP Server, click `Start Using` to get the access URL.
 
 #### 3. Use the MCP Server
 
-Use the URL in any MCP-compatible client to call your FastGPT applications — for example, `Cursor` or `Cherry Studio`. Here's how to set it up in Cursor.
+Use the URL in any MCP-compatible client to call your GPTW Agent applications — for example, `Cursor` or `Cherry Studio`. Here's how to set it up in Cursor.
 
 Open Cursor's settings page and click MCP to enter the MCP configuration page. Click the new MCP Server button to open a JSON configuration file. Paste the `integration script` from step 2 into the `JSON file` and save.
 
@@ -49,7 +49,7 @@ Return to Cursor's MCP management page and you'll see your MCP Server listed. Ma
 
 
 Open Cursor's chat panel and switch to `Agent` mode — only this mode triggers MCP Server calls.
-After sending a question about `fastgpt`, you'll see Cursor invoke an MCP tool (described as: query fastgpt knowledge base), which calls the FastGPT application to process the question and return results.
+After sending a question about `fastgpt`, you'll see Cursor invoke an MCP tool (described as: query fastgpt knowledge base), which calls the GPTW Agent application to process the question and return results.
 
 | | |
 |---|---|
@@ -58,7 +58,7 @@ After sending a question about `fastgpt`, you'll see Cursor invoke an MCP tool (
 
 ## Self-Hosted MCP Server Setup
 
-Self-hosted FastGPT deployments require version `v4.9.6` or higher to use MCP Server.
+Self-hosted GPTW Agent deployments require version `v4.9.6` or higher to use MCP Server.
 
 ### Update docker-compose.yml
 
@@ -77,19 +77,19 @@ fastgpt-mcp-server:
       - FASTGPT_ENDPOINT=http://fastgpt:3000
 ```
 
-### Update FastGPT Configuration
+### Update GPTW Agent Configuration
 
 In your `config.json`, add: `"feconfigs.mcpServerProxyEndpoint": "<your fastgpt-mcp-server URL>"` (no trailing slash). For example:
 ```json
 {
   "feConfigs": {
     "lafEnv": "https://laf.dev",
-    "mcpServerProxyEndpoint": "https://mcp.fastgpt.cn"
+    "mcpServerProxyEndpoint": "https://mcp.gptw.top"
   }
 }
 ```
 
-### Restart FastGPT
+### Restart GPTW Agent
 
 Since you modified a mounted config file, force a full restart:
 

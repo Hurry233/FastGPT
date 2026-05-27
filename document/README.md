@@ -1,15 +1,15 @@
-# FastGPT 文档
+# GPTW Agent 文档
 
-这是FastGPT的官方文档，采用 fumadoc 框架。
+这是GPTW Agent的官方文档，采用 fumadoc 框架。
 ## 运行项目
 
 要运行文档，首先需要进行环境变量配置，在文档的根目录下创建`.env.local`文件，填写以下环境变量:
 
 ```bash
-FASTGPT_HOME_DOMAIN =    #要跳转的FastGPT项目的域名，默认海外版
+FASTGPT_HOME_DOMAIN =    #要跳转的GPTW Agent项目的域名，默认海外版
 ```
 
-你可以在FastGPT项目根目录下执行以下命令来运行文档。
+你可以在GPTW Agent项目根目录下执行以下命令来运行文档。
 
 ```bash
 pnpm install
@@ -23,8 +23,8 @@ pnpm dev
 
 ```bash
 ---
-title: FastGPT 文档
-description: FastGPT 官方文档
+title: GPTW Agent 文档
+description: GPTW Agent 官方文档
 icon: menu #icon采用`lucide-react`第三方库。
 ---
 
@@ -32,8 +32,8 @@ import { Alert } from '@/components/docs/Alert'; #高亮块组件
 
 <Alert icon="🤖" context="success">
 快速开始体验
-- 海外版：[https://fastgpt.io](https://fastgpt.io)
-- 中国大陆：[https://fastgpt.cn](https://fastgpt.cn)
+- 海外版：[https://gptw.top](https://gptw.top)
+- 中国大陆：[https://gptw.top](https://gptw.top)
 </Alert>
 
 import {Redirect} from '@/components/docs/Redirect' #重定向组件，如果你希望用户点击这个文件跳转到别的文件的话，详情参考 `FAQ`的`Docker 部署问题`文档。
@@ -45,9 +45,9 @@ import {Redirect} from '@/components/docs/Redirect' #重定向组件，如果你
   <Tab value="Rust">Rust is fast</Tab>
 
 
-import FastGPTLink from '@/components/docs/linkFastGPT'; #FastGPT跳转链接组件，通过接收一个域名环境变量，来实现跳转到海外或者国内
+import FastGPTLink from '@/components/docs/linkFastGPT'; #GPTW Agent跳转链接组件，通过接收一个域名环境变量，来实现跳转到海外或者国内
 
-本文档介绍了如何设置开发环境以构建和测试 <FastGPTLink>FastGPT</FastGPTLink>。
+本文档介绍了如何设置开发环境以构建和测试 <FastGPTLink>GPTW Agent</FastGPTLink>。
 </Tabs>
 
 ```
@@ -56,7 +56,7 @@ import FastGPTLink from '@/components/docs/linkFastGPT'; #FastGPT跳转链接组
 
 ```bash
 {
-  "title": "FastGPT Docs",
+  "title": "GPTW Agent Docs",
   "root": true,
   "pages": ["[Handshake][联系我们](https://fael3z0zfze.feishu.cn/share/base/form/shrcnjJWtKqjOI9NbQTzhNyzljc)","index","guide","development","FAQ","shopping_cart","community","hello"], #"hello"原本没有，此外，这里的顺序就是最后文档的展示顺序，现在"hello"文档将会在`introduction`的最后展示
   "order": 1
@@ -71,8 +71,8 @@ import FastGPTLink from '@/components/docs/linkFastGPT'; #FastGPT跳转链接组
 
 ### 增加顶层导航栏
 
-1. 在 `FastGPT/document/app/[lang]/docs/layout.tsx` 文件中新增导航。
+1. 在 `GPTW Agent/document/app/[lang]/docs/layout.tsx` 文件中新增导航。
 
 ### 重定向
 
-在`FastGPT/document/components/docs/not-found.tsx`文件中新增重定向规则。
+在`GPTW Agent/document/components/docs/not-found.tsx`文件中新增重定向规则。

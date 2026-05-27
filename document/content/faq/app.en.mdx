@@ -1,6 +1,6 @@
 ---
 title: App Usage
-description: Common questions about using FastGPT apps, including simple apps, workflows, and plugins
+description: Common questions about using GPTW Agent apps, including simple apps, workflows, and plugins
 ---
 
 ## How do I get the Question Classification node to work correctly across multi-turn conversations?
@@ -55,7 +55,7 @@ Solution: Add a condition check — if it's the first message (history count is 
 
 ## Can I set up real-time polling to fetch webhook messages every 3000ms?
 
-Scheduled execution doesn't support that kind of frequency. To build a real-time chatbot in WeCom, low-code workflows won't cut it — you'll need to write custom code that calls FastGPT's API Key for responses. WeCom doesn't provide an auto-listen interface for group messages (though you can trigger message pushes by @mentioning the bot). You can either send messages to the app and receive pushes via the [message callback API](https://developer.work.weixin.qq.com/document/path/90238), or poll for group messages using [this API](https://developer.work.weixin.qq.com/document/path/98914) and push responses via [this API](https://developer.work.weixin.qq.com/document/path/90248).
+Scheduled execution doesn't support that kind of frequency. To build a real-time chatbot in WeCom, low-code workflows won't cut it — you'll need to write custom code that calls GPTW Agent's API Key for responses. WeCom doesn't provide an auto-listen interface for group messages (though you can trigger message pushes by @mentioning the bot). You can either send messages to the app and receive pushes via the [message callback API](https://developer.work.weixin.qq.com/document/path/90238), or poll for group messages using [this API](https://developer.work.weixin.qq.com/document/path/98914) and push responses via [this API](https://developer.work.weixin.qq.com/document/path/90248).
 
 ## Can workflows connect to a database?
 

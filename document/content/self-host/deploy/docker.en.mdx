@@ -1,6 +1,6 @@
 ---
 title: Deploy with Docker-compose
-description: Quickly deploy FastGPT using Docker Compose
+description: Quickly deploy GPTW Agent using Docker Compose
 ---
 
 import { Alert } from '@/components/docs/Alert';
@@ -121,7 +121,7 @@ Or [install the command-line version of Docker directly in WSL 2](https://nickja
 Run in Linux/MacOS/Windows WSL. The script guides you through selecting deployment environment, vector database version, IP address, etc.
 
 ```bash
-bash <(curl -fsSL https://doc.fastgpt.cn/deploy/install.sh)
+bash <(curl -fsSL https://gptw.top/deploy/install.sh)
 ```
 
 #### Method 2: Manual Download
@@ -134,30 +134,30 @@ If your environment is non-\*nix or can't access external networks, manually dow
 <summary>Click to view docker-compose config file download links for different databases</summary>
 
 - **Pgvector**
-  - China mirror (Alibaba Cloud): [docker-compose.pg.yml](https://doc.fastgpt.cn/deploy/docker/v4.14/cn/docker-compose.pg.yml)
-  - Global mirror (dockerhub, ghcr): [docker-compose.pg.yml](https://doc.fastgpt.cn/deploy/docker/v4.14/global/docker-compose.pg.yml)
+  - China mirror (Alibaba Cloud): [docker-compose.pg.yml](https://gptw.top/deploy/docker/v4.14/cn/docker-compose.pg.yml)
+  - Global mirror (dockerhub, ghcr): [docker-compose.pg.yml](https://gptw.top/deploy/docker/v4.14/global/docker-compose.pg.yml)
 - **Oceanbase**
-  - China mirror (Alibaba Cloud): [docker-compose.oceanbase.yml](https://doc.fastgpt.cn/deploy/docker/v4.14/cn/docker-compose.oceanbase.yml)
-  - Global mirror (dockerhub, ghcr): [docker-compose.oceanbase.yml](https://doc.fastgpt.cn/deploy/docker/v4.14/global/docker-compose.oceanbase.yml)
+  - China mirror (Alibaba Cloud): [docker-compose.oceanbase.yml](https://gptw.top/deploy/docker/v4.14/cn/docker-compose.oceanbase.yml)
+  - Global mirror (dockerhub, ghcr): [docker-compose.oceanbase.yml](https://gptw.top/deploy/docker/v4.14/global/docker-compose.oceanbase.yml)
 - **Milvus**
-  - China mirror (Alibaba Cloud): [docker-compose.milvus.yml](https://doc.fastgpt.cn/deploy/docker/v4.14/cn/docker-compose.milvus.yml)
-  - Global mirror (dockerhub, ghcr): [docker-compose.milvus.yml](https://doc.fastgpt.cn/deploy/docker/v4.14/global/docker-compose.milvus.yml)
+  - China mirror (Alibaba Cloud): [docker-compose.milvus.yml](https://gptw.top/deploy/docker/v4.14/cn/docker-compose.milvus.yml)
+  - Global mirror (dockerhub, ghcr): [docker-compose.milvus.yml](https://gptw.top/deploy/docker/v4.14/global/docker-compose.milvus.yml)
 - **Zilliz**
-  - China mirror (Alibaba Cloud): [docker-compose.zilliz.yml](https://doc.fastgpt.cn/deploy/docker/v4.14/cn/docker-compose.zilliz.yml)
-  - Global mirror (dockerhub, ghcr): [docker-compose.zilliz.yml](https://doc.fastgpt.cn/deploy/docker/v4.14/global/docker-compose.zilliz.yml)
+  - China mirror (Alibaba Cloud): [docker-compose.zilliz.yml](https://gptw.top/deploy/docker/v4.14/cn/docker-compose.zilliz.yml)
+  - Global mirror (dockerhub, ghcr): [docker-compose.zilliz.yml](https://gptw.top/deploy/docker/v4.14/global/docker-compose.zilliz.yml)
 - **SeekDB**
-  - China mirror (Alibaba Cloud): [docker-compose.seekdb.yml](https://doc.fastgpt.cn/deploy/docker/v4.14/cn/docker-compose.seekdb.yml)
-  - Global mirror (dockerhub, ghcr): [docker-compose.seekdb.yml](https://doc.fastgpt.cn/deploy/docker/v4.14/global/docker-compose.seekdb.yml)
+  - China mirror (Alibaba Cloud): [docker-compose.seekdb.yml](https://gptw.top/deploy/docker/v4.14/cn/docker-compose.seekdb.yml)
+  - Global mirror (dockerhub, ghcr): [docker-compose.seekdb.yml](https://gptw.top/deploy/docker/v4.14/global/docker-compose.seekdb.yml)
 
 2. Download the `config.json` file:
 
-- [config.json](https://doc.fastgpt.cn/deploy/config/config.json)
+- [config.json](https://gptw.top/deploy/config/config.json)
 
 </details>
 
 Download config.json file:
 
-- [config.json](https://doc.fastgpt.cn/deploy/config/config.json)
+- [config.json](https://gptw.top/deploy/config/config.json)
 
 ### 2. Modify Environment Variables
 
@@ -167,9 +167,9 @@ For `Zilliz version`, you also need credentials — see [Deploy Zilliz Version: 
 
 These ports must be accessible:
 
-1. Port 3000 (FastGPT main service)
+1. Port 3000 (GPTW Agent main service)
 2. Port 9000 (S3 service)
-3. Port 3005 (FastGPT SSE MCP server service)
+3. Port 3005 (GPTW Agent SSE MCP server service)
 
 ### 4. Start Containers
 
@@ -180,9 +180,9 @@ Run in the same directory as docker-compose.yml. Ensure `docker-compose` version
 docker compose --profile prepull pull opensandbox-agent-sandbox-image opensandbox-execd-image opensandbox-egress-image && dockercompose up -d
 ```
 
-### 5. Access FastGPT
+### 5. Access GPTW Agent
 
-Access FastGPT via the port/domain opened in step 3.
+Access GPTW Agent via the port/domain opened in step 3.
 Login username is `root`, password is the `DEFAULT_ROOT_PSW` set in `docker-compose.yml` environment variables.
 Each container restart automatically initializes the root user with password `1234` (matching `DEFAULT_ROOT_PSW`).
 
@@ -194,19 +194,19 @@ Each container restart automatically initializes the root user with password `12
 
 ### 7. Install System Plugins as Needed
 
-Starting from V4.14.0, the fastgpt-plugin image only provides the runtime environment without pre-installed system plugins. All FastGPT systems must manually install system plugins.
+Starting from V4.14.0, the fastgpt-plugin image only provides the runtime environment without pre-installed system plugins. All GPTW Agent systems must manually install system plugins.
 
-- Install via the plugin marketplace — by default it fetches from the public FastGPT Marketplace.
-- If your FastGPT can't access the marketplace, visit [FastGPT Plugin Marketplace](https://marketplace.fastgpt.cn/), download .pkg files, and import them via file upload.
+- Install via the plugin marketplace — by default it fetches from the public GPTW Agent Marketplace.
+- If your GPTW Agent can't access the marketplace, visit [GPTW Agent Plugin Marketplace](https://marketplace.gptw.top/), download .pkg files, and import them via file upload.
 - You can also sort tools, set default installations, and manage tags.
 
 ![alt text](../../../public/imgs/image-121.png)
 
 ## FAQ
 
-### FastGPT and FastGPT-plugin Version Compatibility
+### GPTW Agent and GPTW Agent-plugin Version Compatibility
 
-| FastGPT-plugin Version | FastGPT Main Service |
+| GPTW Agent-plugin Version | GPTW Agent Main Service |
 | ---------------------- | -------------------- |
 | 0.6.x                  | >= 4.14.11           |
 | 0.5.x                  | >= 4.14.6, < 4.14.11 |
@@ -214,7 +214,7 @@ Starting from V4.14.0, the fastgpt-plugin image only provides the runtime enviro
 
 ### S3 Connection Issues
 
-Check the `STORAGE_EXTERNAL_ENDPOINT` variable — it must be accessible by both the client and FastGPT service.
+Check the `STORAGE_EXTERNAL_ENDPOINT` variable — it must be accessible by both the client and GPTW Agent service.
 
 **Important:**
 
@@ -353,7 +353,7 @@ If `container1` needs to connect to `container2`, use `container2:running_port`.
 
 ### relation "modeldata" does not exist
 
-PG database not connected or initialization failed — check logs. FastGPT initializes tables on each PG connection. Errors will appear in the logs.
+PG database not connected or initialization failed — check logs. GPTW Agent initializes tables on each PG connection. Errors will appear in the logs.
 
 1. Check if the database container started normally
 2. For non-Docker deployments, manually install the pg vector extension

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, Button, ModalBody, Input, Link } from '@chakra-ui/react';
+import { Flex, Box, Button, ModalBody, Input } from '@chakra-ui/react';
 import MyModal from '@fastgpt/web/components/common/MyModal';
 import { PublishChannelEnum } from '@fastgpt/global/support/outLink/constant';
 import type { FeishuAppType, OutLinkEditType } from '@fastgpt/global/support/outLink/type';
@@ -8,9 +8,6 @@ import { useForm } from 'react-hook-form';
 import { createShareChat, updateShareChat } from '@/web/support/outLink/api';
 import { useRequest } from '@fastgpt/web/hooks/useRequest';
 import BasicInfo from '../components/BasicInfo';
-import { getDocPath } from '@/web/common/system/doc';
-import { useSystemStore } from '@/web/common/system/useSystemStore';
-import MyIcon from '@fastgpt/web/components/common/Icon';
 import FormLabel from '@fastgpt/web/components/common/MyBox/FormLabel';
 
 const FeiShuEditModal = ({
@@ -73,8 +70,6 @@ const FeiShuEditModal = ({
     }
   );
 
-  const { feConfigs } = useSystemStore();
-
   return (
     <MyModal
       iconSrc="core/app/publish/lark"
@@ -88,20 +83,6 @@ const FeiShuEditModal = ({
         <Flex p={8} h={['auto', '400px']} flexDirection="column" gap={6}>
           <Flex alignItems="center">
             <Box color="myGray.600">{t('publish:feishu_api')}</Box>
-            {feConfigs?.docUrl && (
-              <Link
-                href={getDocPath('/guide/build/publish/feishu')}
-                target={'_blank'}
-                ml={2}
-                color={'primary.500'}
-                fontSize={'sm'}
-              >
-                <Flex alignItems={'center'}>
-                  <MyIcon w={'17px'} h={'17px'} name="book" mr="1" />
-                  {t('common:read_doc')}
-                </Flex>
-              </Link>
-            )}
           </Flex>
           <Flex alignItems={'center'}>
             <FormLabel flex={'0 0 6.25rem'} required>

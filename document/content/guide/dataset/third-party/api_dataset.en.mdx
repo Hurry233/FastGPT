@@ -1,6 +1,6 @@
 ---
 title: API File Library
-description: Introduction and usage of the FastGPT API File Library
+description: Introduction and usage of the GPTW Agent API File Library
 ---
 
 import { Alert } from '@/components/docs/Alert';
@@ -11,13 +11,13 @@ import { Alert } from '@/components/docs/Alert';
 
 ## Background
 
-FastGPT supports local file imports, but in many cases users already have an existing document library. Re-importing files would create duplicate storage and complicate management. To address this, FastGPT offers an API File Library that connects to your existing document library through simple API endpoints, with flexible import options.
+GPTW Agent supports local file imports, but in many cases users already have an existing document library. Re-importing files would create duplicate storage and complicate management. To address this, GPTW Agent offers an API File Library that connects to your existing document library through simple API endpoints, with flexible import options.
 
-The API File Library lets you integrate your existing document library seamlessly. Implement a few endpoints that conform to FastGPT's API File Library specification, provide the service's baseURL and token when creating a knowledge base, and you can browse and selectively import files directly from the UI.
+The API File Library lets you integrate your existing document library seamlessly. Implement a few endpoints that conform to GPTW Agent's API File Library specification, provide the service's baseURL and token when creating a knowledge base, and you can browse and selectively import files directly from the UI.
 
 ## How to Use the API File Library
 
-When creating a knowledge base, select the API File Library type and configure the key parameters: the baseURL of your file service and the request header for authentication. As long as your endpoints conform to FastGPT's specification, the system will automatically fetch and display the complete file list for selective import.
+When creating a knowledge base, select the API File Library type and configure the key parameters: the baseURL of your file service and the request header for authentication. As long as your endpoints conform to GPTW Agent's specification, the system will automatically fetch and display the complete file list for selective import.
 
 You need to provide three parameters:
 - baseURL: The base URL of your file service
@@ -124,7 +124,7 @@ curl --location --request GET '{{baseURL}}/v1/file/content?id=xx' \
     "message": "",
     "data": {
         "title": "Document Title",
-        "content": "FastGPT is an LLM-based knowledge base Q&A system with out-of-the-box data processing and model invocation capabilities. It also supports visual workflow orchestration via Flow for complex Q&A scenarios!\n"
+        "content": "GPTW Agent is an LLM-based knowledge base Q&A system with out-of-the-box data processing and model invocation capabilities. It also supports visual workflow orchestration via Flow for complex Q&A scenarios!\n"
     }
 }
 ```

@@ -1,12 +1,4 @@
-import CollaboratorContextProvider from '@/components/support/permission/MemberManager/context';
-import ResumeInherit from '@/components/support/permission/ResumeInheritText';
 import { AppContext } from './context';
-import { resumeInheritPer } from '@/web/core/app/api';
-import {
-  deleteAppCollaborators,
-  getCollaboratorList,
-  postUpdateAppCollaborators
-} from '@/web/core/app/api/collaborator';
 import {
   Box,
   Button,
@@ -17,11 +9,8 @@ import {
   ModalFooter,
   Textarea
 } from '@chakra-ui/react';
-import type { RequireOnlyOne } from '@fastgpt/global/common/type/utils';
 import type { AppSchemaType } from '@fastgpt/global/core/app/type';
-import { AppRoleList } from '@fastgpt/global/support/permission/app/constant';
 import Avatar from '@fastgpt/web/components/common/Avatar';
-import MyIcon from '@fastgpt/web/components/common/Icon';
 import MyModal from '@fastgpt/web/components/common/MyModal';
 import { useRequest } from '@fastgpt/web/hooks/useRequest';
 import { useToast } from '@fastgpt/web/hooks/useToast';
@@ -29,7 +18,6 @@ import { useTranslation } from 'next-i18next';
 import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { useContextSelector } from 'use-context-selector';
-import { ReadRoleVal } from '@fastgpt/global/support/permission/constant';
 import { useUploadAvatar } from '@fastgpt/web/common/file/hooks/useUploadAvatar';
 import { getUploadAvatarPresignedUrl } from '@/web/common/file/api';
 
@@ -97,21 +85,6 @@ const InfoModal = ({ onClose }: { onClose: () => void }) => {
     [handleSubmit, onClose, saveSubmitError, saveSubmitSuccess]
   );
 
-  const onDelCollaborator = async (
-    props: RequireOnlyOne<{ tmbId: string; groupId: string; orgId: string }>
-  ) =>
-    deleteAppCollaborators({
-      appId: appDetail._id,
-      ...props
-    });
-
-  const { runAsync: resumeInheritPermission } = useRequest(() => resumeInheritPer(appDetail._id), {
-    errorToast: t('common:resume_failed'),
-    onSuccess: () => {
-      reloadApp();
-    }
-  });
-
   return (
     <MyModal
       isOpen={true}
@@ -153,58 +126,6 @@ const InfoModal = ({ onClose }: { onClose: () => void }) => {
           {...register('intro')}
         />
 
-        {/* role */}
-        {appDetail.permission.hasManagePer && (
-          <>
-            {!appDetail.inheritPermission && appDetail.parentId && (
-              <Box mt={3}>
-                <ResumeInherit onResume={resumeInheritPermission} />
-              </Box>
-            )}
-            <Box mt={6}>
-              <CollaboratorContextProvider
-                defaultRole={ReadRoleVal}
-                permission={appDetail.permission}
-                onGetCollaboratorList={() => getCollaboratorList(appDetail._id)}
-                roleList={AppRoleList}
-                onUpdateCollaborators={async ({ collaborators }) =>
-                  postUpdateAppCollaborators({
-                    collaborators,
-                    appId: appDetail._id
-                  })
-                }
-                onDelOneCollaborator={onDelCollaborator}
-                refreshDeps={[appDetail.inheritPermission]}
-                isInheritPermission={appDetail.inheritPermission}
-                hasParent={!!appDetail.parentId}
-              >
-                {({ MemberListCard, onOpenManageModal }) => {
-                  return (
-                    <>
-                      <Flex
-                        alignItems="center"
-                        flexDirection="row"
-                        justifyContent="space-between"
-                        w="full"
-                      >
-                        <Box fontSize={'sm'}>{t('common:permission.Collaborator')}</Box>
-                        <Button
-                          size="sm"
-                          variant="whitePrimary"
-                          leftIcon={<MyIcon w="4" name="common/settingLight" />}
-                          onClick={onOpenManageModal}
-                        >
-                          {t('common:permission.Manage')}
-                        </Button>
-                      </Flex>
-                      <MemberListCard mt={2} p={1.5} bg="myGray.100" borderRadius="md" />
-                    </>
-                  );
-                }}
-              </CollaboratorContextProvider>
-            </Box>
-          </>
-        )}
       </ModalBody>
 
       <ModalFooter>

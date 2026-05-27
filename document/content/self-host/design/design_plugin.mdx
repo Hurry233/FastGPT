@@ -1,43 +1,43 @@
 ---
 title: 系统插件设计
-description: FastGPT 系统插件设计方案
+description: GPTW Agent 系统插件设计方案
 ---
 
 ## 背景
 
-原先 FastGPT 的各项功能均在 FastGPT 的 Next.js 的框架内，通过 Monorepo 的方式进行组织。
-系统插件也作为一个 sub-repo 存在于 FastGPT/packages/plugin 下。
+原先 GPTW Agent 的各项功能均在 GPTW Agent 的 Next.js 的框架内，通过 Monorepo 的方式进行组织。
+系统插件也作为一个 sub-repo 存在于 GPTW Agent/packages/plugin 下。
 
 然而随着用户的增加，这种组织模式的弊端凸显：
 
-1. 虽然 FastGPT 以每周一次的频率进行发版，但同样，系统插件必须伴随 FastGPT 的发版而发版，极大限制了系统插件的迭代速率。
-2. 如果社区希望为 FastGPT 提供插件，则需要将 FastGPT 整个应用运行起来，并且直接向主仓库发起 PR。
-3. 如果社区希望使用自定义的插件，则需要维护一个 FastGPT 的 fork 版本，并且手动维护更新和代码的合并，增加了开发的难度。
+1. 虽然 GPTW Agent 以每周一次的频率进行发版，但同样，系统插件必须伴随 GPTW Agent 的发版而发版，极大限制了系统插件的迭代速率。
+2. 如果社区希望为 GPTW Agent 提供插件，则需要将 GPTW Agent 整个应用运行起来，并且直接向主仓库发起 PR。
+3. 如果社区希望使用自定义的插件，则需要维护一个 GPTW Agent 的 fork 版本，并且手动维护更新和代码的合并，增加了开发的难度。
 4. 由于 Next.js/webpack 的限制，无法在运行时挂载新的插件，实现热插拔。
 
 ## 设计方案
 
 因而，我们决定将系统插件拆分出来，到一个独立的 repo 中。
 
-[FastGPT-plugin](https://github.com/labring/fastgpt-plugin)
+[GPTW Agent-plugin](https://gptw.top)
 
 拆分出来，主要有如下的目的：
 1. 解耦合，模块化：不只是 系统工具可以作为热加载的模块，也可以是其他的插件，例如知识库的插件，RAG 等等。
-2. FastGPT-plugin 可以快速迭代，版本不依赖于 FastGPT：FastGPT-plugin 可以更高频率的发版，支持热插拔可以在不发版的情况下更新插件。
-3. 降低开发复杂度（不需要运行 FastGPT 环境）：贡献插件时只需要独立运行 FastGPT-plugin 中提供的调试套件即可。
+2. GPTW Agent-plugin 可以快速迭代，版本不依赖于 GPTW Agent：GPTW Agent-plugin 可以更高频率的发版，支持热插拔可以在不发版的情况下更新插件。
+3. 降低开发复杂度（不需要运行 GPTW Agent 环境）：贡献插件时只需要独立运行 GPTW Agent-plugin 中提供的调试套件即可。
 4. 插件市场：后续可以实现插件市场，用户可以通过插件市场发布、获取自己需要的插件。
 
 ## 技术选型
 
 
-1. 使用 ts-rest 作为 RPC 框架进行交互，提供 sdk 供 FastGPT 主项目调用
+1. 使用 ts-rest 作为 RPC 框架进行交互，提供 sdk 供 GPTW Agent 主项目调用
 2. 使用 zod 进行类型验证
 3. 用 bun 进行编译，每个工具编译为单一的 `.pkg` 文件，支持热插拔。
 
 ## 项目结构
 
 - **modules**
-	- **tool** FastGPT 系统工具
+	- **tool** GPTW Agent 系统工具
 		- **api** 接口实现逻辑
 		- **packages** 系统工具目录（每一个都是一个 package）
 			- getTime
@@ -71,7 +71,7 @@ zod 可以实现在运行时的类型校验，也可以提供更高级的功能�
 
 ### 使用 worker 实现插件的并行运行以及环境隔离
 
-为了保证插件之间不会相互干扰，同时提高并发处理能力，FastGPT-plugin 采用 Worker 线程来实现插件的执行。每个工具在被调用时都会在独立的 Worker 中运行，
+为了保证插件之间不会相互干扰，同时提高并发处理能力，GPTW Agent-plugin 采用 Worker 线程来实现插件的执行。每个工具在被调用时都会在独立的 Worker 中运行，
 这带来几个重要的优势：
 
 1. 环境隔离：每个插件都是一个独立的 Worker 进程，插件之间不会影响。

@@ -11,7 +11,6 @@ import {
   Td,
   Tbody,
   useDisclosure,
-  Link,
   HStack
 } from '@chakra-ui/react';
 import MyIcon from '@fastgpt/web/components/common/Icon';
@@ -28,7 +27,6 @@ import dynamic from 'next/dynamic';
 import MyMenu from '@fastgpt/web/components/common/MyMenu';
 import EmptyTip from '@fastgpt/web/components/common/EmptyTip';
 import { useRequest } from '@fastgpt/web/hooks/useRequest';
-import { getDocPath } from '@/web/common/system/doc';
 
 const OffiAccountEditModal = dynamic(() => import('./OffiAccountEditModal'));
 const ShowShareLinkModal = dynamic(() => import('../components/showShareLinkModal'));
@@ -72,21 +70,6 @@ const OffiAccount = ({ appId }: { appId: string }) => {
           <Box fontWeight={'bold'} fontSize={['md', 'lg']}>
             {t('publish:official_account.name')}
           </Box>
-
-          {feConfigs?.docUrl && (
-            <Link
-              href={getDocPath('/guide/build/publish/official_account')}
-              target={'_blank'}
-              ml={2}
-              color={'primary.500'}
-              fontSize={'sm'}
-            >
-              <Flex alignItems={'center'}>
-                <MyIcon name="book" mr="1" w={'1rem'} />
-                {t('common:read_doc')}
-              </Flex>
-            </Link>
-          )}
         </HStack>
         <Button
           variant={'primary'}

@@ -17,19 +17,11 @@ import { DatasetTypeEnum, DatasetTypeMap } from '@fastgpt/global/core/dataset/co
 import QuestionTip from '@fastgpt/web/components/common/MyTooltip/QuestionTip';
 import FormLabel from '@fastgpt/web/components/common/MyBox/FormLabel';
 import MyIcon from '@fastgpt/web/components/common/Icon';
-import { DatasetRoleList } from '@fastgpt/global/support/permission/dataset/constant';
-import MemberManager from '../../MemberManager';
-import {
-  getCollaboratorList,
-  postUpdateDatasetCollaborators,
-  deleteDatasetCollaborators
-} from '@/web/core/dataset/api/collaborator';
 import DatasetTypeTag from '@/components/core/dataset/DatasetTypeTag';
 import dynamic from 'next/dynamic';
 import type { EditAPIDatasetInfoFormType } from './components/EditApiServiceModal';
 import { type EditResourceInfoFormType } from '@/components/common/Modal/EditResourceModal';
 import MyTooltip from '@fastgpt/web/components/common/MyTooltip';
-import { ReadRoleVal } from '@fastgpt/global/support/permission/constant';
 
 const EditResourceModal = dynamic(() => import('@/components/common/Modal/EditResourceModal'));
 const EditAPIDatasetInfoModal = dynamic(() => import('./components/EditApiServiceModal'));
@@ -407,44 +399,6 @@ const Info = ({ datasetId }: { datasetId: string }) => {
         )}
       </Box>
 
-      {datasetDetail.permission.hasManagePer && (
-        <>
-          <MyDivider my={4} h={'2px'} maxW={'500px'} />
-          <Box>
-            <MemberManager
-              managePer={{
-                defaultRole: ReadRoleVal,
-                permission: datasetDetail.permission,
-                onGetCollaboratorList: () => getCollaboratorList(datasetId),
-                roleList: DatasetRoleList,
-                onUpdateCollaborators: (body) =>
-                  postUpdateDatasetCollaborators({
-                    ...body,
-                    datasetId
-                  }),
-                onDelOneCollaborator: async ({ groupId, tmbId, orgId }) => {
-                  if (tmbId) {
-                    return deleteDatasetCollaborators({
-                      datasetId,
-                      tmbId
-                    });
-                  } else if (groupId) {
-                    return deleteDatasetCollaborators({
-                      datasetId,
-                      groupId
-                    });
-                  } else if (orgId) {
-                    return deleteDatasetCollaborators({
-                      datasetId,
-                      orgId
-                    });
-                  }
-                }
-              }}
-            />
-          </Box>
-        </>
-      )}
 
       <ConfirmRebuildModal countDown={10} />
       <ConfirmSyncScheduleModal />

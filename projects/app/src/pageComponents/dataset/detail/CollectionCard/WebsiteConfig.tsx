@@ -3,12 +3,10 @@ import { useTranslation } from 'next-i18next';
 import { strIsLink } from '@fastgpt/global/common/string/tools';
 import { useToast } from '@fastgpt/web/hooks/useToast';
 import { useForm } from 'react-hook-form';
-import { getDocPath } from '@/web/common/system/doc';
-import { useSystemStore } from '@/web/common/system/useSystemStore';
 import { useMyStep } from '@fastgpt/web/hooks/useStep';
 import MyDivider from '@fastgpt/web/components/common/MyDivider';
 import React from 'react';
-import { Box, Link, Input, Button, ModalBody, ModalFooter, Stack } from '@chakra-ui/react';
+import { Box, Input, Button, ModalBody, ModalFooter, Stack } from '@chakra-ui/react';
 import { Prompt_AgentQA } from '@fastgpt/global/core/ai/prompt/agent';
 import { useContextSelector } from 'use-context-selector';
 import { DatasetPageContext } from '@/web/core/dataset/context/datasetPageContext';
@@ -34,7 +32,6 @@ const WebsiteConfigModal = ({
   onSuccess: (data: WebsiteConfigFormType) => void;
 }) => {
   const { t } = useTranslation();
-  const { feConfigs } = useSystemStore();
   const { toast } = useToast();
   const steps = [
     {
@@ -123,16 +120,6 @@ const WebsiteConfigModal = ({
               borderRadius={'8px'}
             >
               {t('common:core.dataset.website.Config Description')}
-              {feConfigs?.docUrl && (
-                <Link
-                  href={getDocPath('/guide/dataset/websync')}
-                  target="_blank"
-                  textDecoration={'underline'}
-                  color={'blue.700'}
-                >
-                  {t('common:read_course')}
-                </Link>
-              )}
             </Box>
             <Box mt={2}>
               <Box>{t('common:core.dataset.website.Base Url')}</Box>

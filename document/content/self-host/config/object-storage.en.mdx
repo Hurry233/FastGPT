@@ -8,7 +8,7 @@ import FastGPTLink from '@/components/docs/linkFastGPT';
 
 ## Object Storage Configuration
 
-This guide covers environment variable configuration for object storage providers supported by FastGPT, including self-hosted MinIO, AWS S3, Alibaba Cloud OSS, and Tencent Cloud COS.
+This guide covers environment variable configuration for object storage providers supported by GPTW Agent, including self-hosted MinIO, AWS S3, Alibaba Cloud OSS, and Tencent Cloud COS.
 
 ### Common Required Environment Variables
 
@@ -19,12 +19,12 @@ This guide covers environment variable configuration for object storage provider
 - `STORAGE_REGION` Region where the object storage service is located, e.g., `us-east-1`. Refer to your provider's region list. For self-hosted MinIO, any value works.
 - `STORAGE_ACCESS_KEY_ID` Access Key ID for the service credentials
 - `STORAGE_SECRET_ACCESS_KEY` Secret Access Key for the service credentials
-- `STORAGE_PUBLIC_BUCKET` FastGPT public resource bucket name
-- `STORAGE_PRIVATE_BUCKET` FastGPT private resource bucket name
+- `STORAGE_PUBLIC_BUCKET` GPTW Agent public resource bucket name
+- `STORAGE_PRIVATE_BUCKET` GPTW Agent private resource bucket name
 
 ### Transfer Behavior
 
-- Uploads always go through the FastGPT backend proxy.
+- Uploads always go through the GPTW Agent backend proxy.
 - Downloads support both `proxy` and `presigned` modes.
 - The default download mode is inferred from `STORAGE_EXTERNAL_ENDPOINT`:
   - not configured: default to `proxy`
@@ -37,7 +37,7 @@ This guide covers environment variable configuration for object storage provider
 
 - `STORAGE_S3_ENDPOINT` Internal connection address. Can be a container ID, e.g., `http://fastgpt-minio:9000`
 - `STORAGE_EXTERNAL_ENDPOINT` An address accessible by both **server** and **client** to reach the bucket. Use a fixed host IP or domain name — don't use `127.0.0.1` or `localhost` (containers can't access loopback addresses). Once configured, the default download mode automatically becomes `presigned`.
-- `STORAGE_S3_CDN_ENDPOINT` [Optional] CDN endpoint for S3/MinIO presigned download and preview access. FastGPT rewrites generated file access URLs to this CDN endpoint only when the current download uses `presigned` mode. This variable does not change the default download mode. Uploads still go through the FastGPT backend proxy and do not use the CDN.
+- `STORAGE_S3_CDN_ENDPOINT` [Optional] CDN endpoint for S3/MinIO presigned download and preview access. GPTW Agent rewrites generated file access URLs to this CDN endpoint only when the current download uses `presigned` mode. This variable does not change the default download mode. Uploads still go through the GPTW Agent backend proxy and do not use the CDN.
 - `STORAGE_S3_FORCE_PATH_STYLE` [Optional] Virtual-hosted-style or path-style routing. If vendor is `minio`, this is fixed to `true`.
 - `STORAGE_S3_MAX_RETRIES` [Optional] Maximum request retry attempts. Default: 3
 

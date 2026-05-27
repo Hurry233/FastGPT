@@ -1,11 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { Box, Grid, IconButton, HStack, Flex, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { delAppById, putAppById, resumeInheritPer, changeOwner } from '@/web/core/app/api';
+import { delAppById, putAppById } from '@/web/core/app/api';
 import { useConfirm } from '@fastgpt/web/hooks/useConfirm';
 import MyIcon from '@fastgpt/web/components/common/Icon';
 import Avatar from '@fastgpt/web/components/common/Avatar';
-import PermissionIconText from '@/components/support/permission/IconText';
 import { useTranslation } from 'next-i18next';
 import MyBox from '@fastgpt/web/components/common/MyBox';
 import { useRequest } from '@fastgpt/web/hooks/useRequest';
@@ -21,22 +20,14 @@ import { useFolderDrag } from '@/components/common/folder/useFolderDrag';
 import dynamic from 'next/dynamic';
 import type { EditResourceInfoFormType } from '@/components/common/Modal/EditResourceModal';
 import MyMenu, { type MenuItemType } from '@fastgpt/web/components/common/MyMenu';
-import { AppRoleList } from '@fastgpt/global/support/permission/app/constant';
-import {
-  deleteAppCollaborators,
-  getCollaboratorList,
-  postUpdateAppCollaborators
-} from '@/web/core/app/api/collaborator';
 import MyTooltip from '@fastgpt/web/components/common/MyTooltip';
 import AppTypeTag from './TypeTag';
 import { postCopyApp } from '@/web/core/app/api/app';
 import { formatTimeToChatTime } from '@fastgpt/global/common/string/time';
 import { useSystem } from '@fastgpt/web/hooks/useSystem';
 import { useChatStore } from '@/web/core/chat/context/useChatStore';
-import { type RequireOnlyOne } from '@fastgpt/global/common/type/utils';
 import UserBox from '@fastgpt/web/components/common/UserBox';
 import { ChatSidebarPaneEnum } from '@/pageComponents/chat/constants';
-import { ReadRoleVal } from '@fastgpt/global/support/permission/constant';
 import { useToast } from '@fastgpt/web/hooks/useToast';
 import { getWebReqUrl } from '@fastgpt/web/common/system/utils';
 import { createAppTypeMap } from '@/pageComponents/app/constants';
@@ -45,7 +36,6 @@ import EmptyTip from '@fastgpt/web/components/common/EmptyTip';
 import ListCreateCard from '@/pageComponents/dashboard/ListCreateCard';
 
 const EditResourceModal = dynamic(() => import('@/components/common/Modal/EditResourceModal'));
-const ConfigPerModal = dynamic(() => import('@/components/support/permission/ConfigPerModal'));
 
 const List = () => {
   const { t } = useTranslation();
@@ -78,15 +68,6 @@ const List = () => {
     : userInfo?.team.permission.hasAppCreatePer;
 
   const [editedApp, setEditedApp] = useState<EditResourceInfoFormType>();
-  const [editPerAppId, setEditPerAppId] = useState<string>();
-
-  const editPerApp = useMemo(
-    () =>
-      editPerAppId !== undefined
-        ? myApps.find((item) => String(item._id) === String(editPerAppId))
-        : undefined,
-    [editPerAppId, myApps]
-  );
 
   const parentApp = useMemo(() => myApps.find((item) => item._id === parentId), [parentId, myApps]);
 
@@ -140,18 +121,6 @@ const List = () => {
     successToast: t('app:create_copy_success')
   });
 
-  const { runAsync: onResumeInheritPermission } = useRequest(
-    () => {
-      return resumeInheritPer(editPerApp!._id);
-    },
-    {
-      manual: true,
-      errorToast: t('common:permission.Resume InheritPermission Failed'),
-      onSuccess() {
-        loadMyApps();
-      }
-    }
-  );
   if (myApps.length === 0 && isFetchingApps) return null;
 
   return (
@@ -274,12 +243,6 @@ const List = () => {
                         avatarSize="1rem"
                         spacing={0.5}
                       />
-                      <PermissionIconText
-                        private={app.private}
-                        color={'myGray.500'}
-                        iconColor={'myGray.400'}
-                        w={'0.875rem'}
-                      />
                     </HStack>
                     <HStack>
                       {isPc && (
@@ -381,16 +344,6 @@ const List = () => {
                                                 onClick: () => setMoveAppId(app._id)
                                               }
                                             ]),
-                                        ...(app.permission.hasManagePer
-                                          ? [
-                                              {
-                                                icon: 'key',
-                                                type: 'grayBg' as MenuItemType,
-                                                label: t('common:permission.Permission'),
-                                                onClick: () => setEditPerAppId(app._id)
-                                              }
-                                            ]
-                                          : [])
                                       ]
                                     }
                                   ]
@@ -464,47 +417,6 @@ const List = () => {
             setEditedApp(undefined);
           }}
           onEdit={({ id, ...data }) => onUpdateApp(id, data)}
-        />
-      )}
-      {!!editPerApp && (
-        <ConfigPerModal
-          {...(editPerApp.permission.isOwner && {
-            onChangeOwner: (tmbId: string) =>
-              changeOwner({
-                appId: editPerApp._id,
-                ownerId: tmbId
-              }).then(() => loadMyApps())
-          })}
-          refetchResource={loadMyApps}
-          hasParent={Boolean(parentId)}
-          resumeInheritPermission={onResumeInheritPermission}
-          isInheritPermission={editPerApp.inheritPermission}
-          avatar={editPerApp.avatar}
-          name={editPerApp.name}
-          managePer={{
-            defaultRole: ReadRoleVal,
-            permission: editPerApp.permission,
-            onGetCollaboratorList: () => getCollaboratorList(editPerApp._id),
-            roleList: AppRoleList,
-            onUpdateCollaborators: (props) =>
-              postUpdateAppCollaborators({
-                ...props,
-                appId: editPerApp._id
-              }),
-            onDelOneCollaborator: async (
-              props: RequireOnlyOne<{
-                tmbId?: string;
-                groupId?: string;
-                orgId?: string;
-              }>
-            ) =>
-              deleteAppCollaborators({
-                ...props,
-                appId: editPerApp._id
-              }),
-            refreshDeps: [editPerApp.inheritPermission]
-          }}
-          onClose={() => setEditPerAppId(undefined)}
         />
       )}
       <MoveConfirmModal />

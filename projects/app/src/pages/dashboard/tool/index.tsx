@@ -12,13 +12,7 @@ import AppListContextProvider, { AppListContext } from '@/pageComponents/dashboa
 import FolderPath from '@/components/common/folder/Path';
 import { useRouter } from 'next/router';
 import FolderSlideCard from '@/components/common/folder/SlideCard';
-import { delAppById, resumeInheritPer } from '@/web/core/app/api';
-import { AppRoleList } from '@fastgpt/global/support/permission/app/constant';
-import {
-  deleteAppCollaborators,
-  getCollaboratorList,
-  postUpdateAppCollaborators
-} from '@/web/core/app/api/collaborator';
+import { delAppById } from '@/web/core/app/api';
 import { AppTypeEnum } from '@fastgpt/global/core/app/constants';
 import MyBox from '@fastgpt/web/components/common/MyBox';
 import { useSystem } from '@fastgpt/web/hooks/useSystem';
@@ -30,7 +24,6 @@ import { useMount } from 'ahooks';
 import SearchInput from '@fastgpt/web/components/common/Input/SearchInput';
 import { useUserStore } from '@/web/support/user/useUserStore';
 import MyIcon from '@fastgpt/web/components/common/Icon';
-import { ReadRoleVal } from '@fastgpt/global/support/permission/constant';
 
 const EditFolderModal = dynamic(
   () => import('@fastgpt/web/components/common/MyModal/EditFolderModal')
@@ -188,10 +181,7 @@ const MyTools = ({ MenuIcon }: { MenuIcon: JSX.Element }) => {
           <Box pt={[4, 6]} pr={[4, 6]} h={'100%'} pb={4} overflow={'auto'}>
             <FolderSlideCard
               refetchResource={() => Promise.all([refetchFolderDetail(), loadMyApps()])}
-              resumeInheritPermission={() => resumeInheritPer(folderDetail._id)}
-              isInheritPermission={folderDetail.inheritPermission}
               hasParent={!!folderDetail.parentId}
-              refreshDeps={[folderDetail._id, folderDetail.inheritPermission]}
               name={folderDetail.name}
               intro={folderDetail.intro}
               onEdit={() => {
@@ -204,23 +194,6 @@ const MyTools = ({ MenuIcon }: { MenuIcon: JSX.Element }) => {
               onMove={() => setMoveAppId(folderDetail._id)}
               deleteTip={t('app:confirm_delete_folder_tip')}
               onDelete={() => onDeleFolder(folderDetail._id)}
-              managePer={{
-                defaultRole: ReadRoleVal,
-                permission: folderDetail.permission,
-                onGetCollaboratorList: () => getCollaboratorList(folderDetail._id),
-                roleList: AppRoleList,
-                onUpdateCollaborators: (props) =>
-                  postUpdateAppCollaborators({
-                    ...props,
-                    appId: folderDetail._id
-                  }),
-                refreshDeps: [folderDetail._id, folderDetail.inheritPermission],
-                onDelOneCollaborator: async (params) =>
-                  deleteAppCollaborators({
-                    ...params,
-                    appId: folderDetail._id
-                  })
-              }}
             />
           </Box>
         )}

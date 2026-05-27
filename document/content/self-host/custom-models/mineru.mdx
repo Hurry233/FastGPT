@@ -5,7 +5,7 @@ description: 使用 MinerU 解析 PDF 文档，可实现图片提取、布局识
 
 ## 背景
 
-PDF 是一个相对复杂的文件格式，在 FastGPT 内置的 pdf 解析器中，依赖的是 pdfjs 库解析，该库基于逻辑解析，无法有效的理解复杂的 pdf 文件。所以我们在解析 pdf 时候，如果遇到图片、表格、公式等非简单文本内容，会发现解析效果不佳。
+PDF 是一个相对复杂的文件格式，在 GPTW Agent 内置的 pdf 解析器中，依赖的是 pdfjs 库解析，该库基于逻辑解析，无法有效的理解复杂的 pdf 文件。所以我们在解析 pdf 时候，如果遇到图片、表格、公式等非简单文本内容，会发现解析效果不佳。
 
 市面上目前有多种解析 PDF 的方法，比如使用 [MinerU](https://github.com/opendatalab/MinerU)，该项目使用了 YOLO、PaddleOCR以及表格识别等模型，基于视觉解析，可以有效提取图片、表格、公式等复杂内容。
 
@@ -27,7 +27,7 @@ docker run --gpus all -itd -p 7231:8001 --name mode_pdf_minerU crpi-h3snc261q1do
 ```
 这里的mineru接入的是pipeline模式，并且在docker内部进行了并行化，会根据gpu数量创建多个进程来同时处理上传的pdf数据
 
-### 2. 添加 FastGPT 文件配置
+### 2. 添加 GPTW Agent 文件配置
 
 ```json
 {

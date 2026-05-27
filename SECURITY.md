@@ -2,10 +2,10 @@
 
 ## Vulnerability Reporting
 
-If you discover a security vulnerability in FastGPT, please follow the steps below to report it:
+If you discover a security vulnerability in GPTW Agent, please follow the steps below to report it:
 
 1. **How to Report**
-   You can submit a report at https://github.com/labring/FastGPT/security/advisories.
+   You can submit a report at https://gptw.top
 
 2. **Response Time**
    - We will acknowledge receipt of your report within 48 hours.
@@ -22,4 +22,4 @@ If you discover a security vulnerability in FastGPT, please follow the steps bel
    - We welcome responsible vulnerability disclosure.
    - Significant contributors will be acknowledged in the project's credits.
 
-Thank you for contributing to the security of FastGPT!
+Thank you for contributing to the security of GPTW Agent!

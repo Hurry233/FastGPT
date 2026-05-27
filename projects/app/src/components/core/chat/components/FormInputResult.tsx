@@ -17,7 +17,7 @@ export type FormInputResultFileItem = {
 /**
  * 从文件下载 URL 中解析展示用文件名。
  *
- * FastGPT 签名下载链接通常把真实文件名放在 `filename` query 中（见
+ * GPTW Agent 签名下载链接通常把真实文件名放在 `filename` query 中（见
  * `/api/system/file/download/token?filename=...`），path 段往往只是 token，不可读。
  * 解析优先级：query `filename` > URL path 最后一段 > 原 URL 字符串。
  *

@@ -9,7 +9,6 @@ import Avatar from '@fastgpt/web/components/common/Avatar';
 import MyIcon from '@fastgpt/web/components/common/Icon';
 import { useTranslation } from 'next-i18next';
 import { useSystemStore } from '@/web/common/system/useSystemStore';
-import MyTooltip from '@fastgpt/web/components/common/MyTooltip';
 import { getWebReqUrl } from '@fastgpt/web/common/system/utils';
 import MyImage from '@fastgpt/web/components/common/Image/MyImage';
 import { LOGO_ICON } from '@fastgpt/global/common/system/constants';
@@ -41,7 +40,7 @@ const Navbar = ({ unread }: { unread: number }) => {
   const { t } = useTranslation();
   const router = useRouter();
   const { userInfo } = useUserStore();
-  const { gitStar, feConfigs } = useSystemStore();
+  const { feConfigs } = useSystemStore();
   const { lastChatAppId, lastPane } = useChatStore();
 
   const navbarList = useMemo(
@@ -90,7 +89,6 @@ const Navbar = ({ unread }: { unread: number }) => {
           '/account/customDomain',
           '/account/team',
           '/account/usage',
-          '/account/thirdParty',
           '/account/apikey',
           '/account/setting',
           '/account/inform',
@@ -217,27 +215,10 @@ const Navbar = ({ unread }: { unread: number }) => {
       {feConfigs?.navbarItems
         ?.filter((item) => item.isActive)
         .map((item) => (
-          <MyTooltip key={item.id} label={item.name} placement={'right-end'}>
-            <Link
-              as={NextLink}
-              href={item.url}
-              target={'_blank'}
-              {...itemStyles}
-              {...hoverStyle}
-              mt={0}
-              color={'myGray.400'}
-              height={'48px'}
-            >
-              <Avatar src={item.avatar} borderRadius={'md'} width={'26px'} height={'26px'} />
-            </Link>
-          </MyTooltip>
-        ))}
-
-      {feConfigs?.show_git && (
-        <MyTooltip label={`Git Star: ${gitStar}`} placement={'right-end'}>
           <Link
+            key={item.id}
             as={NextLink}
-            href="https://github.com/labring/FastGPT"
+            href={item.url}
             target={'_blank'}
             {...itemStyles}
             {...hoverStyle}
@@ -245,10 +226,9 @@ const Navbar = ({ unread }: { unread: number }) => {
             color={'myGray.400'}
             height={'48px'}
           >
-            <MyIcon name={'common/gitInlight'} width={'26px'} height={'26px'} />
+            <Avatar src={item.avatar} borderRadius={'md'} width={'26px'} height={'26px'} />
           </Link>
-        </MyTooltip>
-      )}
+        ))}
 
       <Box flex={'0 0 auto'} mb={4} cursor={'pointer'} onClick={() => router.push('/account/info')}>
         <Avatar w={9} src={userInfo?.avatar} borderRadius={'50%'} />

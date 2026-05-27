@@ -5,7 +5,7 @@ export const enhancedTokenizer = () => {
   const wholeWords = [
     // 产品相关
     'fastgpt',
-    'FastGPT',
+    'GPTW Agent',
     '快速GPT',
     'Saas',
     'SaaS',

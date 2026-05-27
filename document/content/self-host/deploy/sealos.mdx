@@ -1,6 +1,6 @@
 ---
 title: Sealos 部署
-description: 使用 Sealos 一键部署 FastGPT
+description: 使用 Sealos 一键部署 GPTW Agent
 ---
 
 import { Alert } from '@/components/docs/Alert';
@@ -11,7 +11,7 @@ import { Alert } from '@/components/docs/Alert';
 
 ## 多模型支持
 
-FastGPT 使用了 one-api 项目来管理模型池，其可以兼容 OpenAI 、Azure 、国内主流模型和本地模型等。
+GPTW Agent 使用了 one-api 项目来管理模型池，其可以兼容 OpenAI 、Azure 、国内主流模型和本地模型等。
 
 可参考：[Sealos 快速部署 OneAPI](../config/model/intro.mdx)
 
@@ -89,7 +89,7 @@ Sealos 采用按量计费的方式，也就是申请了多少 cpu、内存、磁
 
 ### 简介
 
-FastGPT 商业版共包含了2个应用（fastgpt, fastgpt-plus）和2个数据库，使用多 Api Key 时候需要安装 OneAPI（一个应用和一个数据库），总计3个应用和3个数据库。
+GPTW Agent 商业版共包含了2个应用（fastgpt, fastgpt-plus）和2个数据库，使用多 Api Key 时候需要安装 OneAPI（一个应用和一个数据库），总计3个应用和3个数据库。
 
 ![](../../../public/imgs/onSealos1.png)
 
@@ -97,18 +97,18 @@ FastGPT 商业版共包含了2个应用（fastgpt, fastgpt-plus）和2个数据�
 
 ### 修改配置文件和环境变量
 
-在 Sealos 中，你可以打开`应用管理`（App Launchpad）看到部署的 FastGPT，可以打开`数据库`（Database）看到对应的数据库。
+在 Sealos 中，你可以打开`应用管理`（App Launchpad）看到部署的 GPTW Agent，可以打开`数据库`（Database）看到对应的数据库。
 
-在`应用管理`中，选中 FastGPT，点击变更，可以看到对应的环境变量和配置文件。
+在`应用管理`中，选中 GPTW Agent，点击变更，可以看到对应的环境变量和配置文件。
 
 ![](../../../public/imgs/fastgptonsealos1.png)
 
 <Alert icon="🤖" context="success">
-  在 Sealos 上，FastGPT 一共运行了 1 个服务和 2
+  在 Sealos 上，GPTW Agent 一共运行了 1 个服务和 2
   个数据库，如暂停和删除请注意数据库一同操作。（你可以白天启动，晚上暂停它们，省钱大法）
 </Alert>
 
-### 如何更新/升级 FastGPT
+### 如何更新/升级 GPTW Agent
 
 [升级脚本文档](../upgrading/upgrade-intruction.mdx)先看下文档，看下需要升级哪个版本。注意，不要跨版本升级！！！！！
 
@@ -127,7 +127,7 @@ FastGPT 商业版共包含了2个应用（fastgpt, fastgpt-plus）和2个数据�
 6. 点击变更/重启，会自动拉取最新镜像进行更新
 7. 执行对应版本的初始化脚本(如果有)
 
-### 如何获取 FastGPT 访问链接
+### 如何获取 GPTW Agent 访问链接
 
 打开对应的应用，点击外网访问地址。
 
@@ -152,7 +152,7 @@ FastGPT 商业版共包含了2个应用（fastgpt, fastgpt-plus）和2个数据�
 修改应用的环境变量，增加
 
 ```
-SYSTEM_NAME=FastGPT
+SYSTEM_NAME=GPTW Agent
 SYSTEM_DESCRIPTION=
 SYSTEM_FAVICON=/favicon.ico
 HOME_URL=/dashboard/agent

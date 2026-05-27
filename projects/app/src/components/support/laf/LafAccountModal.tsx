@@ -13,7 +13,6 @@ import { useUserStore } from '@/web/support/user/useUserStore';
 import type { LafAccountType } from '@fastgpt/global/support/user/team/type';
 import { postLafPat2Token, getLafApplications } from '@/web/support/laf/api';
 import { getErrText } from '@fastgpt/global/common/error/utils';
-import { getDocPath } from '@/web/common/system/doc';
 
 const LafAccountModal = ({
   defaultData = {
@@ -104,11 +103,6 @@ const LafAccountModal = ({
       <ModalBody>
         <Box fontSize={'sm'} color={'myGray.500'}>
           <Box>{t('common:support.user.Laf account intro')}</Box>
-          <Box textDecoration={'underline'}>
-            <Link href={getDocPath('/guide/build/workflow/nodes/laf')} isExternal>
-              {t('common:support.user.Laf account course')}
-            </Link>
-          </Box>
           <Box>
             <Link textDecoration={'underline'} href={`${feConfigs.lafEnv}/`} isExternal>
               {t('common:support.user.Go laf env', {

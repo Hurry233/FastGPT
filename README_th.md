@@ -1,8 +1,8 @@
 <div align="center">
 
-<a href="https://fastgpt.io/"><img src="/.github/imgs/logo.svg" width="120" height="120" alt="fastgpt logo"></a>
+<a href="https://gptw.top/"><img src="/.github/imgs/logo.svg" width="120" height="120" alt="fastgpt logo"></a>
 
-# FastGPT
+# GPTW Agent
 
 <p align="center">
   <a href="./README_en.md">English</a> |
@@ -13,18 +13,18 @@
   <a href="./README_ja.md">日本語</a>
 </p>
 
-FastGPT เป็นแพลตฟอร์มสำหรับสร้าง AI Agent ที่มีความสามารถพร้อมใช้งานสำหรับการประมวลผลข้อมูลและการเรียกใช้โมเดล นอกจากนี้ยังสามารถจัดระเบียบ workflow ผ่านการแสดงภาพ Flow เพื่อให้บรรลุสถานการณ์การใช้งานที่ซับซ้อนได้!
+GPTW Agent เป็นแพลตฟอร์มสำหรับสร้าง AI Agent ที่มีความสามารถพร้อมใช้งานสำหรับการประมวลผลข้อมูลและการเรียกใช้โมเดล นอกจากนี้ยังสามารถจัดระเบียบ workflow ผ่านการแสดงภาพ Flow เพื่อให้บรรลุสถานการณ์การใช้งานที่ซับซ้อนได้!
 
 </div>
 
 <p align="center">
-  <a href="https://fastgpt.io/">
+  <a href="https://gptw.top/">
     <img height="21" src="https://img.shields.io/badge/ใช้งานออนไลน์-d4eaf7?style=flat-square&logo=spoj&logoColor=7d09f1" alt="cloud">
   </a>
-  <a href="https://doc.fastgpt.io/guide/getting-started">
+  <a href="https://gptw.top/guide/getting-started">
     <img height="21" src="https://img.shields.io/badge/เอกสาร-7d09f1?style=flat-square" alt="document">
   </a>
-  <a href="https://doc.fastgpt.io/self-host/dev">
+  <a href="https://gptw.top/self-host/dev">
     <img height="21" src="https://img.shields.io/badge/พัฒนาในเครื่อง-%23d4eaf7?style=flat-square&logo=xcode&logoColor=7d09f1" alt="development">
   </a>
   <a href="#-โปรเจกต์และลิงก์ของเรา">
@@ -32,33 +32,33 @@ FastGPT เป็นแพลตฟอร์มสำหรับสร้าง
   </a>
 </p>
 
-https://github.com/labring/FastGPT/assets/15308462/7d3a38df-eb0e-4388-9250-2409bd33f6d4
+https://gptw.top
 
 ## เริ่มต้นอย่างรวดเร็ว
 
-คุณสามารถเริ่มต้น FastGPT ได้อย่างรวดเร็วโดยใช้ Docker รันคำสั่งต่อไปนี้ในเทอร์มินัลและทำตามคำแนะนำเพื่อดึงการกำหนดค่า
+คุณสามารถเริ่มต้น GPTW Agent ได้อย่างรวดเร็วโดยใช้ Docker รันคำสั่งต่อไปนี้ในเทอร์มินัลและทำตามคำแนะนำเพื่อดึงการกำหนดค่า
 
 ```bash
 # รันคำสั่งเพื่อดึงไฟล์การกำหนดค่า
-bash <(curl -fsSL https://doc.fastgpt.cn/deploy/install.sh)
+bash <(curl -fsSL https://gptw.top/deploy/install.sh)
 # เริ่มบริการ
 docker compose up -d
 ```
 
-เมื่อเริ่มต้นสมบูรณ์แล้ว คุณสามารถเข้าถึง FastGPT ที่ `http://localhost:3000` บัญชีเริ่มต้นคือ `root` และรหัสผ่านคือ `1234`
+เมื่อเริ่มต้นสมบูรณ์แล้ว คุณสามารถเข้าถึง GPTW Agent ที่ `http://localhost:3000` บัญชีเริ่มต้นคือ `root` และรหัสผ่านคือ `1234`
 
-หากคุณพบปัญหา คุณสามารถ [ดูบทแนะนำการติดตั้ง Docker ฉบับสมบูรณ์](https://doc.fastgpt.io/self-host/deploy/docker)
+หากคุณพบปัญหา คุณสามารถ [ดูบทแนะนำการติดตั้ง Docker ฉบับสมบูรณ์](https://gptw.top/self-host/deploy/docker)
 
 ## 🛸 วิธีการใช้งาน
 
 - **เวอร์ชันคลาวด์**  
-  หากคุณไม่ต้องการติดตั้งแบบส่วนตัว คุณสามารถใช้บริการคลาวด์ของเราได้โดยตรงที่: [fastgpt.io](https://fastgpt.io/)
+  หากคุณไม่ต้องการติดตั้งแบบส่วนตัว คุณสามารถใช้บริการคลาวด์ของเราได้โดยตรงที่: [gptw.top](https://gptw.top/)
 
 - **เวอร์ชันโฮสต์ตัวเองของชุมชน**  
-  คุณสามารถติดตั้งได้อย่างรวดเร็วโดยใช้ [Docker](https://doc.fastgpt.io/self-host/deploy/docker) หรือใช้ [Sealos Cloud](https://doc.fastgpt.io/self-host/deploy/sealos) เพื่อติดตั้ง FastGPT ด้วยคลิกเดียว
+  คุณสามารถติดตั้งได้อย่างรวดเร็วโดยใช้ [Docker](https://gptw.top/self-host/deploy/docker) หรือใช้ [Sealos Cloud](https://gptw.top/self-host/deploy/sealos) เพื่อติดตั้ง GPTW Agent ด้วยคลิกเดียว
 
 - **เวอร์ชันพาณิชย์**  
-  หากคุณต้องการคุณสมบัติที่สมบูรณ์มากขึ้นหรือการสนับสนุนบริการเชิงลึก คุณสามารถเลือก [เวอร์ชันพาณิชย์](https://doc.fastgpt.io/guide/version/commercial) นอกจากการให้ซอฟต์แวร์ที่สมบูรณ์ เรายังให้คำแนะนำการนำไปใช้สำหรับสถานการณ์เฉพาะ คุณสามารถส่ง[ปรึกษาธุรกิจ](https://fael3z0zfze.feishu.cn/share/base/form/shrcnjJWtKqjOI9NbQTzhNyzljc)
+  หากคุณต้องการคุณสมบัติที่สมบูรณ์มากขึ้นหรือการสนับสนุนบริการเชิงลึก คุณสามารถเลือก [เวอร์ชันพาณิชย์](https://gptw.top/guide/version/commercial) นอกจากการให้ซอฟต์แวร์ที่สมบูรณ์ เรายังให้คำแนะนำการนำไปใช้สำหรับสถานการณ์เฉพาะ คุณสามารถส่ง[ปรึกษาธุรกิจ](https://fael3z0zfze.feishu.cn/share/base/form/shrcnjJWtKqjOI9NbQTzhNyzljc)
 
 ## 💡 คุณสมบัติหลัก
 
@@ -115,9 +115,9 @@ docker compose up -d
 
 ## 💪 โปรเจกต์และลิงก์ของเรา
 
-- [เริ่มต้นพัฒนาในเครื่อง](https://doc.fastgpt.io/self-host/dev/)
-- [เอกสาร OpenAPI](https://doc.fastgpt.io/openapi/intro)
-- [FastGPT-plugin](https://github.com/labring/fastgpt-plugin)
+- [เริ่มต้นพัฒนาในเครื่อง](https://gptw.top/self-host/dev/)
+- [เอกสาร OpenAPI](https://gptw.top/openapi/intro)
+- [GPTW Agent-plugin](https://github.com/labring/fastgpt-plugin)
 - [AI Proxy: บริการ Load Balancing การรวมโมเดล](https://github.com/labring/aiproxy)
 - [Laf: เข้าถึงแอปพลิเคชันของบุคคลที่สามใน 3 นาที](https://github.com/labring/laf)
 - [Sealos: การติดตั้งแอปพลิเคชันคลัสเตอร์อย่างรวดเร็ว](https://github.com/labring/sealos)
@@ -148,13 +148,13 @@ docker compose up -d
 
 ## 🤝 ผู้มีส่วนร่วม
 
-เรายินดีต้อนรับการมีส่วนร่วมในรูปแบบต่างๆ หากคุณสนใจการมีส่วนร่วมในโค้ด ดู [Issues บน GitHub](https://github.com/labring/FastGPT/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) ของเราและแสดงความคิดที่ยอดเยี่ยมของคุณ!
+เรายินดีต้อนรับการมีส่วนร่วมในรูปแบบต่างๆ หากคุณสนใจการมีส่วนร่วมในโค้ด ดู [Issues บน GitHub](https://gptw.top) ของเราและแสดงความคิดที่ยอดเยี่ยมของคุณ!
 
-<a href="https://github.com/labring/FastGPT/graphs/contributors" target="_blank">
+<a href="https://gptw.top" target="_blank">
   <table>
     <tr>
       <th colspan="2">
-        <br><img src="https://contrib.rocks/image?repo=labring/FastGPT"><br><br>
+        <br><img src="https://contrib.rocks/image?repo=labring/GPTW Agent"><br><br>
       </th>
     </tr>
     <tr>
@@ -184,11 +184,11 @@ docker compose up -d
 
 ## 🌟 Star History
 
-<a href="https://github.com/labring/FastGPT/stargazers" target="_blank" style="display: block" align="center">
+<a href="https://gptw.top" target="_blank" style="display: block" align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=labring/FastGPT&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=labring/FastGPT&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=labring/FastGPT&type=Date" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=labring/GPTW Agent&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=labring/GPTW Agent&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=labring/GPTW Agent&type=Date" />
   </picture>
 </a>
 
@@ -198,9 +198,9 @@ docker compose up -d
 
 ## ใบอนุญาต
 
-ที่เก็บนี้ปฏิบัติตาม [FastGPT Open Source License](./LICENSE)
+ที่เก็บนี้ปฏิบัติตาม [GPTW Agent Open Source License](./LICENSE)
 
 1. อนุญาตให้ใช้เชิงพาณิชย์เป็นบริการแบ็กเอนด์ แต่ไม่อนุญาตให้ให้บริการ SaaS
 2. บริการเชิงพาณิชย์ใดๆ ที่ไม่มีการอนุญาตเชิงพาณิชย์ต้องเก็บข้อมูลลิขสิทธิ์ที่เกี่ยวข้องไว้
-3. โปรดดู [FastGPT Open Source License](./LICENSE) สำหรับรายละเอียดฉบับเต็ม
-4. ติดต่อ: Dennis@sealos.io, [ดูราคาพาณิชย์](https://doc.fastgpt.io/guide/version/commercial)
+3. โปรดดู [GPTW Agent Open Source License](./LICENSE) สำหรับรายละเอียดฉบับเต็ม
+4. ติดต่อ: Dennis@sealos.io, [ดูราคาพาณิชย์](https://gptw.top/guide/version/commercial)

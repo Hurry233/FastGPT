@@ -6,9 +6,9 @@ import { AdminSupportPath } from './admin/support';
 export const adminOpenAPIDocument = createDocument({
   openapi: '3.1.0',
   info: {
-    title: 'FastGPT Admin API',
+    title: 'GPTW Agent Admin API',
     version: '0.1.0',
-    description: 'FastGPT Admin API 文档'
+    description: 'GPTW Agent Admin API 文档'
   },
   paths: {
     ...AdminCorePath,

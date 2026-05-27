@@ -1,6 +1,6 @@
 ---
 title: Deploy with Sealos
-description: One-click FastGPT deployment using Sealos
+description: One-click GPTW Agent deployment using Sealos
 ---
 
 import { Alert } from '@/components/docs/Alert';
@@ -11,7 +11,7 @@ import { Alert } from '@/components/docs/Alert';
 
 ## Multi-Model Support
 
-FastGPT uses the one-api project to manage model pools, supporting OpenAI, Azure, mainstream domestic models, and local models.
+GPTW Agent uses the one-api project to manage model pools, supporting OpenAI, Azure, mainstream domestic models, and local models.
 
 See: [Quick OneAPI Deployment on Sealos](../config/model/intro.en.mdx)
 
@@ -61,7 +61,7 @@ After clicking deploy, you'll be redirected to the app management page. Click th
 
 ![](../../../public/imgs/sealos-deploy1.jpg)
 
-After clicking details, you'll see the FastGPT deployment management page. Click the link in the external access address to open the FastGPT service.
+After clicking details, you'll see the GPTW Agent deployment management page. Click the link in the external access address to open the GPTW Agent service.
 
 To bind a custom domain or modify deployment parameters, click **Change** in the top right and follow Sealos' instructions.
 
@@ -89,7 +89,7 @@ Sealos uses pay-as-you-go billing based on allocated CPU, memory, and disk. For 
 
 ### Overview
 
-FastGPT Commercial Edition includes 2 apps (fastgpt, fastgpt-plus) and 2 databases. When using multiple API keys, install OneAPI (1 app and 1 database), totaling 3 apps and 3 databases.
+GPTW Agent Commercial Edition includes 2 apps (fastgpt, fastgpt-plus) and 2 databases. When using multiple API keys, install OneAPI (1 app and 1 database), totaling 3 apps and 3 databases.
 
 ![](../../../public/imgs/onSealos1.png)
 
@@ -97,17 +97,17 @@ Click details on the right to view each app's information.
 
 ### Modifying Config Files and Environment Variables
 
-In Sealos, open **App Launchpad** to see deployed FastGPT apps, and open **Database** to see corresponding databases.
+In Sealos, open **App Launchpad** to see deployed GPTW Agent apps, and open **Database** to see corresponding databases.
 
-In **App Launchpad**, select FastGPT, click **Change**, and you'll see environment variables and config files.
+In **App Launchpad**, select GPTW Agent, click **Change**, and you'll see environment variables and config files.
 
 ![](../../../public/imgs/fastgptonsealos1.png)
 
 <Alert icon="🤖" context="success">
-  On Sealos, FastGPT runs 1 service and 2 databases. When pausing or deleting, handle the databases together. (You can start them during the day and pause at night to save costs.)
+  On Sealos, GPTW Agent runs 1 service and 2 databases. When pausing or deleting, handle the databases together. (You can start them during the day and pause at night to save costs.)
 </Alert>
 
-### How to Update/Upgrade FastGPT
+### How to Update/Upgrade GPTW Agent
 
 [Upgrade script documentation](../upgrading/upgrade-intruction.en.mdx) — read the docs first to determine which version to upgrade to. Do not skip versions.
 
@@ -126,7 +126,7 @@ Upgrade steps:
 6. Click **Change/Restart** to automatically pull the latest image and update
 7. Run the initialization script for the corresponding version (if applicable)
 
-### How to Get the FastGPT Access Link
+### How to Get the GPTW Agent Access Link
 
 Open the corresponding app and click the external access address.
 
@@ -151,7 +151,7 @@ Open Sealos app management -> find the app -> **Change** -> scroll down to advan
 Add these environment variables to the app:
 
 ```
-SYSTEM_NAME=FastGPT
+SYSTEM_NAME=GPTW Agent
 SYSTEM_DESCRIPTION=
 SYSTEM_FAVICON=/favicon.ico
 HOME_URL=/dashboard/agent

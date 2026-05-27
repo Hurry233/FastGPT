@@ -229,7 +229,7 @@ const BatchUpdateDrawer: React.FC<BatchUpdateDrawerProps> = ({
                 {parseI18nString(parentTool?.description || '', i18n.language)}
               </Box>
               <Box fontSize={'12px'} color="myGray.500" mt={3}>
-                {`by ${parentTool?.author || 'FastGPT'}`}
+                {`by ${parentTool?.author || 'GPTW Agent'}`}
               </Box>
               <Flex mt={3} gap={2}>
                 <Button

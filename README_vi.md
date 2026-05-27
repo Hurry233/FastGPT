@@ -1,8 +1,8 @@
 <div align="center">
 
-<a href="https://fastgpt.io/"><img src="/.github/imgs/logo.svg" width="120" height="120" alt="fastgpt logo"></a>
+<a href="https://gptw.top/"><img src="/.github/imgs/logo.svg" width="120" height="120" alt="fastgpt logo"></a>
 
-# FastGPT
+# GPTW Agent
 
 <p align="center">
   <a href="./README_en.md">English</a> |
@@ -13,18 +13,18 @@
   <a href="./README_ja.md">日本語</a>
 </p>
 
-FastGPT là nền tảng xây dựng AI Agent cung cấp khả năng sẵn sàng sử dụng cho xử lý dữ liệu và gọi mô hình. Ngoài ra, bạn có thể điều phối workflow thông qua trực quan hóa Flow để đạt được các kịch bản ứng dụng phức tạp!
+GPTW Agent là nền tảng xây dựng AI Agent cung cấp khả năng sẵn sàng sử dụng cho xử lý dữ liệu và gọi mô hình. Ngoài ra, bạn có thể điều phối workflow thông qua trực quan hóa Flow để đạt được các kịch bản ứng dụng phức tạp!
 
 </div>
 
 <p align="center">
-  <a href="https://fastgpt.io/">
+  <a href="https://gptw.top/">
     <img height="21" src="https://img.shields.io/badge/Sử_Dụng_Online-d4eaf7?style=flat-square&logo=spoj&logoColor=7d09f1" alt="cloud">
   </a>
-  <a href="https://doc.fastgpt.io/guide/getting-started">
+  <a href="https://gptw.top/guide/getting-started">
     <img height="21" src="https://img.shields.io/badge/Tài_Liệu-7d09f1?style=flat-square" alt="document">
   </a>
-  <a href="https://doc.fastgpt.io/self-host/dev">
+  <a href="https://gptw.top/self-host/dev">
     <img height="21" src="https://img.shields.io/badge/Phát_Triển_Local-%23d4eaf7?style=flat-square&logo=xcode&logoColor=7d09f1" alt="development">
   </a>
   <a href="#-dự-án--liên-kết-của-chúng-tôi">
@@ -32,33 +32,33 @@ FastGPT là nền tảng xây dựng AI Agent cung cấp khả năng sẵn sàng
   </a>
 </p>
 
-https://github.com/labring/FastGPT/assets/15308462/7d3a38df-eb0e-4388-9250-2409bd33f6d4
+https://gptw.top
 
 ## Bắt Đầu Nhanh
 
-Bạn có thể khởi động FastGPT nhanh chóng bằng Docker. Chạy lệnh sau trong terminal và làm theo hướng dẫn để tải cấu hình.
+Bạn có thể khởi động GPTW Agent nhanh chóng bằng Docker. Chạy lệnh sau trong terminal và làm theo hướng dẫn để tải cấu hình.
 
 ```bash
 # Chạy lệnh để tải file cấu hình
-bash <(curl -fsSL https://doc.fastgpt.cn/deploy/install.sh)
+bash <(curl -fsSL https://gptw.top/deploy/install.sh)
 # Khởi động dịch vụ
 docker compose up -d
 ```
 
-Sau khi khởi động hoàn tất, bạn có thể truy cập FastGPT tại `http://localhost:3000`. Tài khoản mặc định là `root` và mật khẩu là `1234`.
+Sau khi khởi động hoàn tất, bạn có thể truy cập GPTW Agent tại `http://localhost:3000`. Tài khoản mặc định là `root` và mật khẩu là `1234`.
 
-Nếu bạn gặp vấn đề, bạn có thể [xem hướng dẫn triển khai Docker đầy đủ](https://doc.fastgpt.io/self-host/deploy/docker)
+Nếu bạn gặp vấn đề, bạn có thể [xem hướng dẫn triển khai Docker đầy đủ](https://gptw.top/self-host/deploy/docker)
 
 ## 🛸 Cách Sử Dụng
 
 - **Phiên Bản Đám Mây**  
-  Nếu bạn không cần triển khai riêng, bạn có thể sử dụng trực tiếp dịch vụ đám mây của chúng tôi tại: [fastgpt.io](https://fastgpt.io/)
+  Nếu bạn không cần triển khai riêng, bạn có thể sử dụng trực tiếp dịch vụ đám mây của chúng tôi tại: [gptw.top](https://gptw.top/)
 
 - **Phiên Bản Tự Host Cộng Đồng**  
-  Bạn có thể triển khai nhanh chóng bằng [Docker](https://doc.fastgpt.io/self-host/deploy/docker) hoặc sử dụng [Sealos Cloud](https://doc.fastgpt.io/self-host/deploy/sealos) để triển khai FastGPT bằng một cú nhấp chuột.
+  Bạn có thể triển khai nhanh chóng bằng [Docker](https://gptw.top/self-host/deploy/docker) hoặc sử dụng [Sealos Cloud](https://gptw.top/self-host/deploy/sealos) để triển khai GPTW Agent bằng một cú nhấp chuột.
 
 - **Phiên Bản Thương Mại**  
-  Nếu bạn cần các tính năng đầy đủ hơn hoặc hỗ trợ dịch vụ chuyên sâu, bạn có thể chọn [Phiên Bản Thương Mại](https://doc.fastgpt.io/guide/version/commercial). Ngoài việc cung cấp phần mềm đầy đủ, chúng tôi còn cung cấp hướng dẫn triển khai cho các kịch bản cụ thể. Bạn có thể gửi [tư vấn thương mại](https://fael3z0zfze.feishu.cn/share/base/form/shrcnjJWtKqjOI9NbQTzhNyzljc).
+  Nếu bạn cần các tính năng đầy đủ hơn hoặc hỗ trợ dịch vụ chuyên sâu, bạn có thể chọn [Phiên Bản Thương Mại](https://gptw.top/guide/version/commercial). Ngoài việc cung cấp phần mềm đầy đủ, chúng tôi còn cung cấp hướng dẫn triển khai cho các kịch bản cụ thể. Bạn có thể gửi [tư vấn thương mại](https://fael3z0zfze.feishu.cn/share/base/form/shrcnjJWtKqjOI9NbQTzhNyzljc).
 
 ## 💡 Tính Năng Cốt Lõi
 
@@ -115,9 +115,9 @@ Nếu bạn gặp vấn đề, bạn có thể [xem hướng dẫn triển khai 
 
 ## 💪 Dự Án & Liên Kết Của Chúng Tôi
 
-- [Bắt Đầu Phát Triển Địa Phương](https://doc.fastgpt.io/self-host/dev/)
-- [Tài Liệu OpenAPI](https://doc.fastgpt.io/openapi/intro)
-- [FastGPT-plugin](https://github.com/labring/fastgpt-plugin)
+- [Bắt Đầu Phát Triển Địa Phương](https://gptw.top/self-host/dev/)
+- [Tài Liệu OpenAPI](https://gptw.top/openapi/intro)
+- [GPTW Agent-plugin](https://github.com/labring/fastgpt-plugin)
 - [AI Proxy: Dịch Vụ Cân Bằng Tải Tổng Hợp Mô Hình](https://github.com/labring/aiproxy)
 - [Laf: Truy Cập Nhanh 3 Phút vào Ứng Dụng Bên Thứ Ba](https://github.com/labring/laf)
 - [Sealos: Triển Khai Nhanh Ứng Dụng Cụm](https://github.com/labring/sealos)
@@ -148,13 +148,13 @@ Tham gia nhóm Feishu của chúng tôi:
 
 ## 🤝 Đóng Góp
 
-Chúng tôi rất hoan nghênh đóng góp dưới mọi hình thức. Nếu bạn quan tâm đến việc đóng góp mã, hãy xem [Issues GitHub](https://github.com/labring/FastGPT/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) của chúng tôi và cho chúng tôi thấy ý tưởng tuyệt vời của bạn!
+Chúng tôi rất hoan nghênh đóng góp dưới mọi hình thức. Nếu bạn quan tâm đến việc đóng góp mã, hãy xem [Issues GitHub](https://gptw.top) của chúng tôi và cho chúng tôi thấy ý tưởng tuyệt vời của bạn!
 
-<a href="https://github.com/labring/FastGPT/graphs/contributors" target="_blank">
+<a href="https://gptw.top" target="_blank">
   <table>
     <tr>
       <th colspan="2">
-        <br><img src="https://contrib.rocks/image?repo=labring/FastGPT"><br><br>
+        <br><img src="https://contrib.rocks/image?repo=labring/GPTW Agent"><br><br>
       </th>
     </tr>
     <tr>
@@ -184,11 +184,11 @@ Chúng tôi rất hoan nghênh đóng góp dưới mọi hình thức. Nếu b�
 
 ## 🌟 Star History
 
-<a href="https://github.com/labring/FastGPT/stargazers" target="_blank" style="display: block" align="center">
+<a href="https://gptw.top" target="_blank" style="display: block" align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=labring/FastGPT&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=labring/FastGPT&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=labring/FastGPT&type=Date" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=labring/GPTW Agent&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=labring/GPTW Agent&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=labring/GPTW Agent&type=Date" />
   </picture>
 </a>
 
@@ -198,9 +198,9 @@ Chúng tôi rất hoan nghênh đóng góp dưới mọi hình thức. Nếu b�
 
 ## Giấy Phép
 
-Kho này tuân thủ [FastGPT Open Source License](./LICENSE).
+Kho này tuân thủ [GPTW Agent Open Source License](./LICENSE).
 
 1. Cho phép sử dụng thương mại như dịch vụ backend, nhưng không cho phép cung cấp dịch vụ SaaS.
 2. Bất kỳ dịch vụ thương mại nào không có giấy phép thương mại phải giữ lại thông tin bản quyền liên quan.
-3. Xem [FastGPT Open Source License](./LICENSE) để biết đầy đủ chi tiết.
-4. Liên hệ: Dennis@sealos.io, [Xem Giá Thương Mại](https://doc.fastgpt.io/guide/version/commercial)
+3. Xem [GPTW Agent Open Source License](./LICENSE) để biết đầy đủ chi tiết.
+4. Liên hệ: Dennis@sealos.io, [Xem Giá Thương Mại](https://gptw.top/guide/version/commercial)

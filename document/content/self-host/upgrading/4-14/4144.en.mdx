@@ -1,14 +1,14 @@
 ---
 title: 'V4.14.4 (Includes Upgrade Script)'
-description: 'FastGPT V4.14.4 Release Notes'
+description: 'GPTW Agent V4.14.4 Release Notes'
 ---
 
 ## Upgrade Guide
 
 ### 1. Update Images:
 
-- Update FastGPT image tag: v4.14.4
-- Update FastGPT commercial edition image tag: v4.14.4
+- Update GPTW Agent image tag: v4.14.4
+- Update GPTW Agent commercial edition image tag: v4.14.4
 - Update fastgpt-plugin image tag: v0.3.4
 - mcp_server: no update needed
 - Sandbox: no update needed
@@ -16,7 +16,7 @@ description: 'FastGPT V4.14.4 Release Notes'
 
 ### 2. Run the Upgrade Script
 
-From any terminal, send an HTTP request. Replace `{{rootkey}}` with the `rootkey` from your environment variables, and `{{host}}` with your **FastGPT domain**.
+From any terminal, send an HTTP request. Replace `{{rootkey}}` with the `rootkey` from your environment variables, and `{{host}}` with your **GPTW Agent domain**.
 
 ```bash
 curl --location --request POST 'https://{{host}}/api/admin/initv4144' \

@@ -17,7 +17,6 @@ import ToolTagFilterBox from '@fastgpt/web/components/core/plugin/tool/TagFilter
 import ToolDetailDrawer from '@fastgpt/web/components/core/plugin/tool/ToolDetailDrawer';
 import { useUserStore } from '../../../web/support/user/useUserStore';
 import { useRouter } from 'next/router';
-import { getDocPath } from '@/web/common/system/doc';
 import type { GetTeamPluginListResponseType } from '@fastgpt/global/openapi/core/plugin/team/api';
 import { parseI18nString } from '@fastgpt/global/common/i18n/utils';
 import { getTeamToolDetail } from '@/web/core/plugin/team/api';
@@ -169,19 +168,6 @@ const ToolKitProvider = ({ MenuIcon }: { MenuIcon: JSX.Element }) => {
               >
                 {t('app:core.module.template.System Tools')}
               </Box>
-              {feConfigs?.docUrl && (
-                <Button
-                  mr={4}
-                  onClick={() =>
-                    window.open(
-                      getDocPath('/guide/build/tools/system-plugins/dev_system_tool'),
-                      '_blank'
-                    )
-                  }
-                >
-                  {t('app:toolkit_contribute_resource')}
-                </Button>
-              )}
               {feConfigs?.submitPluginRequestUrl && (
                 <Button
                   variant={'whiteBase'}

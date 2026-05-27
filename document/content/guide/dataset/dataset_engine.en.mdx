@@ -1,13 +1,13 @@
 ---
 title: Knowledge Base Search Methods and Parameters
 description:
-  This section covers FastGPT's knowledge base architecture, including its QA
+  This section covers GPTW Agent's knowledge base architecture, including its QA
   storage format and multi-vector mapping, to help you build better knowledge bases. It also explains each search parameter. This guide focuses on practical usage rather than in-depth theory.
 ---
 
 ## Understanding Vectors
 
-FastGPT uses an Embedding-based RAG approach for its knowledge base. To use FastGPT effectively, you need a basic understanding of how `Embedding` vectors work and their characteristics.
+GPTW Agent uses an Embedding-based RAG approach for its knowledge base. To use GPTW Agent effectively, you need a basic understanding of how `Embedding` vectors work and their characteristics.
 
 Human text, images, videos, and other media cannot be directly understood by computers. To determine whether two pieces of text are similar or related, they typically need to be converted into a computer-readable format — vectors are one such method.
 
@@ -28,17 +28,17 @@ Retriever precision is relatively straightforward to address, and training vecto
 4. Optimize search queries: In practice, user questions are often vague or incomplete. Refining the query (search term) can significantly improve accuracy.
 5. Fine-tune vector models: Off-the-shelf vector models are general-purpose and may underperform in specific domains. Fine-tuning can greatly improve domain-specific search results.
 
-## FastGPT Knowledge Base Architecture
+## GPTW Agent Knowledge Base Architecture
 
 ### Data Storage Structure
 
-In FastGPT, a knowledge base consists of three parts: libraries, collections, and data entries. A collection can be thought of as a "file." A library can contain multiple collections, and a collection can contain multiple data entries. The smallest searchable unit is the library — searches span the entire library. Collections are only for organizing and managing data and do not affect search results (at least for now).
+In GPTW Agent, a knowledge base consists of three parts: libraries, collections, and data entries. A collection can be thought of as a "file." A library can contain multiple collections, and a collection can contain multiple data entries. The smallest searchable unit is the library — searches span the entire library. Collections are only for organizing and managing data and do not affect search results (at least for now).
 
 ![](/imgs/dataset_tree.png)
 
 ### Vector Storage Structure
 
-FastGPT uses `PostgreSQL`'s `PG Vector` extension as the vector retriever, with `HNSW` indexing. `PostgreSQL` is used solely for vector search (this engine can be swapped for other databases), while `MongoDB` handles all other data storage.
+GPTW Agent uses `PostgreSQL`'s `PG Vector` extension as the vector retriever, with `HNSW` indexing. `PostgreSQL` is used solely for vector search (this engine can be swapped for other databases), while `MongoDB` handles all other data storage.
 
 In `MongoDB`'s `dataset.datas` collection, vector source data is stored along with an `indexes` field that records corresponding vector IDs. This is an array, meaning a single data entry can map to multiple vectors.
 
@@ -48,7 +48,7 @@ In `PostgreSQL`, a `vector` field stores the vectors. During search, vectors are
 
 ### Purpose and Usage of Multi-Vector Mapping
 
-In a single vector, content length and semantic richness are often at odds. FastGPT uses multi-vector mapping to map a single data entry to multiple vectors, preserving both data completeness and semantic richness.
+In a single vector, content length and semantic richness are often at odds. GPTW Agent uses multi-vector mapping to map a single data entry to multiple vectors, preserving both data completeness and semantic richness.
 
 You can add multiple vectors to a longer text so that if any one vector is matched during search, the entire data entry is recalled.
 
@@ -99,7 +99,7 @@ Since hybrid search covers a large range and cannot directly filter by similarit
 
 Uses a `ReRank` model to re-sort search results. In most cases, this significantly improves accuracy. Rerank models work better with complete questions (with proper subjects and predicates), so query optimization is usually applied before search and reranking. Reranking produces a score between `0-1` representing the relevance between the search content and the query — this score is typically more accurate than vector similarity scores and can be used for filtering.
 
-FastGPT uses `RRF` to merge rerank results, vector search results, and full-text search results into the final output.
+GPTW Agent uses `RRF` to merge rerank results, vector search results, and full-text search results into the final output.
 
 ### Search Filters
 

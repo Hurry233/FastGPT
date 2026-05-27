@@ -18,9 +18,6 @@ import { useSystemStore } from '@/web/common/system/useSystemStore';
 import { useToast } from '@fastgpt/web/hooks/useToast';
 
 const MemberTable = dynamic(() => import('@/pageComponents/account/team/MemberTable'));
-const PermissionManage = dynamic(
-  () => import('@/pageComponents/account/team/PermissionManage/index')
-);
 const AuditLog = dynamic(() => import('@/pageComponents/account/team/Audit/index'));
 const GroupManage = dynamic(() => import('@/pageComponents/account/team/GroupManage/index'));
 const OrgManage = dynamic(() => import('@/pageComponents/account/team/OrgManage/index'));
@@ -32,7 +29,6 @@ export enum TeamTabEnum {
   member = 'member',
   org = 'org',
   group = 'group',
-  permission = 'permission',
   audit = 'audit'
 }
 
@@ -49,6 +45,9 @@ const Team = () => {
   }, [router.query.invitelinkid]);
 
   const { teamTab = TeamTabEnum.member } = router.query as { teamTab: `${TeamTabEnum}` };
+  const currentTeamTab = Object.values(TeamTabEnum).includes(teamTab as TeamTabEnum)
+    ? teamTab
+    : TeamTabEnum.member;
 
   const { t } = useTranslation();
   const { userInfo, teamPlanStatus } = useUserStore();
@@ -73,13 +72,12 @@ const Team = () => {
           { label: t('account_team:member'), value: TeamTabEnum.member },
           { label: t('account_team:org'), value: TeamTabEnum.org },
           { label: t('account_team:group'), value: TeamTabEnum.group },
-          { label: t('account_team:permission'), value: TeamTabEnum.permission },
           ...(userInfo?.team.permission.hasManagePer
             ? [{ label: t('account_team:audit_log'), value: TeamTabEnum.audit }]
             : [])
         ]}
         px={'1rem'}
-        value={teamTab}
+        value={currentTeamTab}
         onChange={(e) => {
           if (e === TeamTabEnum.audit && planContent && !planContent?.auditLogStoreDuration) {
             toast({
@@ -97,7 +95,7 @@ const Team = () => {
         }}
       />
     ),
-    [planContent, router, t, teamTab, toast]
+    [currentTeamTab, planContent, router, t, toast]
   );
 
   return (
@@ -172,11 +170,10 @@ const Team = () => {
           flexDirection={'column'}
           overflow={'auto'}
         >
-          {teamTab === TeamTabEnum.member && <MemberTable Tabs={Tabs} />}
-          {teamTab === TeamTabEnum.org && <OrgManage Tabs={Tabs} />}
-          {teamTab === TeamTabEnum.group && <GroupManage Tabs={Tabs} />}
-          {teamTab === TeamTabEnum.permission && <PermissionManage Tabs={Tabs} />}
-          {teamTab === TeamTabEnum.audit && <AuditLog Tabs={Tabs} />}
+          {currentTeamTab === TeamTabEnum.member && <MemberTable Tabs={Tabs} />}
+          {currentTeamTab === TeamTabEnum.org && <OrgManage Tabs={Tabs} />}
+          {currentTeamTab === TeamTabEnum.group && <GroupManage Tabs={Tabs} />}
+          {currentTeamTab === TeamTabEnum.audit && <AuditLog Tabs={Tabs} />}
         </Box>
       </Flex>
       {invitelinkid && <HandleInviteModal invitelinkid={invitelinkid} />}

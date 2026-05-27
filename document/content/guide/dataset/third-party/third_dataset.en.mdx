@@ -1,19 +1,19 @@
 ---
 title: Third-Party Knowledge Base Development
-description: How to integrate a third-party knowledge base with FastGPT
+description: How to integrate a third-party knowledge base with GPTW Agent
 sidebarTag: DEV
 ---
 
 import { Alert } from '@/components/docs/Alert';
 
-There are many document libraries available online, such as Lark, Yuque, and others. Different FastGPT users may use different document libraries. FastGPT has built-in support for Lark and Yuque, but if you need to integrate other document libraries, follow this guide.
+There are many document libraries available online, such as Lark, Yuque, and others. Different GPTW Agent users may use different document libraries. GPTW Agent has built-in support for Lark and Yuque, but if you need to integrate other document libraries, follow this guide.
 
 
 ## Unified API Specification
 
-To provide a unified interface for different document libraries, FastGPT defines a standard API specification with 4 endpoints. See the [API File Library endpoints](./api_dataset.en.mdx).
+To provide a unified interface for different document libraries, GPTW Agent defines a standard API specification with 4 endpoints. See the [API File Library endpoints](./api_dataset.en.mdx).
 
-All built-in document libraries are extensions of the standard API File Library. Refer to the code in `FastGPT/packages/service/core/dataset/apiDataset/yuqueDataset/api.ts` to build extensions for other document libraries. You need to implement 4 endpoints:
+All built-in document libraries are extensions of the standard API File Library. Refer to the code in `GPTW Agent/packages/service/core/dataset/apiDataset/yuqueDataset/api.ts` to build extensions for other document libraries. You need to implement 4 endpoints:
 
 1. Get file list
 2. Get file content / file link
@@ -26,7 +26,7 @@ For this walkthrough, we'll use adding a Lark Knowledge Dataset (FeishuKnowledge
 
 ### 1. Add Third-Party Document Library Parameters
 
-First, go to `FastGPT\packages\global\core\dataset\apiDataset.d.ts` in the FastGPT project and add the third-party document library server type. Design the fields based on your needs. For example, the Yuque knowledge base requires `userId` and `token` for authentication.
+First, go to `GPTW Agent\packages\global\core\dataset\apiDataset.d.ts` in the GPTW Agent project and add the third-party document library server type. Design the fields based on your needs. For example, the Yuque knowledge base requires `userId` and `token` for authentication.
 
 ```ts
 export type YuqueServer = {
@@ -48,7 +48,7 @@ If the document library supports a `root directory` selection feature, add a `ba
 
 Each third-party document library uses a Hook pattern to maintain a set of API endpoints. The Hook contains 5 functions to implement.
 
-- Create a folder for your document library under `FastGPT\packages\service\core\dataset\apiDataset\`, then create an `api.ts` file inside it
+- Create a folder for your document library under `GPTW Agent\packages\service\core\dataset\apiDataset\`, then create an `api.ts` file inside it
 - In `api.ts`, define the following 5 functions:
   - `listFiles`: Get the file list
   - `getFileContent`: Get file content / file link
@@ -58,48 +58,48 @@ Each third-party document library uses a Hook pattern to maintain a set of API e
 
 ### 3. Add the Knowledge Base Type
 
-In `FastGPT\packages\global\core\dataset\type.d.ts`, import your new knowledge base type.
+In `GPTW Agent\packages\global\core\dataset\type.d.ts`, import your new knowledge base type.
 
 ![](/imgs/thirddataset-2.png)
 
 ### 4. Add Knowledge Base Data Retrieval
 
-In `FastGPT\packages\global\core\dataset\apiDataset\utils.ts`, add the following content.
+In `GPTW Agent\packages\global\core\dataset\apiDataset\utils.ts`, add the following content.
 
 ![](/imgs/thirddataset-3.png)
 
 ### 5. Add Knowledge Base Invocation Method
 
-In `FastGPT\packages\service\core\dataset\apiDataset\index.ts`, add the following content.
+In `GPTW Agent\packages\service\core\dataset\apiDataset\index.ts`, add the following content.
 
 ![](/imgs/thirddataset-4.png)
 
 ## Adding the Frontend
 
-Add your i18n translations in `FastGPT\packages\web\i18n\zh-CN\dataset.json`, `FastGPT\packages\web\i18n\en\dataset.json`, and `FastGPT\packages\web\i18n\zh-Hant\dataset.json`. Using Chinese translations as an example, you'll generally need the following:
+Add your i18n translations in `GPTW Agent\packages\web\i18n\zh-CN\dataset.json`, `GPTW Agent\packages\web\i18n\en\dataset.json`, and `GPTW Agent\packages\web\i18n\zh-Hant\dataset.json`. Using Chinese translations as an example, you'll generally need the following:
 
 ![](/imgs/thirddataset-5.png)
 
-In `FastGPT\packages\service\support\user/audit\util.ts`, add the following to support i18n translation retrieval.
+In `GPTW Agent\packages\service\support\user/audit\util.ts`, add the following to support i18n translation retrieval.
 
 ![](/imgs/thirddataset-6.png)
 
 <Alert icon="🤖" context="success">
 
-The i18n translation content is stored in `FastGPT\packages\web\i18n\zh-Hant\account_team.json`, `FastGPT\packages\web\i18n\zh-CN\account_team.json`, and `FastGPT\packages\web\i18n\en\account_team.json`. The field format is `dataset.XXX_dataset`. For example, for the Lark knowledge base, the field value is `dataset.feishu_knowledge_dataset`.
+The i18n translation content is stored in `GPTW Agent\packages\web\i18n\zh-Hant\account_team.json`, `GPTW Agent\packages\web\i18n\zh-CN\account_team.json`, and `GPTW Agent\packages\web\i18n\en\account_team.json`. The field format is `dataset.XXX_dataset`. For example, for the Lark knowledge base, the field value is `dataset.feishu_knowledge_dataset`.
 
 </Alert>
 
-Add your knowledge base icons under `FastGPT\packages\web\components\common\Icon\icons\core\dataset\`. You need two icons: `Outline` (monochrome) and `Color` (colored), as shown below.
+Add your knowledge base icons under `GPTW Agent\packages\web\components\common\Icon\icons\core\dataset\`. You need two icons: `Outline` (monochrome) and `Color` (colored), as shown below.
 
 ![](/imgs/thirddataset-7.png)
 
 
-In `FastGPT\packages\web\components\common\Icon\constants.ts`, register your icons. The `import` path points to where the icons are stored.
+In `GPTW Agent\packages\web\components\common\Icon\constants.ts`, register your icons. The `import` path points to where the icons are stored.
 
 ![](/imgs/thirddataset-8.png)
 
-In `FastGPT\packages\global\core\dataset\constants.ts`, add your knowledge base type to both `DatasetTypeEnum` and `ApiDatasetTypeMap`.
+In `GPTW Agent\packages\global\core\dataset\constants.ts`, add your knowledge base type to both `DatasetTypeEnum` and `ApiDatasetTypeMap`.
 
 | | |
 | --- | --- |
@@ -108,17 +108,17 @@ In `FastGPT\packages\global\core\dataset\constants.ts`, add your knowledge base 
 <Alert icon="🤖" context="success">
 
 The `courseUrl` field links to the relevant documentation — add it if available.
-Documentation goes in `FastGPT/document/content/guide/build/workflow/nodes/knowledge_base_search_merge.mdx`.
+Documentation goes in `GPTW Agent/document/content/guide/build/workflow/nodes/knowledge_base_search_merge.mdx`.
 The `label` value is the knowledge base name you added via i18n translations.
 `icon` and `avatar` are the two icons you added earlier.
 
 </Alert>
 
-In `FastGPT\projects\app\src\pages\dataset\list\index.tsx`, add the following. This file handles the menu that appears when clicking the "New" button on the knowledge base list page. Your knowledge base must be added here to be creatable.
+In `GPTW Agent\projects\app\src\pages\dataset\list\index.tsx`, add the following. This file handles the menu that appears when clicking the "New" button on the knowledge base list page. Your knowledge base must be added here to be creatable.
 
 ![](/imgs/thirddataset-11.png)
 
-In `FastGPT\projects\app\src\pageComponents\dataset\detail\Info\index.tsx`, add the following. This configuration corresponds to the UI shown below.
+In `GPTW Agent\projects\app\src\pageComponents\dataset\detail\Info\index.tsx`, add the following. This configuration corresponds to the UI shown below.
 
 | | |
 | --- | --- |
@@ -126,7 +126,7 @@ In `FastGPT\projects\app\src\pageComponents\dataset\detail\Info\index.tsx`, add 
 
 ## Adding the Configuration Form
 
-In `FastGPT\projects\app\src\pageComponents\dataset\ApiDatasetForm.tsx`, add the following. This file handles the field input form when creating a knowledge base.
+In `GPTW Agent\projects\app\src\pageComponents\dataset\ApiDatasetForm.tsx`, add the following. This file handles the field input form when creating a knowledge base.
 
 | | | |
 | --- | --- | --- |

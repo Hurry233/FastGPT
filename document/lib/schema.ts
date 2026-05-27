@@ -19,15 +19,15 @@ export function generateArticleSchema(params: {
     dateModified: dateModified?.toISOString(),
     author: {
       '@type': 'Organization',
-      name: 'Labring',
-      url: 'https://github.com/labring'
+      name: 'GPTW Agent',
+      url: 'https://gptw.top'
     },
     publisher: {
       '@type': 'Organization',
-      name: 'FastGPT',
+      name: 'GPTW Agent',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://doc.fastgpt.io/logo.svg'
+        url: 'https://gptw.top/logo.svg'
       }
     }
   };

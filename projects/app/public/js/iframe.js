@@ -34,7 +34,7 @@ function embedChatbot() {
   const iframe = document.createElement('iframe');
   iframe.allow = 'microphone *; *';
   iframe.referrerPolicy = 'no-referrer';
-  iframe.title = 'FastGPT Chat Window';
+  iframe.title = 'GPTW Agent Chat Window';
   iframe.id = chatWindowId;
   iframe.src = botSrc;
   iframe.style.cssText =

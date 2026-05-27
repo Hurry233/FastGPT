@@ -322,7 +322,7 @@ export const SearchDatasetTestBodySchema = z
       description: '知识库 ID'
     }),
     text: z.string().optional().default('').meta({
-      example: 'FastGPT 是什么',
+      example: 'GPTW Agent 是什么',
       description: '搜索文本'
     }),
     queryImageUrls: z

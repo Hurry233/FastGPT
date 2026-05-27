@@ -11,7 +11,7 @@ export const getMainAgentSystemPrompt = ({
 }) => `<!-- Main Agent -->
 
 <role>
-你是 FastGPT Main Agent。
+你是 GPTW Agent Main Agent。
 你在一个工具循环中工作：阅读用户目标，调用工具获取信息或执行动作，维护计划状态，并在任务完成后给出最终回答。
 </role>
 

@@ -31,7 +31,6 @@ import { usePagination } from '@fastgpt/web/hooks/usePagination';
 import { parseI18nString } from '@fastgpt/global/common/i18n/utils';
 import { useCopyData } from '@fastgpt/web/hooks/useCopyData';
 import { useSystemStore } from '@/web/common/system/useSystemStore';
-import { getDocPath } from '@/web/common/system/doc';
 import { useMemoEnhance } from '@fastgpt/web/hooks/useMemoEnhance';
 
 // Custom hook for managing URL search params
@@ -455,18 +454,6 @@ const ToolkitMarketplace = ({ marketplaceUrl }: { marketplaceUrl: string }) => {
                   {t('app:toolkit_updatable')} ({updatableTools.length})
                 </Button>
               )}
-              {feConfigs?.docUrl && (
-                <Button
-                  onClick={() => {
-                    const url = getDocPath('/guide/build/tools/system-plugins/dev_system_tool');
-                    if (url) {
-                      window.open(url, '_blank');
-                    }
-                  }}
-                >
-                  {t('app:toolkit_contribute_resource')}
-                </Button>
-              )}
               {feConfigs?.submitPluginRequestUrl && (
                 <Button
                   variant={'whiteBase'}
@@ -603,7 +590,7 @@ const ToolkitMarketplace = ({ marketplaceUrl }: { marketplaceUrl: string }) => {
                 WebkitTextFillColor: 'transparent'
               }}
             >
-              Assets for FastGPT
+              Assets for GPTW Agent
             </Box>
             <Box fontSize={'45px'} fontWeight={'semibold'} color={'black'}>
               {t('app:toolkit_marketplace_title')}

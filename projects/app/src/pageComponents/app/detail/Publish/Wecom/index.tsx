@@ -27,7 +27,6 @@ import dynamic from 'next/dynamic';
 import MyMenu from '@fastgpt/web/components/common/MyMenu';
 import EmptyTip from '@fastgpt/web/components/common/EmptyTip';
 import { useRequest } from '@fastgpt/web/hooks/useRequest';
-import { getDocPath } from '@/web/common/system/doc';
 import { listCustomDomain } from '@/web/support/customDomain/api';
 
 const WecomEditModal = dynamic(() => import('./WecomEditModal'));
@@ -73,20 +72,6 @@ const Wecom = ({ appId }: { appId: string }) => {
           <Box fontWeight={'bold'} fontSize={['md', 'lg']}>
             {t('publish:wecom.title')}
           </Box>
-          {feConfigs?.docUrl && (
-            <Link
-              href={getDocPath('/guide/build/publish/wecom')}
-              target={'_blank'}
-              ml={2}
-              color={'primary.500'}
-              fontSize={'sm'}
-            >
-              <Flex alignItems={'center'}>
-                <MyIcon name="book" w={'17px'} h={'17px'} mr="1" />
-                {t('common:read_doc')}
-              </Flex>
-            </Link>
-          )}
         </Flex>
         <Flex gap={3}>
           {feConfigs.customDomain?.enable && (

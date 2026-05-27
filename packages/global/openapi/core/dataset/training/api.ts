@@ -22,11 +22,11 @@ export const UpdateTrainingDataBodySchema = z.object({
     description: '训练数据 ID，不传则重试集合内所有错误数据'
   }),
   q: z.string().optional().meta({
-    example: '什么是 FastGPT？',
+    example: '什么是 GPTW Agent？',
     description: '问题/主文本'
   }),
   a: z.string().optional().meta({
-    example: 'FastGPT 是一个 AI Agent 构建平台',
+    example: 'GPTW Agent 是一个 AI Agent 构建平台',
     description: '回答/补充文本'
   }),
   chunkIndex: z.int().min(0).optional().meta({
@@ -116,11 +116,11 @@ export const GetTrainingDataDetailResponseSchema = z
       description: '训练模式'
     }),
     q: z.string().optional().meta({
-      example: '什么是 FastGPT？',
+      example: '什么是 GPTW Agent？',
       description: '问题/主文本'
     }),
     a: z.string().optional().meta({
-      example: 'FastGPT 是一个 AI Agent 构建平台',
+      example: 'GPTW Agent 是一个 AI Agent 构建平台',
       description: '回答/补充文本'
     }),
     imagePreviewUrl: z.string().optional().meta({

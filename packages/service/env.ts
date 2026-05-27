@@ -183,7 +183,7 @@ export const serviceEnv = createEnv({
     }),
     FILE_DOMAIN: UrlSchema.optional().meta({
       description:
-        '文件域名（也指向 FastGPT 服务）；如需更高安全性可独立分配域名，避免高危文件读取到主域名内容'
+        '文件域名（也指向 GPTW Agent 服务）；如需更高安全性可独立分配域名，避免高危文件读取到主域名内容'
     }),
     NEXT_PUBLIC_BASE_URL: z.string().default(''),
 

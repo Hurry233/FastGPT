@@ -1,8 +1,8 @@
 <div align="center">
 
-<a href="https://fastgpt.io/"><img src="/.github/imgs/logo.svg" width="120" height="120" alt="fastgpt logo"></a>
+<a href="https://gptw.top/"><img src="/.github/imgs/logo.svg" width="120" height="120" alt="fastgpt logo"></a>
 
-# FastGPT
+# GPTW Agent
 
 <p align="center">
   <a href="./README_en.md">English</a> |
@@ -13,18 +13,18 @@
   <a href="./README_ja.md">日本語</a>
 </p>
 
-FastGPT adalah platform pembangunan AI Agent yang menyediakan kemampuan siap pakai untuk pemrosesan data dan pemanggilan model. Selain itu, Anda dapat mengorkestrasikan workflow melalui visualisasi Flow untuk mencapai skenario aplikasi yang kompleks!
+GPTW Agent adalah platform pembangunan AI Agent yang menyediakan kemampuan siap pakai untuk pemrosesan data dan pemanggilan model. Selain itu, Anda dapat mengorkestrasikan workflow melalui visualisasi Flow untuk mencapai skenario aplikasi yang kompleks!
 
 </div>
 
 <p align="center">
-  <a href="https://fastgpt.io/">
+  <a href="https://gptw.top/">
     <img height="21" src="https://img.shields.io/badge/Penggunaan_Online-d4eaf7?style=flat-square&logo=spoj&logoColor=7d09f1" alt="cloud">
   </a>
-  <a href="https://doc.fastgpt.io/guide/getting-started">
+  <a href="https://gptw.top/guide/getting-started">
     <img height="21" src="https://img.shields.io/badge/Dokumentasi-7d09f1?style=flat-square" alt="document">
   </a>
-  <a href="https://doc.fastgpt.io/self-host/dev">
+  <a href="https://gptw.top/self-host/dev">
     <img height="21" src="https://img.shields.io/badge/Pengembangan_Lokal-%23d4eaf7?style=flat-square&logo=xcode&logoColor=7d09f1" alt="development">
   </a>
   <a href="#-proyek--tautan-kami">
@@ -32,33 +32,33 @@ FastGPT adalah platform pembangunan AI Agent yang menyediakan kemampuan siap pak
   </a>
 </p>
 
-https://github.com/labring/FastGPT/assets/15308462/7d3a38df-eb0e-4388-9250-2409bd33f6d4
+https://gptw.top
 
 ## Mulai Cepat
 
-Anda dapat memulai FastGPT dengan cepat menggunakan Docker. Jalankan perintah berikut di terminal dan ikuti panduan untuk menarik konfigurasi.
+Anda dapat memulai GPTW Agent dengan cepat menggunakan Docker. Jalankan perintah berikut di terminal dan ikuti panduan untuk menarik konfigurasi.
 
 ```bash
 # Jalankan perintah untuk menarik file konfigurasi
-bash <(curl -fsSL https://doc.fastgpt.cn/deploy/install.sh)
+bash <(curl -fsSL https://gptw.top/deploy/install.sh)
 # Jalankan layanan
 docker compose up -d
 ```
 
-Setelah sepenuhnya aktif, Anda dapat mengakses FastGPT di `http://localhost:3000`. Akun default adalah `root` dan kata sandinya adalah `1234`.
+Setelah sepenuhnya aktif, Anda dapat mengakses GPTW Agent di `http://localhost:3000`. Akun default adalah `root` dan kata sandinya adalah `1234`.
 
-Jika Anda menghadapi masalah, Anda dapat [melihat tutorial penyebaran Docker lengkap](https://doc.fastgpt.io/self-host/deploy/docker)
+Jika Anda menghadapi masalah, Anda dapat [melihat tutorial penyebaran Docker lengkap](https://gptw.top/self-host/deploy/docker)
 
 ## 🛸 Cara Penggunaan
 
 - **Versi Cloud**  
-  Jika Anda tidak memerlukan penyebaran privat, Anda dapat langsung menggunakan layanan cloud kami di: [fastgpt.io](https://fastgpt.io/)
+  Jika Anda tidak memerlukan penyebaran privat, Anda dapat langsung menggunakan layanan cloud kami di: [gptw.top](https://gptw.top/)
 
 - **Versi Self-Hosted Komunitas**  
-  Anda dapat menyebarkan dengan cepat menggunakan [Docker](https://doc.fastgpt.io/self-host/deploy/docker) atau menggunakan [Sealos Cloud](https://doc.fastgpt.io/self-host/deploy/sealos) untuk menyebarkan FastGPT dengan satu klik.
+  Anda dapat menyebarkan dengan cepat menggunakan [Docker](https://gptw.top/self-host/deploy/docker) atau menggunakan [Sealos Cloud](https://gptw.top/self-host/deploy/sealos) untuk menyebarkan GPTW Agent dengan satu klik.
 
 - **Versi Komersial**  
-  Jika Anda membutuhkan fitur yang lebih lengkap atau dukungan layanan mendalam, Anda dapat memilih [Versi Komersial](https://doc.fastgpt.io/guide/version/commercial). Selain menyediakan perangkat lunak lengkap, kami juga menyediakan panduan implementasi untuk skenario tertentu. Anda dapat mengirimkan [konsultasi komersial](https://fael3z0zfze.feishu.cn/share/base/form/shrcnjJWtKqjOI9NbQTzhNyzljc).
+  Jika Anda membutuhkan fitur yang lebih lengkap atau dukungan layanan mendalam, Anda dapat memilih [Versi Komersial](https://gptw.top/guide/version/commercial). Selain menyediakan perangkat lunak lengkap, kami juga menyediakan panduan implementasi untuk skenario tertentu. Anda dapat mengirimkan [konsultasi komersial](https://fael3z0zfze.feishu.cn/share/base/form/shrcnjJWtKqjOI9NbQTzhNyzljc).
 
 ## 💡 Fitur Inti
 
@@ -115,9 +115,9 @@ Jika Anda menghadapi masalah, Anda dapat [melihat tutorial penyebaran Docker len
 
 ## 💪 Proyek & Tautan Kami
 
-- [Mulai Cepat Pengembangan Lokal](https://doc.fastgpt.io/self-host/dev/)
-- [Dokumentasi OpenAPI](https://doc.fastgpt.io/openapi/intro)
-- [FastGPT-plugin](https://github.com/labring/fastgpt-plugin)
+- [Mulai Cepat Pengembangan Lokal](https://gptw.top/self-host/dev/)
+- [Dokumentasi OpenAPI](https://gptw.top/openapi/intro)
+- [GPTW Agent-plugin](https://github.com/labring/fastgpt-plugin)
 - [AI Proxy: Layanan Load Balancing Agregasi Model](https://github.com/labring/aiproxy)
 - [Laf: Akses Cepat 3 Menit ke Aplikasi Pihak Ketiga](https://github.com/labring/laf)
 - [Sealos: Penerapan Cepat Aplikasi Klaster](https://github.com/labring/sealos)
@@ -148,13 +148,13 @@ Bergabung dengan grup Feishu kami:
 
 ## 🤝 Kontributor
 
-Kami sangat menyambut kontribusi dalam berbagai bentuk. Jika Anda tertarik berkontribusi kode, lihat [Issues GitHub](https://github.com/labring/FastGPT/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) kami dan tunjukkan ide brilian Anda!
+Kami sangat menyambut kontribusi dalam berbagai bentuk. Jika Anda tertarik berkontribusi kode, lihat [Issues GitHub](https://gptw.top) kami dan tunjukkan ide brilian Anda!
 
-<a href="https://github.com/labring/FastGPT/graphs/contributors" target="_blank">
+<a href="https://gptw.top" target="_blank">
   <table>
     <tr>
       <th colspan="2">
-        <br><img src="https://contrib.rocks/image?repo=labring/FastGPT"><br><br>
+        <br><img src="https://contrib.rocks/image?repo=labring/GPTW Agent"><br><br>
       </th>
     </tr>
     <tr>
@@ -184,11 +184,11 @@ Kami sangat menyambut kontribusi dalam berbagai bentuk. Jika Anda tertarik berko
 
 ## 🌟 Star History
 
-<a href="https://github.com/labring/FastGPT/stargazers" target="_blank" style="display: block" align="center">
+<a href="https://gptw.top" target="_blank" style="display: block" align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=labring/FastGPT&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=labring/FastGPT&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=labring/FastGPT&type=Date" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=labring/GPTW Agent&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=labring/GPTW Agent&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=labring/GPTW Agent&type=Date" />
   </picture>
 </a>
 
@@ -198,9 +198,9 @@ Kami sangat menyambut kontribusi dalam berbagai bentuk. Jika Anda tertarik berko
 
 ## Lisensi
 
-Repositori ini mengikuti [FastGPT Open Source License](./LICENSE).
+Repositori ini mengikuti [GPTW Agent Open Source License](./LICENSE).
 
 1. Penggunaan komersial sebagai layanan backend diperbolehkan, tetapi layanan SaaS tidak diperbolehkan.
 2. Setiap layanan komersial tanpa otorisasi komersial harus mempertahankan informasi hak cipta yang relevan.
-3. Silakan lihat [FastGPT Open Source License](./LICENSE) untuk detail lengkap.
-4. Kontak: Dennis@sealos.io, [Lihat Harga Komersial](https://doc.fastgpt.io/guide/version/commercial)
+3. Silakan lihat [GPTW Agent Open Source License](./LICENSE) untuk detail lengkap.
+4. Kontak: Dennis@sealos.io, [Lihat Harga Komersial](https://gptw.top/guide/version/commercial)

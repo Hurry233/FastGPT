@@ -1,11 +1,9 @@
-import React, { useMemo, useRef, useState } from 'react';
-import { postChangeOwner, resumeInheritPer } from '@/web/core/dataset/api';
+import React, { useMemo, useRef } from 'react';
 import { Box, Flex, Grid, HStack } from '@chakra-ui/react';
 import { DatasetTypeEnum, DatasetTypeMap } from '@fastgpt/global/core/dataset/constants';
 import MyMenu from '@fastgpt/web/components/common/MyMenu';
 import MyIcon from '@fastgpt/web/components/common/Icon';
 import { useRouter } from 'next/router';
-import PermissionIconText from '@/components/support/permission/IconText';
 import Avatar from '@fastgpt/web/components/common/Avatar';
 import { useConfirm } from '@fastgpt/web/hooks/useConfirm';
 import { useRequest } from '@fastgpt/web/hooks/useRequest';
@@ -16,13 +14,6 @@ import MyTooltip from '@fastgpt/web/components/common/MyTooltip';
 import dynamic from 'next/dynamic';
 import { useContextSelector } from 'use-context-selector';
 import { DatasetsContext } from './context';
-import { DatasetRoleList } from '@fastgpt/global/support/permission/dataset/constant';
-import ConfigPerModal from '@/components/support/permission/ConfigPerModal';
-import {
-  deleteDatasetCollaborators,
-  getCollaboratorList,
-  postUpdateDatasetCollaborators
-} from '@/web/core/dataset/api/collaborator';
 import EmptyTip from '@fastgpt/web/components/common/EmptyTip';
 import { useFolderDrag } from '@/components/common/folder/useFolderDrag';
 import MyBox from '@fastgpt/web/components/common/MyBox';
@@ -30,7 +21,6 @@ import { useTranslation } from 'next-i18next';
 import { useSystem } from '@fastgpt/web/hooks/useSystem';
 import SideTag from './SideTag';
 import UserBox from '@fastgpt/web/components/common/UserBox';
-import { ReadRoleVal } from '@fastgpt/global/support/permission/constant';
 
 const EditResourceModal = dynamic(() => import('@/components/common/Modal/EditResourceModal'));
 
@@ -50,7 +40,6 @@ function List() {
     folderDetail,
     setSearchKey
   } = useContextSelector(DatasetsContext, (v) => v);
-  const [editPerDatasetId, setEditPerDatasetId] = useState<string>();
   const router = useRouter();
   const { parentId = null } = router.query as { parentId?: string | null };
   const parentDataset = useMemo(
@@ -80,11 +69,6 @@ function List() {
       })();
     }
   });
-
-  const editPerDataset = useMemo(
-    () => myDatasets.find((item) => item._id === editPerDatasetId),
-    [editPerDatasetId, myDatasets]
-  );
 
   const { runAsync: exportDataset } = useRequest(
     async ({ _id, name }: { _id: string; name: string }) => {
@@ -260,12 +244,6 @@ function List() {
                         avatarSize="1rem"
                         spacing={0.5}
                       />
-                      <PermissionIconText
-                        flexShrink={0}
-                        private={dataset.private}
-                        iconColor="myGray.400"
-                        color={'myGray.500'}
-                      />
                     </HStack>
 
                     <HStack>
@@ -334,15 +312,6 @@ function List() {
                                         }
                                       ]
                                     : []),
-                                  ...(dataset.permission.hasManagePer
-                                    ? [
-                                        {
-                                          icon: 'key',
-                                          label: t('common:permission.Permission'),
-                                          onClick: () => setEditPerDatasetId(dataset._id)
-                                        }
-                                      ]
-                                    : [])
                                 ]
                               },
                               ...(dataset.type != DatasetTypeEnum.folder
@@ -420,42 +389,6 @@ function List() {
         />
       )}
 
-      {!!editPerDataset && (
-        <ConfigPerModal
-          onChangeOwner={(tmbId: string) =>
-            postChangeOwner({
-              datasetId: editPerDataset._id,
-              ownerId: tmbId
-            }).then(() => loadMyDatasets())
-          }
-          hasParent={!!parentId}
-          refetchResource={loadMyDatasets}
-          isInheritPermission={editPerDataset.inheritPermission}
-          resumeInheritPermission={() =>
-            resumeInheritPer(editPerDataset._id).then(() => Promise.all([loadMyDatasets()]))
-          }
-          avatar={editPerDataset.avatar}
-          name={editPerDataset.name}
-          managePer={{
-            defaultRole: ReadRoleVal,
-            permission: editPerDataset.permission,
-            onGetCollaboratorList: () => getCollaboratorList(editPerDataset._id),
-            roleList: DatasetRoleList,
-            onUpdateCollaborators: (props) =>
-              postUpdateDatasetCollaborators({
-                ...props,
-                datasetId: editPerDataset._id
-              }),
-            onDelOneCollaborator: async (props) =>
-              deleteDatasetCollaborators({
-                ...props,
-                datasetId: editPerDataset._id
-              }),
-            refreshDeps: [editPerDataset._id, editPerDataset.inheritPermission]
-          }}
-          onClose={() => setEditPerDatasetId(undefined)}
-        />
-      )}
       <ConfirmModal />
       <MoveConfirmModal />
     </>

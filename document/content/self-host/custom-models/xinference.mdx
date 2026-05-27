@@ -118,9 +118,9 @@ curl --location --request POST 'https://[oneapi_url]/v1/chat/completions' \
 
 将 [oneapi_url] 替换为你的 One API 地址，[oneapi_token] 替换为你的 One API 令牌。model 为刚刚在 One API 填写的自定义模型。
 
-## 将本地模型接入 FastGPT
+## 将本地模型接入 GPTW Agent
 
-修改 FastGPT 的 `config.json` 配置文件的 llmModels 部分加入 qwen-chat 模型：
+修改 GPTW Agent 的 `config.json` 配置文件的 llmModels 部分加入 qwen-chat 模型：
 
 ```json
 ...
@@ -147,8 +147,8 @@ curl --location --request POST 'https://[oneapi_url]/v1/chat/completions' \
 ...
 ```
 
-然后重启 FastGPT 就可以在应用配置中选择 Qwen 模型进行对话：
+然后重启 GPTW Agent 就可以在应用配置中选择 Qwen 模型进行对话：
 
 ## ![](../../../public/imgs/fastgpt-list-models.png)
 
-- 参考：[FastGPT + Xinference：一站式本地 LLM 私有化部署和应用开发](https://xorbits.cn/blogs/fastgpt-weather-chat)
+- 参考：[GPTW Agent + Xinference：一站式本地 LLM 私有化部署和应用开发](https://xorbits.cn/blogs/fastgpt-weather-chat)

@@ -14,7 +14,6 @@ import {
   ModalBody,
   Input,
   Switch,
-  Link,
   IconButton,
   HStack
 } from '@chakra-ui/react';
@@ -38,7 +37,6 @@ import { useToast } from '@fastgpt/web/hooks/useToast';
 import { useSystemStore } from '@/web/common/system/useSystemStore';
 import MyModal from '@fastgpt/web/components/common/MyModal';
 import dayjs from 'dayjs';
-import { getDocPath } from '@/web/common/system/doc';
 import dynamic from 'next/dynamic';
 import MyMenu from '@fastgpt/web/components/common/MyMenu';
 import { useConfirm } from '@fastgpt/web/hooks/useConfirm';
@@ -398,14 +396,6 @@ function EditLinkModal({
                   {...register('limit.hookUrl')}
                 />
               </Flex>
-              <Link
-                href={getDocPath('/openapi/share')}
-                target={'_blank'}
-                fontSize={'xs'}
-                color={'myGray.500'}
-              >
-                {t('publish:token_auth_use_cases')}
-              </Link>
             </>
           )}
         </Box>

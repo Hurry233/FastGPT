@@ -753,20 +753,6 @@ const Other = ({ onOpenContact }: { onOpenContact: () => void }) => {
   return (
     <Box>
       <Grid gridGap={4}>
-        {feConfigs?.docUrl && (
-          <Link
-            href={getDocPath('/guide/getting-started')}
-            target="_blank"
-            textDecoration={'none !important'}
-            {...ButtonStyles}
-          >
-            <MyIcon name={'common/courseLight'} w={'18px'} color={'myGray.600'} />
-            <Box ml={2} flex={1}>
-              {t('account_info:help_document')}
-            </Box>
-          </Link>
-        )}
-
         {!isPc &&
           feConfigs?.navbarItems
             ?.filter((item) => item.isActive)
